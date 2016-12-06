@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sett Wai</title>
+    <link>https://sett.sh/index.xml</link>
+    <description>Recent content on Sett Wai</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2016</copyright>
+    <lastBuildDate>Tue, 21 Apr 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://sett.sh/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker for Windows Users</title>
+      <link>https://sett.sh/post/docker-for-windows-users/</link>
+      <pubDate>Tue, 21 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/post/docker-for-windows-users/</guid>
+      <description>
+
+&lt;h1 id=&#34;foreword&#34;&gt;Foreword&lt;/h1&gt;
+
+&lt;p&gt;As with many people my age (27), I primarily started working and playing on computers when graphical user interfaces were already the norm and Windows 95 had just hit the peak of popularity. Unless your parents were engineers of some sort, personal computers were generally seen as just a new home appliance. If you had a computer in the 90s, it most likely was a Packard Bell that came with Windows 95 and Intel Pentium processor of some sort.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/7hVG709.jpg&#34; alt=&#34;Packard Bell Pentium 133&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Low-res nostalgia bomb!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s in this context that a lot of us grew up. However, this puts us at a disadvantage. Just as today&amp;rsquo;s &amp;ldquo;apps&amp;rdquo;, tablets and smart phones can be seen as relegating the general purpose computer to &amp;ldquo;Facebook&amp;rdquo; machines, ours was the first wave of this trend. The capacitive touch screen is just the evolution of the computer mouse. This is a great thing, but if you&amp;rsquo;re a technologist, it&amp;rsquo;s important to understand that the Windows ecosystem is only one alternate timeline in the history of computing.&lt;/p&gt;
+
+&lt;p&gt;Below, I&amp;rsquo;ll go through a brief history of computing that&amp;rsquo;s important to understanding why you&amp;rsquo;d want to be familiar with *nix. Especially if you&amp;rsquo;re from the Windows 95 generation, like me. Bear with me as I dig through the alternate history, I&amp;rsquo;m trying to give you the same &lt;em&gt;ah-ha!&lt;/em&gt; moments I got when I first discovered this stuff.&lt;/p&gt;
+
+&lt;h1 id=&#34;in-the-beginning&#34;&gt;In the beginning&lt;/h1&gt;
+
+&lt;p&gt;In the beginning there was UNIX. Before affordable multi-purpose, personal computers, organisations often kept a single mainframe computer that users could connect to via &lt;a href=&#34;https://en.wikipedia.org/wiki/Computer_terminal#Dumb_terminals&#34;&gt;&amp;ldquo;dumb&amp;rdquo; terminals&lt;/a&gt;. This was based on the idea of &lt;a href=&#34;https://en.wikipedia.org/wiki/Time-sharing&#34;&gt;time-sharing&lt;/a&gt; which was a way to give access to computing to many different people at the same time&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:internet&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:internet&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/lYUYMUG.jpg&#34; alt=&#34;Tron Classic&#34; /&gt;
+&lt;br/&gt;&lt;small&gt;A lot the original computing ideas are realised in &lt;a href=&#34;http://www.imdb.com/title/tt0084827/&#34;&gt;Tron (1982)&lt;/a&gt;, albeit with artistic liberties taken.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;UNIX as an underlying operating system provided small programs that the user could execute in order to specific tasks. These were tied together by a unified file system for communicating and a shell scripting language for doing more complex work. All of this work was mediated by a master control program, the &lt;a href=&#34;https://en.wikipedia.org/wiki/Kernel_(operating_system)&#34;&gt;kernel&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Eventually in the 80s, the IEEE got together and specified a family of standards for operating systems based on common patterns they saw in UNIX and UNIX-like OSes. They called these standards collectively, &lt;a href=&#34;https://en.wikipedia.org/wiki/POSIX&#34;&gt;POSIX&lt;/a&gt;. Parallel to this, a set of common software engineering practices were embodied into something called the &lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;Unix Philosophy&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A lot of operating systems would come to be developed adhering to POSIX standards and and the Unix philosophy. The most famous of them being Linux&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:linux&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:linux&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; and FreeBSD&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:OSX&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:OSX&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/c/cd/Unix_timeline.en.svg&#34; alt=&#34;Unix timeline&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;ms-dos-windows&#34;&gt;MS-DOS &amp;amp; Windows&lt;/h1&gt;
+
+&lt;p&gt;In 1981 IBM launched the IBM Personal Computer with a microprocessor based on its flagship 8088 chip&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:8088&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:8088&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;. It also came installled a with tiny, simple operating system by Microsoft, called MS-DOS. Unlike UNIX-like operating systems around at the time, MS-DOS was single-task, single-user and certainly not POSIX compliant.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/0Z1RcIAl.jpg&#34; alt=&#34;MS-DOS box&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Personal computers became insanely popular for some reason and Microsoft introduced Windows as an addon to MS-DOS to compete with Apple&amp;rsquo;s very expensive Macintosh computer. The Macintosh featured a Graphical User Interface, the hottest new thing in technology. The rest is history: Windows dominated the personal computing space through OEM deals with hardware manufacturers and eventually every computer you could buy was either a Windows or a Mac. Meanwhile, UNIX-like OSes like Linux took firm hold of the Web Server space. The numbers are very &lt;a href=&#34;https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Market_share_by_category&#34;&gt;telling&lt;/a&gt;: 91.25% of all personal computers are Windows, but only a third of servers on the web.&lt;/p&gt;
+
+&lt;h1 id=&#34;implications&#34;&gt;Implications&lt;/h1&gt;
+
+&lt;p&gt;What does this mean for us developers? Well, unless you&amp;rsquo;re strictly into systems development&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:systems-development&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:systems-development&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; only, the chances are you&amp;rsquo;ll be developing applications that need to deployed to a server. This means that 2 of 3 production environments will UNIX-like.&lt;/p&gt;
+
+&lt;h1 id=&#34;virtualisation&#34;&gt;Virtualisation&lt;/h1&gt;
+
+&lt;p&gt;Because a server rack is a specialised, expensive piece of equipment, a common technique to have a more efficient distribution of resources is to use &lt;a href=&#34;https://en.wikipedia.org/wiki/Hardware_virtualization&#34;&gt;virtualisation&lt;/a&gt;. Virtualisation in the context of the data centre allows sharing the same physical resources amongst multiple instances of virtual servers.&lt;/p&gt;
+
+&lt;p&gt;Apart from efficiency, virtualisation provides other benefits such as the ability to easily automatically configure them. New virtual machines can be &amp;ldquo;spun up&amp;rdquo; and provisioned without buying additional hardware up-front. You can clone/back up entire machines and move them around. These are all features that are the backbone for Infrastructure as a Service (IaaS) which simply means you can pay a provider like &lt;a href=&#34;http://rackspace.com/&#34;&gt;Rackspace&lt;/a&gt;, &lt;a href=&#34;https://www.linode.com/&#34;&gt;Linode&lt;/a&gt; or &lt;a href=&#34;https://www.digitalocean.com/&#34;&gt;Digital Ocean&lt;/a&gt; for a Virtual Private Server and have it almost immediately.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.vmware.com/files/images/diagrams/vmw-virtualization-defined.jpg&#34; alt=&#34;Virtualisation diagram&#34; /&gt;
+&lt;small&gt;VMWare explains virtualisation.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The most common scenario for virtualisation is on a hardware level: the host machine&amp;rsquo;s physical resources would be virtualised and available to the guest machine as &amp;ldquo;fake&amp;rdquo; hardware. Physical things like RAM, CPU, GPU and HDD could be virtualised. A host machine with 32GB RAM, 1TB HDD and 8 CPUs could possible provide 4 virtual machines of 8GB, 250GB and 2 vCPU. The problem however, is that these resources are fixed for the duration that the VM is running - if 1 VM is idle, it can&amp;rsquo;t share its 2vCPUS and 8GB RAM with the others. Also, each VM would need to boot up and run its own OS. This is still a little inefficient.&lt;/p&gt;
+
+&lt;p&gt;With regards to software development, virtualisation allows us to easily have consistent environments amongst locally through the use of &lt;a href=&#34;http://vagrantup.com/&#34;&gt;vagrant&lt;/a&gt; and virtual box.&lt;/p&gt;
+
+&lt;h1 id=&#34;containers&#34;&gt;Containers&lt;/h1&gt;
+
+&lt;p&gt;Containers are just another term for &lt;a href=&#34;https://en.wikipedia.org/wiki/Operating-system-level_virtualization&#34;&gt;Operating System Level Virtualisation&lt;/a&gt;. In contrast to whole-system or hardware virtualisation, containers do not provide abstraction for physical resources. Instead, they provide a virtual userspace&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:userspace&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:userspace&#34;&gt;6&lt;/a&gt;&lt;/sup&gt; and directory structure for applications to be run. These applications all run on the same operating system and kernel but are isolated from each other. One application in a container would generally not be able to see or manipulate files/memory in another container.&lt;/p&gt;
+
+&lt;p&gt;Operating System Level Virtualisation ala containers has a massive advantage over hardware virtualisation in that you can easily run hundreds of containers on a host without any problems since they share all physical resources of the host system.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://zdnet4.cbsistatic.com/hub/i/r/2014/10/02/c5ebe949-49e6-11e4-b6a0-d4ae52e95e57/resize/770x578/54eff63621dfffda68806c80e2a411a5/azuredockervmcontainer.png&#34; alt=&#34;Containers vs VMs&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The reason why containers are not very prominent in Windows ecosystem is because of its single-user, single-process history (I stand to be corrected on this). Also containerisation was never a core operating system feature and traditionally provided by third party, proprietary software in Windows.&lt;/p&gt;
+
+&lt;p&gt;On Linux, &lt;a href=&#34;https://en.wikipedia.org/wiki/Chroot&#34;&gt;chroot&lt;/a&gt; had always provided this functionality until &lt;a href=&#34;https://wiki.archlinux.org/index.php/Linux_Containers&#34;&gt;Linux Containers&lt;/a&gt;(LxCs) were created in 2008. LxCs leveraged a kernel feature called &lt;strong&gt;cgroups&lt;/strong&gt; to achieve a higher level of isolation adn security than what the crude chroot provided&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:cgroups&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:cgroups&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;If the previous paragraph is kind of hard to take in, you&amp;rsquo;re not alone. Containerisation in Linux is a highly technical topic and it seems to require a lot of arcane knowledge of the Linux operating systems that most developers wouldn&amp;rsquo;t know of. Let alone devs who are used to Windows. This was always the case until &lt;strong&gt;Docker&lt;/strong&gt; exploded on to the scene.&lt;/p&gt;
+
+&lt;h1 id=&#34;docker&#34;&gt;Docker&lt;/h1&gt;
+
+&lt;p&gt;Docker was started by &lt;a href=&#34;https://twitter.com/solomonstre&#34;&gt;Solomon Hykes&lt;/a&gt; in 2013 while he was at &lt;a href=&#34;https://www.dotcloud.com/&#34;&gt;dotCloud&lt;/a&gt;, a Platform as a Service Provider&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:PaaS&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:PaaS&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;. It was initially just a convenient wrapper around LxCs that stretched the metaphor of &amp;ldquo;shipping containers&amp;rdquo; for apps. The entire idea was that a docker container should run and look exactly the same on any host while being incredibly easy to automate and manage.&lt;/p&gt;
+
+&lt;p&gt;One distinctive feature docker has is that it uses the AUFS filesystem which is a layered file system. This simply means that AUFS can take a base image of filesystem and apply changes to it and each change will have it&amp;rsquo;s own unique layer. In practice this is effectively source control built into the file system, with additional features of being able to mount other filesystems into paths in it.&lt;/p&gt;
+
+&lt;p&gt;Another benefit is that it allows you to run applications for any Linux distribution on the same host. Since it effectively allows you to define the userspace/userland filesystem, you can deploy an app or service in a CentOS container and it will run just fine on an Ubuntu host for example.&lt;/p&gt;
+
+&lt;p&gt;More recently, Microsoft has actually developed a docker container for &lt;a href=&#34;https://registry.hub.docker.com/u/microsoft/aspnet/&#34;&gt;ASP.NET&lt;/a&gt; so you can now deploy your .NET applications on a Linux host, or &lt;a href=&#34;http://weblogs.asp.net/scottgu/docker-and-microsoft-integrating-docker-with-windows-server-and-microsoft-azure&#34;&gt;vice-versa&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;what-s-in-it-for-devs&#34;&gt;What&amp;rsquo;s in it for Devs?&lt;/h1&gt;
+
+&lt;p&gt;Just like Vagrant changed the way we provision and develop applications, Docker is the next step to solving the problem of &amp;ldquo;well, it works on my machine&amp;rdquo;. Using Docker, you can now have an multi-service environment that is almost exactly like production running on your local machine.&lt;/p&gt;
+
+&lt;p&gt;With &lt;a href=&#34;http://www.thoughtworks.com/insights/blog/microservices-nutshell&#34;&gt;micro-services&lt;/a&gt; gaining popularity, we&amp;rsquo;re going to see a lot of software complexity pushed from away from dev effort and into the ops realm. But in order to remain effective devs, we&amp;rsquo;re going to have care a lot more about how our code is deployed and lives in production. This partially what the &lt;strong&gt;DevOps&lt;/strong&gt; movement is all about. Being able to deploy and run our entire application locally, make changes and trust that it will behave the same way in all stages is a massive win for developers and operations folk alike.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used docker to provide a local development environment for an app that consumed 7 individual services. By packaging each one into separate containers and then bundling them into a single vagrant box that can be fired up through a &lt;a href=&#34;http://www.thoughtworks.com/insights/blog/praise-go-script-part-i&#34;&gt;go script&lt;/a&gt;. Sadly, we never got around to using it production but it greatly aided the production support and feature development.&lt;/p&gt;
+
+&lt;p&gt;It turns out Docker is also an extremely useful tool when dealing with critical database migrations. I&amp;rsquo;ve used it to create a snapshot of a production database and test migrations locally. Fortunately, it was small enough. Because of its underling AUFS filesystem, rolling back meant I simply could kill the container and firing it up again would revert it to its initial state.&lt;/p&gt;
+
+&lt;h1 id=&#34;end&#34;&gt;End&lt;/h1&gt;
+
+&lt;p&gt;I hope that this post has been helpful and gives you an idea of where docker fits in and how it came about. In the next post I&amp;rsquo;ll explain how to get started with Docker and get our hands dirty. Cheers.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:internet&#34;&gt;these principles would lay the foundation of computer interaction that we now call The Internet.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:internet&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:linux&#34;&gt;Linux needs no introduction but it was an attempt at making an operating system that was free, unlike UNIX which only massive organisations could afford.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:linux&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:OSX&#34;&gt;OSX is actually based off of BSD!
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:OSX&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:8088&#34;&gt;the 8088&amp;rsquo;s predecessor is the 8086, which the term x86 architecture comes from.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:8088&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:systems-development&#34;&gt;You know, like C, C++, Golang and Rust where knowing about memory management is more important than REST/SOAP calls and HTTP.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:systems-development&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:userspace&#34;&gt;also known as userland, it&amp;rsquo;s the context in which non-kernel programs and drivers are run. I&amp;rsquo;m unaware if Windows has the equivalent architecture. &lt;a href=&#34;https://en.wikipedia.org/wiki/Operating-system-level_virtualization&#34;&gt;Read more&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:userspace&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:cgroups&#34;&gt;I won&amp;rsquo;t go into more technical detail here, mostly because I don&amp;rsquo;t know much about cgroups other than you can use it to limit memory and CPU resources to users and groups. See &lt;a href=&#34;https://wiki.archlinux.org/index.php/Cgroups&#34;&gt;https://wiki.archlinux.org/index.php/Cgroups&lt;/a&gt; for more info.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:cgroups&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:PaaS&#34;&gt;Remember IaaS? PaaS is the same thing but instead of spinning up VMs with specified RAM, vCPUs and HDD you work with spinning up services like Apache, MySQL, MongoDB, Logstache with ports, credentials and loadbalancing directly.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:PaaS&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A day in Gramado</title>
+      <link>https://sett.sh/post/day-in-gramado/</link>
+      <pubDate>Sat, 18 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/post/day-in-gramado/</guid>
+      <description>
+
+&lt;p&gt;Last Saturday three of my colleagues and I embarked on a day trip to the odd, little town of Gramado, Rio Grande du Sol.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/4mshU4Ml.png&#34; alt=&#34;Google map of trip&#34; /&gt;
+&lt;small&gt;2h 11min is a lie! Does not include time getting inexplicably lost.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;You only need to drive about an hour towards Nova Petrópolis to understand why that particular area of Brazil is so odd. From the moment you leave the industrial cities of São Leopoldo and Novo Hamburgo&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:cities&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:cities&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; the landscape changes drastically, revealing lush green, forested hills and meandering roads. It seems like a totally different country.&lt;/p&gt;
+
+&lt;p&gt;We took a pit stop in Nova Petrópolis at a cafè that could just as well have been in some secluded German village&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:europe&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:europe&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. There was even a village fare taking place across the road. Oh! The roads! The roads had roundabouts with well tendered flowers in them and pedestrian crossings that cars would dilligently obey. But these were only tiny omens of things to come.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/9HfNwIml.jpg&#34; alt=&#34;Nova Petropolis&#34; /&gt;
+&lt;small&gt;Am I in Nova Petrólpolis or &lt;a href=&#34;http://www.imdb.com/title/tt0780536/&#34;&gt;in Bruges&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/5X9XbhEl.jpg&#34; alt=&#34;Nova Petropolis&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Some sort of monument to Monty Python, I think.&lt;/small&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;You&amp;rsquo;ll know when you enter Gramado because the air itself seems different (I sweat it&amp;rsquo;s freshly imported from the Alps or something). Also everything will look like something out of a fairytale and the restaurant prices will skyrocket&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:caro&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:caro&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; - expect fondue and eisbein instead of the usual &lt;a href=&#34;https://en.wikipedia.org/wiki/Churrasco&#34;&gt;churrasco&lt;/a&gt; here. Finally, there&amp;rsquo;ll also be a massive gantry of stone with &amp;ldquo;Gramado&amp;rdquo; written on it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/JGNTSMBl.jpg&#34; alt=&#34;Gantry when entering Gramado&#34; /&gt;
+&lt;small&gt;Another tribute monument to &lt;a href=&#34;https://www.youtube.com/watch?v=A8yjNbcKkNY&#34;&gt;Monty Python and the Holy Grail&lt;/a&gt;.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The town presents itself as an idyllic european village where the rich spend their weekends and retire to. We actually spent some time driving around, following a vintage red bus that was showing tourists all the wonderful private property that could be found in the village.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/qHqmrztl.jpg&#34; alt=&#34;Private Home in Gramado&#34; /&gt;
+&lt;small&gt;Someone&amp;rsquo;s humble abode.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;Gramado is also the home of Mini Mundo, a theme park featuring miniature replicas of monuments and a generic European village with a train track. It also has some stores full of overpriced ceramic curios, perfect gifts for retirees in an old age home. And just for the younglings, there are some terrifying figures of anthropomorphic rabbits and depications of medieval village life&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:holidays&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:holidays&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/s25KOWel.jpg&#34; alt=&#34;Peter Rabbit&#39;s family&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Peter Rabbit&amp;rsquo;s family&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/gL1LDMtl.jpg&#34; alt=&#34;Medieval matron potty training a kid&#34; /&gt;
+&lt;small&gt;Medieval matron potty training a kid. Also, sign for the banheiros(bathrooms).&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/ZNNdrcCl.jpg&#34; alt=&#34;Mini Mundo&#34; /&gt;
+&lt;small&gt;Small World&lt;/small&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;lagos-negro-the-black-lake&#34;&gt;Lagos Negro: The Black Lake&lt;/h3&gt;
+
+&lt;p&gt;The next attraction simply deserved it&amp;rsquo;s own spooky title. Lagos Negro. The Black Lake. I spotted it on a sign during our drive through the village and was compelled to see this&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:lagos-negro&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:lagos-negro&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;The lake itself was quite small and not as dark and foreboding as I&amp;rsquo;d hoped. What was interesting is that it is actually situated on a hill. Of course it would have some paddle boats shaped as swans &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:paddle-boats&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:paddle-boats&#34;&gt;6&lt;/a&gt;&lt;/sup&gt; and surrounded by pristine vegetation.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/tH5mA7El.jpg&#34; alt=&#34;Resorts by the lake&#34; /&gt;
+&lt;small&gt;Lakeside resorts&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/wEKJdM7l.jpg&#34; alt=&#34;Swan Paddle boats&#34; /&gt;
+&lt;small&gt;Paddle boats&lt;/small&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;canela-cathederal-and-parque-caracol&#34;&gt;Canela: Cathederal and Parque Caracol&lt;/h3&gt;
+
+&lt;p&gt;About 10 minutes further out of Gramado, you&amp;rsquo;ll encounter the town of Canela (it means cinnamon in Portuguese). Although it&amp;rsquo;s difficult to know when Gramado actually ends and Canela begins, the latter actually sports its own tourist attractions: a stone cathedral in the village center and Caracol Parque, a large park featuring a beautiful valley with a waterfall.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/DMXHPL4l.jpg&#34; alt=&#34;Cathedral of Our Lady of Lourdes&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Cathedral of Our Lady of Lourdes a.k.a. Cathedral of Stone - my first visit to a gothic Cathedral!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/hotRgh6l.jpg&#34; alt=&#34;Cathedral interior&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Needless to say, a distinctly English Gothic cathedral is quite an unusual sight to see in Brazil.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/HQo0dsOl.jpg&#34; alt=&#34;Caracol Parque&#34; /&gt;
+&lt;small&gt;Map of Caracol Parque&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;Parque Caracol (Snail Park) features a beautiful valley and is one the main attractions in Canela. There are several view points and even a cable cart. We were there to see the waterfall however, and (carefully) walked the thousand or so steps down to the bottom. It was a wonderful way to end the day (although the walk back up almost killed us).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/cPApFMcl.jpg&#34; alt=&#34;Steps down to the waterfall in Parque Caracol&#34; /&gt;
+&lt;small&gt;Over a thousand steps! A lot more treacherous and steep in real life.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/FJP1lkil.jpg&#34; alt=&#34;Waterfall&#34; /&gt;
+&lt;small&gt;Cascada!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/Hw1PM4El.jpg&#34; alt=&#34;A critter on the steps&#34; /&gt;
+&lt;small&gt;This little critter bumbled passed me obviously on an important critter mission.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;There was a lot other awesome attractions in Canela we never got to visit. I wish we had skipped Gramado completely for Canela, because we passed several awesome looking amusement parks there we never got to visit. Including one with &lt;a href=&#34;https://www.youtube.com/watch?v=2LX0jWKbTpc&#34;&gt;mechanical life-size dinosaurs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Overall, it&amp;rsquo;s well worth visiting this oddball part of Rio Grande even if it&amp;rsquo;s a bit tourist-y. It&amp;rsquo;s got beautiful landscapes and a pleasant maritime climate. I imagine this is where Brazilians go to visit foreign place without actually leaving the country.&lt;/p&gt;
+
+&lt;p&gt;That evening we had dinner at this crazy place back in Canela that gives you an all you can eat smorgasbord of food for only 35 reais.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/bEBZHr2l.jpg&#34; alt=&#34;Lots of food&#34; /&gt;
+&lt;small&gt;Ridiculous amount of food.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/1TgqrbLl.jpg&#34; alt=&#34;Red house&#34; /&gt;
+&lt;small&gt;Random red house&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/aZDijFsl.jpg&#34; alt=&#34;Animals playing instruments&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Remember this fable? Stuff of nightmares&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/nNtMyyql.jpg&#34; alt=&#34;Rabbits&#34; /&gt;
+&lt;small&gt;No, no, there is no escape from Easter here.&lt;/small&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:cities&#34;&gt;Smaller industrial cities just outside of Porto Alegre - we passed through them en route to Gramado. The road is a straight 3 lane highway through them. You already start seeing the Euro influence in Novo Hamburg (New Hamburg!?)
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:cities&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:europe&#34;&gt;I have actually never been to Europe. But I assume this is exactly how I imagine it. And I reckon residents of Nova Petrópolis and Gramado imagine it to be the same as everything seems to be carefully constructed to reflect that vision.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:europe&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:caro&#34;&gt;We made the mistake of eating at the 2nd resaturant we found because we were starving (1st was unaffordable at 80 reais per person, 2nd was still expensive). I recommend you pack a lunch, or find a food stall near the Lagos Negro park.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:caro&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:holidays&#34;&gt;Gramado is a hotspot during Easter and Christmas, the cheery residents love it so much they celebrate them for the entire month. Incidentally, acommodation prices hike up during those times too.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:holidays&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:lagos-negro&#34;&gt;At first the name, understandibly, puzzled my two friends who are from Uganda and Nigeria.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:lagos-negro&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:paddle-boats&#34;&gt;Every body of water I&amp;rsquo;ve encountered so far that&amp;rsquo;s bigger than a puddle seems to have these things.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:paddle-boats&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Contributing to Pixelated</title>
+      <link>https://sett.sh/post/contributing-to-pixelated/</link>
+      <pubDate>Wed, 15 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/post/contributing-to-pixelated/</guid>
+      <description>
+
+&lt;p&gt;Last week the pixelated team here in TW Porto Alegre hosted a hack night which allowed me to dive into the enigmatic &lt;a href=&#34;https://pixelated-project.org/&#34;&gt;Pixelated Project&lt;/a&gt; and even submit a pull request! Read on if you&amp;rsquo;d like to know more.&lt;/p&gt;
+
+&lt;p&gt;The majority of the world&amp;rsquo;s emails are hosted at large, centralised providers. Let&amp;rsquo;s face it, there is practically no substitute for Gmail and in light of the Snowden Revelations we&amp;rsquo;ve willingly sacrificed our privacy for convenience. Pixelated aims to provide a secure alternative that everyone can use.&lt;/p&gt;
+
+&lt;p&gt;#Architecture&lt;/p&gt;
+
+&lt;p&gt;Pixelated consists of two major components, namely the Pixelated &lt;a href=&#34;https://github.com/pixelated-project/pixelated-user-agent&#34;&gt;User Agent&lt;/a&gt; and the &lt;a href=&#34;https://github.com/pixelated-project/leap_platform&#34;&gt;LEAP Platform&lt;/a&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;The User Agent is practically a conventional web application that acts as your mail client. It consists of a really lightweight UI built with Foundation CSS framework and &lt;a href=&#34;https://github.com/flightjs/flight&#34;&gt;FlightJS&lt;/a&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. For the back-end it&amp;rsquo;s using &lt;a href=&#34;https://twistedmatrix.com/trac/&#34;&gt;Twisted&lt;/a&gt;, the infamous asynchronous web framework for Python. This acts as the backbone for sending and receiving emails from providers (hosts), either over plain old SMTP or &lt;a href=&#34;https://leap.se/soledad&#34;&gt;soledad&lt;/a&gt; if your provider is a LEAP Platform.&lt;/p&gt;
+
+&lt;h1 id=&#34;get-it-run-it&#34;&gt;Get it, run it&lt;/h1&gt;
+
+&lt;p&gt;The Pixelated team has made it as easy as possible for anyone who&amp;rsquo;d like to dive in and contribute. I&amp;rsquo;m also really impressed by the progress they&amp;rsquo;ve made in just 9 months.&lt;/p&gt;
+
+&lt;p&gt;You&amp;rsquo;re going to need:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Git&lt;/li&gt;
+&lt;li&gt;Vagrant &amp;amp; Virtualbox&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You&amp;rsquo;ll want to clone the user agent repository from github into a directory of your choice:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git clone https://github.com/pixelated-project/pixelated-user-agent.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;There is a &lt;code&gt;Vagrantfile&lt;/code&gt; that will provision a local development environment for you. Be warned however, it will first download the LEAP base box from &lt;a href=&#34;https://downloads.leap.se/platform/vagrant/virtualbox/leap-wheezy.box&#34;&gt;https://downloads.leap.se/platform/vagrant/virtualbox/leap-wheezy.box&lt;/a&gt; if you don&amp;rsquo;t have it already. If you&amp;rsquo;re unconcerned, just run:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;vagrant up&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the box is up, it also will provision it with Puppet - I had to do this several times because Puppet will still run even if there are failures. If you&amp;rsquo;re curious as to what puppet is doing, have a look in the &lt;code&gt;provisioning/&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;Provisioning will take almost 20 minutes so while that&amp;rsquo;s happening, head on over to the Pixelated dev provider at &lt;a href=&#34;https://dev.pixelated-project.org/&#34;&gt;https://dev.pixelated-project.org/&lt;/a&gt; and sign up for an account.&lt;/p&gt;
+
+&lt;p&gt;Once the box has been provisioned you&amp;rsquo;ll need to run the go script&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; which will setup the npm and (bower)[&lt;a href=&#34;http://bower.io/&#34;&gt;http://bower.io/&lt;/a&gt;] side of things:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vagrant ssh
+cd service
+./go setup
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, just one more step to get it running. The user agent needs to connect to a provider that you&amp;rsquo;ve registered with. In traditional terms, this is meant to be your ISP&amp;rsquo;s mail server, Gmail, company&amp;rsquo;s Exchange server&amp;hellip;except this is a Pixelated provider.&lt;/p&gt;
+
+&lt;p&gt;To fire up the user agent, just type the command below and follow the prompts. Be sure to enter &lt;code&gt;dev.pixelated-project.org&lt;/code&gt; as the host and ensure your path to the certificate is correct. I had trouble initially because I had typos in my path that I didn&amp;rsquo;t find.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pixelated-user-agent --host 0.0.0.0 -lc /vagrant/service/pixelated/certificates/dev.pixelated-project.org.ca.crt&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;contribute&#34;&gt;Contribute&lt;/h1&gt;
+
+&lt;p&gt;The team has &lt;a href=&#34;https://github.com/pixelated-project/pixelated-user-agent/issues?q=is%3Aopen+is%3Aissue+label%3ABeginners&#34;&gt;a few dozen issues&lt;/a&gt; on github tagged with &lt;strong&gt;Beginner&lt;/strong&gt; label to encourage contributions from newbies. Simply pick one and dive right in, the problems range from changing icons to exposing some property via RESTful API. So great little pieces of work that can take less than 3 hours to complete (what&amp;rsquo;s more interesting is that it allows you get to know the codebase better)&lt;/p&gt;
+
+&lt;p&gt;I found the project really easy to get into and just getting your first pull request to be accepted feels awesome. I would highly recommend getting involved with Pixelated Project, not only does it have a great, fun tech stack with pieces for anyone, it&amp;rsquo;s also a high impact social project.&lt;/p&gt;
+
+&lt;p&gt;I can easily see this being used in by organisations internally instead of the poorly supported Gmail for Enterprise. Wouldn&amp;rsquo;t it be great to free yourself from Gmail but keep all the functionality and have an even better UI? Not to mention the security benefits.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;I think a lot of the focus will be on the User Agent, since the LEAP platform will be implementation specific and is well supported by the &lt;a href=&#34;LEAP Foundation&#34;&gt;https://leap.se/&lt;/a&gt; already. Although I did hear something about developing ability for  infrastructure to fire up docker containers for each User Agent&amp;rsquo;s session (!! way too cool)
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;FlightJS is an extremely basic JS library that gives you the event emitter/subscriber pattern. This is great because it allows you build your app interaction any way you&amp;rsquo;d like without buying into a whole framework&amp;rsquo;s way of doing things.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;A go script is that script in every software project that is the central point to trigger tasks such as setting up the environment, database migrations, build and run tests. It just has a name now: the &lt;code&gt;./go&lt;/code&gt; script.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An Easter in POA</title>
+      <link>https://sett.sh/post/easter-in-poa/</link>
+      <pubDate>Mon, 06 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/post/easter-in-poa/</guid>
+      <description>&lt;p&gt;I had finally arrived in Porto Alegre on Tuesday night after approximately a 16 hour trip(transit via &lt;a href=&#34;https://en.wikipedia.org/wiki/S%C3%A3o_Paulo-Guarulhos_International_Airport&#34;&gt;GRU&lt;/a&gt;). A quick 15 minute taxi ride took me to neighbourhood of Bom Fim, where I&amp;rsquo;d be staying in a hotel until more permanent living arrangements were made. Marcelo, my cab driver was a helpful guy and offered a lot of advice and information about the city as we drove through it. I was too bewildered and tired to take note of any of it. I noticed main roads used a two way system with a bus lane in the middle. He apologised as we passed through some district where there was &amp;ldquo;bad bars and prostitutes&amp;rdquo; (as he put it).&lt;/p&gt;
+
+&lt;p&gt;Looking out upon the city skyline and streets in the day quickly dispelled all notions of the Brazil I&amp;rsquo;d imagined from its portrayals in pop culture. I have worked with a few wonderful Brazilian colleagues in Johannesburg and  even though I knew that the colourful and gritty Brazil portrayed in the likes of &lt;a href=&#34;http://www.imdb.com/title/tt0317248/&#34;&gt;City of God&lt;/a&gt; is at best a caricature of only one city, there is always some romanticised attachment to the clichès and perspectives of the imagination.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/IvB2rBBl.jpg&#34; alt=&#34;POA Skyline from hotel elevator&#34; /&gt;
+&lt;small&gt;Lots of little apartment buildings in Bom Fim.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The city of Porto Alegre is situated in the state of Rio Grande du Sol (Big River of the South) and is known for having a very European vibe to it. There are still lot of old buildings down town though most of them are left as facades for parking or some other modern use behind.&lt;/p&gt;
+
+&lt;p&gt;The streets look clean to me but for the abundance of graffiti ranging from small murals to more common &amp;ldquo;tags&amp;rdquo;. You will not find the grit and chaos of Bree street here&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. You will instead find giant, ancient &lt;a href=&#34;https://en.wikipedia.org/wiki/Jacaranda&#34;&gt;Jacaranda&lt;/a&gt; trees covered in beautiful vines. Which totally messed with my perception of where I am since I grew up in the &lt;a href=&#34;http://showme.co.za/pretoria/tourism/the-jacaranda-city/&#34;&gt;Jacaranda City&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/K1StkTil.jpg&#34; alt=&#34;Giant Jacarandas in POA&#34; /&gt;
+&lt;small&gt;Wait, am I back home?&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;To be quite honest I do not know much of the history of Brazil, let alone Porto Alegre (POA for short) but I hope to discover more in my year-long adventure here. It&amp;rsquo;s one of the lesser known cities despite having hosted a world cup match&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. I had in fact not heard of it before meeting coworkers who hailed from there.&lt;/p&gt;
+
+&lt;p&gt;What I did find out is that it&amp;rsquo;s right next a big river that makes it &lt;a href=&#34;https://www.google.com.br/maps/@-30.0503783,-51.1901651,11z?hl=en&#34;&gt;look like a bay&lt;/a&gt; in Google Maps. And then I found out the the river I was looking at is actually a &lt;a href=&#34;https://www.google.com.br/maps/@-30.5023817,-51.1357736,9z?hl=en&#34;&gt;small part of a HUGE river&lt;/a&gt;. POA is situated on the edge of fractal!! And &amp;ldquo;Big River of the South&amp;rdquo; needs a better name like &amp;ldquo;MASSIVE river of the South&amp;rdquo; or &amp;ldquo;Rio Godzilla du Sol&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/W9yTSP9l.png&#34; alt=&#34;Map of Porto Alegre&#34; /&gt;
+&lt;small&gt;Cool, it&amp;rsquo;s a bay!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/5CaqxVMl.png&#34; alt=&#34;Map of Porto Alegre zoomed out&#34; title=&#34;Rio Godzilla du Sol&#34; /&gt;
+&lt;small&gt;Oh. Hang on&amp;hellip;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;POA&amp;rsquo;s &lt;a href=&#34;http://wikitravel.org/en/Porto_Alegre&#34;&gt;WikiTravel&lt;/a&gt; page is shorter than most destinations, its biggest feature being its parks. And boy, are the parks plentiful and beautiful. &lt;a href=&#34;https://en.wikipedia.org/wiki/Farroupilha_Park&#34;&gt;Parque Farroupilha&lt;/a&gt; was a short walking distance away from our hotel so my colleague &lt;a href=&#34;https://twitter.com/amukizaa&#34;&gt;Andrew&lt;/a&gt; and I decided to brave a walk and maybe get some lunch on the way. It turns out this is a difficult thing to do on Good Friday since all the usual restaurants are closed and we don&amp;rsquo;t speak Portuguese. We settled on some hot dog &amp;ldquo;especial&amp;rdquo; from a food truck next to the park and much awkard gesturing and sheepish &amp;ldquo;sim&amp;rdquo;s and &amp;ldquo;obrigados&amp;rdquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;. It was more than a hot dog, the man layered a dozen sauces and stuff on top of it such that it could pass as modern art. And it was delicious.&lt;/p&gt;
+
+&lt;p&gt;But enough of this deliberation, have some photos from that walk:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/UDk2BIil.jpg&#34; alt=&#34;Awesome mural painting on what&#39;s presumably a hot dog and chips joint when it&#39;s open.&#34; title=&#34;Fast food surrealism!&#34; /&gt;
+&lt;small&gt;When fast food attacks!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/HfeE8myl.jpg&#34; alt=&#34;Posters for an anti capitalism protest&#34; title=&#34;Anti Capitalismo Protest!&#34; /&gt;
+&lt;small&gt;Anti Capitalismo Proteste! I like this place already.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/1mCW6Swl.jpg&#34; alt=&#34;Abacaxi truck&#34; /&gt;
+&lt;small&gt;Abacaxi is the &amp;ldquo;cellar door&amp;rdquo; of the Portuguese language, except it actually makes sense.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/R1283WGl.jpg&#34; alt=&#34;Tortoise and Swan&#34; /&gt;
+&lt;small&gt;Tortoise and Swan.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The next day we enlisted the help our Bolivian colleague who had been living in POA for around 3 years now. She knew the area and Portuguese (although she says it&amp;rsquo;s difficult, being a native Spanish speaker herself&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:4&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:4&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;). We went back to the Parque Farroupilha for a longer walk without the edge of not being able to communicate and then we went down town to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Porto_Alegre_Public_Market&#34;&gt;Mercado Público&lt;/a&gt;, a big old building in the city centre with dozens of stalls selling stuff from curios to meat and cheese. Unfortunately I didn&amp;rsquo;t snap any pictures from there.&lt;/p&gt;
+
+&lt;p&gt;After that we went to Praça da Alfândega nearby which had MARGS (Museum of Art) near it. Now MARGS is free to enter and has a permanent collection with some peripharel exhibitions sometimes. It had a lot contemporary pieces but the most amazing work I saw was the painting below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/5VYtrrQl.jpg&#34; alt=&#34;&amp;quot;Emigrante&amp;quot; painting&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is a portrait of an immigrant by a Napoleone Grady, an Italian artist, painted in 1887. Every now and then you see a painting that has some ineffable, metaphysical property - you can swear by it. This was one of those. Looking at it for a few moments, you could hear the waves in the background and the same impossible light that you find in Rembrandt&amp;rsquo;s paintings illuminating the lady. I would definitely like to go back and view it again.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;On Sunday, to contrast the previous day&amp;rsquo;s high cultural experiences I joined some of my new colleagues who were attending an Anime convention. I don&amp;rsquo;t think it needs much explanation than the photos below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/l3BhYHAl.jpg&#34; alt=&#34;Crowd inside Anime Convention&#34; /&gt;
+&lt;small&gt;More cosplayers than casuals.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/Y7QqR3ol.jpg&#34; alt=&#34;Excellent costume&#34; /&gt;
+&lt;small&gt;Award winning costume.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/sDJVrAKl.jpg&#34; alt=&#34;Girls with big guns&#34; /&gt;
+&lt;small&gt;Obligatory girls with big guns who later turned out to be the judges of the cosplay competition.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The anime enthusiasts, geeks, nerds etc&amp;hellip; in POA seem to take cosplay very seriously, as evidenced by the quality of costumes and props. What struck me is that despite being a relatively small convention (I estimate only about 500 people there), there were more people dressed in costume than not.&lt;/p&gt;
+
+&lt;p&gt;Overall, my first weekend in Brazil has been very surprising and a lot of fun. I&amp;rsquo;m currently trying to learn more Portuguese and enjoying my time here. Happy belated Easter!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/kdORFIvl.jpg&#34; alt=&#34;Street Art in the Park&#34; /&gt;
+&lt;small&gt;Murals at Parque Farroupilha.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/y3nT3k7l.jpg&#34; alt=&#34;Amazing sculpture from entrance of MARGS&#34; /&gt;
+&lt;small&gt;Amazing unmarked sculpture at the entrance of MARGS&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/qGsc2zFl.jpg&#34; alt=&#34;Doctor Who stall at Anime Convetion&#34; /&gt;
+&lt;small&gt;A stall for every fandom.&lt;/small&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;Bree street is in Johannesburgs&amp;rsquo; CBD (Central Building District, or Downtown) and has a very post-apocalyptic feeling to it because of it&amp;rsquo;s crumbling, abandoned buildings and trash everywhere. I drove through it at night a few times and navigating it is difficult, often having to avoid the odd piece of furniture on the road and disorganised side streets.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;Marcelo, my cab driver from the airport, pointed out some roadworks that had been underway since before the World Cup and still has not been completed. Some 	roads were still closed.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;Sim = yes, obrigado = thank you (male). Incidentally these will be the most spoken sounds you make when in your first week in Brazil.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;Brazil is the only Portuguese speaking country in South America. This is okay because it is also the biggest country on the continent.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:4&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

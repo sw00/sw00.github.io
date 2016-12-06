@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sett Wai</title>
+    <link>https://sett.sh/tags/devops/index.xml</link>
+    <description>Recent content on Sett Wai</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2016</copyright>
+    <atom:link href="https://sett.sh/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker for Windows Users</title>
+      <link>https://sett.sh/post/docker-for-windows-users/</link>
+      <pubDate>Tue, 21 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/post/docker-for-windows-users/</guid>
+      <description>
+
+&lt;h1 id=&#34;foreword&#34;&gt;Foreword&lt;/h1&gt;
+
+&lt;p&gt;As with many people my age (27), I primarily started working and playing on computers when graphical user interfaces were already the norm and Windows 95 had just hit the peak of popularity. Unless your parents were engineers of some sort, personal computers were generally seen as just a new home appliance. If you had a computer in the 90s, it most likely was a Packard Bell that came with Windows 95 and Intel Pentium processor of some sort.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/7hVG709.jpg&#34; alt=&#34;Packard Bell Pentium 133&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Low-res nostalgia bomb!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s in this context that a lot of us grew up. However, this puts us at a disadvantage. Just as today&amp;rsquo;s &amp;ldquo;apps&amp;rdquo;, tablets and smart phones can be seen as relegating the general purpose computer to &amp;ldquo;Facebook&amp;rdquo; machines, ours was the first wave of this trend. The capacitive touch screen is just the evolution of the computer mouse. This is a great thing, but if you&amp;rsquo;re a technologist, it&amp;rsquo;s important to understand that the Windows ecosystem is only one alternate timeline in the history of computing.&lt;/p&gt;
+
+&lt;p&gt;Below, I&amp;rsquo;ll go through a brief history of computing that&amp;rsquo;s important to understanding why you&amp;rsquo;d want to be familiar with *nix. Especially if you&amp;rsquo;re from the Windows 95 generation, like me. Bear with me as I dig through the alternate history, I&amp;rsquo;m trying to give you the same &lt;em&gt;ah-ha!&lt;/em&gt; moments I got when I first discovered this stuff.&lt;/p&gt;
+
+&lt;h1 id=&#34;in-the-beginning&#34;&gt;In the beginning&lt;/h1&gt;
+
+&lt;p&gt;In the beginning there was UNIX. Before affordable multi-purpose, personal computers, organisations often kept a single mainframe computer that users could connect to via &lt;a href=&#34;https://en.wikipedia.org/wiki/Computer_terminal#Dumb_terminals&#34;&gt;&amp;ldquo;dumb&amp;rdquo; terminals&lt;/a&gt;. This was based on the idea of &lt;a href=&#34;https://en.wikipedia.org/wiki/Time-sharing&#34;&gt;time-sharing&lt;/a&gt; which was a way to give access to computing to many different people at the same time&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:internet&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:internet&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/lYUYMUG.jpg&#34; alt=&#34;Tron Classic&#34; /&gt;
+&lt;br/&gt;&lt;small&gt;A lot the original computing ideas are realised in &lt;a href=&#34;http://www.imdb.com/title/tt0084827/&#34;&gt;Tron (1982)&lt;/a&gt;, albeit with artistic liberties taken.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;UNIX as an underlying operating system provided small programs that the user could execute in order to specific tasks. These were tied together by a unified file system for communicating and a shell scripting language for doing more complex work. All of this work was mediated by a master control program, the &lt;a href=&#34;https://en.wikipedia.org/wiki/Kernel_(operating_system)&#34;&gt;kernel&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Eventually in the 80s, the IEEE got together and specified a family of standards for operating systems based on common patterns they saw in UNIX and UNIX-like OSes. They called these standards collectively, &lt;a href=&#34;https://en.wikipedia.org/wiki/POSIX&#34;&gt;POSIX&lt;/a&gt;. Parallel to this, a set of common software engineering practices were embodied into something called the &lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;Unix Philosophy&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A lot of operating systems would come to be developed adhering to POSIX standards and and the Unix philosophy. The most famous of them being Linux&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:linux&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:linux&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; and FreeBSD&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:OSX&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:OSX&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/c/cd/Unix_timeline.en.svg&#34; alt=&#34;Unix timeline&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;ms-dos-windows&#34;&gt;MS-DOS &amp;amp; Windows&lt;/h1&gt;
+
+&lt;p&gt;In 1981 IBM launched the IBM Personal Computer with a microprocessor based on its flagship 8088 chip&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:8088&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:8088&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;. It also came installled a with tiny, simple operating system by Microsoft, called MS-DOS. Unlike UNIX-like operating systems around at the time, MS-DOS was single-task, single-user and certainly not POSIX compliant.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/0Z1RcIAl.jpg&#34; alt=&#34;MS-DOS box&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Personal computers became insanely popular for some reason and Microsoft introduced Windows as an addon to MS-DOS to compete with Apple&amp;rsquo;s very expensive Macintosh computer. The Macintosh featured a Graphical User Interface, the hottest new thing in technology. The rest is history: Windows dominated the personal computing space through OEM deals with hardware manufacturers and eventually every computer you could buy was either a Windows or a Mac. Meanwhile, UNIX-like OSes like Linux took firm hold of the Web Server space. The numbers are very &lt;a href=&#34;https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Market_share_by_category&#34;&gt;telling&lt;/a&gt;: 91.25% of all personal computers are Windows, but only a third of servers on the web.&lt;/p&gt;
+
+&lt;h1 id=&#34;implications&#34;&gt;Implications&lt;/h1&gt;
+
+&lt;p&gt;What does this mean for us developers? Well, unless you&amp;rsquo;re strictly into systems development&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:systems-development&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:systems-development&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; only, the chances are you&amp;rsquo;ll be developing applications that need to deployed to a server. This means that 2 of 3 production environments will UNIX-like.&lt;/p&gt;
+
+&lt;h1 id=&#34;virtualisation&#34;&gt;Virtualisation&lt;/h1&gt;
+
+&lt;p&gt;Because a server rack is a specialised, expensive piece of equipment, a common technique to have a more efficient distribution of resources is to use &lt;a href=&#34;https://en.wikipedia.org/wiki/Hardware_virtualization&#34;&gt;virtualisation&lt;/a&gt;. Virtualisation in the context of the data centre allows sharing the same physical resources amongst multiple instances of virtual servers.&lt;/p&gt;
+
+&lt;p&gt;Apart from efficiency, virtualisation provides other benefits such as the ability to easily automatically configure them. New virtual machines can be &amp;ldquo;spun up&amp;rdquo; and provisioned without buying additional hardware up-front. You can clone/back up entire machines and move them around. These are all features that are the backbone for Infrastructure as a Service (IaaS) which simply means you can pay a provider like &lt;a href=&#34;http://rackspace.com/&#34;&gt;Rackspace&lt;/a&gt;, &lt;a href=&#34;https://www.linode.com/&#34;&gt;Linode&lt;/a&gt; or &lt;a href=&#34;https://www.digitalocean.com/&#34;&gt;Digital Ocean&lt;/a&gt; for a Virtual Private Server and have it almost immediately.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.vmware.com/files/images/diagrams/vmw-virtualization-defined.jpg&#34; alt=&#34;Virtualisation diagram&#34; /&gt;
+&lt;small&gt;VMWare explains virtualisation.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The most common scenario for virtualisation is on a hardware level: the host machine&amp;rsquo;s physical resources would be virtualised and available to the guest machine as &amp;ldquo;fake&amp;rdquo; hardware. Physical things like RAM, CPU, GPU and HDD could be virtualised. A host machine with 32GB RAM, 1TB HDD and 8 CPUs could possible provide 4 virtual machines of 8GB, 250GB and 2 vCPU. The problem however, is that these resources are fixed for the duration that the VM is running - if 1 VM is idle, it can&amp;rsquo;t share its 2vCPUS and 8GB RAM with the others. Also, each VM would need to boot up and run its own OS. This is still a little inefficient.&lt;/p&gt;
+
+&lt;p&gt;With regards to software development, virtualisation allows us to easily have consistent environments amongst locally through the use of &lt;a href=&#34;http://vagrantup.com/&#34;&gt;vagrant&lt;/a&gt; and virtual box.&lt;/p&gt;
+
+&lt;h1 id=&#34;containers&#34;&gt;Containers&lt;/h1&gt;
+
+&lt;p&gt;Containers are just another term for &lt;a href=&#34;https://en.wikipedia.org/wiki/Operating-system-level_virtualization&#34;&gt;Operating System Level Virtualisation&lt;/a&gt;. In contrast to whole-system or hardware virtualisation, containers do not provide abstraction for physical resources. Instead, they provide a virtual userspace&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:userspace&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:userspace&#34;&gt;6&lt;/a&gt;&lt;/sup&gt; and directory structure for applications to be run. These applications all run on the same operating system and kernel but are isolated from each other. One application in a container would generally not be able to see or manipulate files/memory in another container.&lt;/p&gt;
+
+&lt;p&gt;Operating System Level Virtualisation ala containers has a massive advantage over hardware virtualisation in that you can easily run hundreds of containers on a host without any problems since they share all physical resources of the host system.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://zdnet4.cbsistatic.com/hub/i/r/2014/10/02/c5ebe949-49e6-11e4-b6a0-d4ae52e95e57/resize/770x578/54eff63621dfffda68806c80e2a411a5/azuredockervmcontainer.png&#34; alt=&#34;Containers vs VMs&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The reason why containers are not very prominent in Windows ecosystem is because of its single-user, single-process history (I stand to be corrected on this). Also containerisation was never a core operating system feature and traditionally provided by third party, proprietary software in Windows.&lt;/p&gt;
+
+&lt;p&gt;On Linux, &lt;a href=&#34;https://en.wikipedia.org/wiki/Chroot&#34;&gt;chroot&lt;/a&gt; had always provided this functionality until &lt;a href=&#34;https://wiki.archlinux.org/index.php/Linux_Containers&#34;&gt;Linux Containers&lt;/a&gt;(LxCs) were created in 2008. LxCs leveraged a kernel feature called &lt;strong&gt;cgroups&lt;/strong&gt; to achieve a higher level of isolation adn security than what the crude chroot provided&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:cgroups&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:cgroups&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;If the previous paragraph is kind of hard to take in, you&amp;rsquo;re not alone. Containerisation in Linux is a highly technical topic and it seems to require a lot of arcane knowledge of the Linux operating systems that most developers wouldn&amp;rsquo;t know of. Let alone devs who are used to Windows. This was always the case until &lt;strong&gt;Docker&lt;/strong&gt; exploded on to the scene.&lt;/p&gt;
+
+&lt;h1 id=&#34;docker&#34;&gt;Docker&lt;/h1&gt;
+
+&lt;p&gt;Docker was started by &lt;a href=&#34;https://twitter.com/solomonstre&#34;&gt;Solomon Hykes&lt;/a&gt; in 2013 while he was at &lt;a href=&#34;https://www.dotcloud.com/&#34;&gt;dotCloud&lt;/a&gt;, a Platform as a Service Provider&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:PaaS&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:PaaS&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;. It was initially just a convenient wrapper around LxCs that stretched the metaphor of &amp;ldquo;shipping containers&amp;rdquo; for apps. The entire idea was that a docker container should run and look exactly the same on any host while being incredibly easy to automate and manage.&lt;/p&gt;
+
+&lt;p&gt;One distinctive feature docker has is that it uses the AUFS filesystem which is a layered file system. This simply means that AUFS can take a base image of filesystem and apply changes to it and each change will have it&amp;rsquo;s own unique layer. In practice this is effectively source control built into the file system, with additional features of being able to mount other filesystems into paths in it.&lt;/p&gt;
+
+&lt;p&gt;Another benefit is that it allows you to run applications for any Linux distribution on the same host. Since it effectively allows you to define the userspace/userland filesystem, you can deploy an app or service in a CentOS container and it will run just fine on an Ubuntu host for example.&lt;/p&gt;
+
+&lt;p&gt;More recently, Microsoft has actually developed a docker container for &lt;a href=&#34;https://registry.hub.docker.com/u/microsoft/aspnet/&#34;&gt;ASP.NET&lt;/a&gt; so you can now deploy your .NET applications on a Linux host, or &lt;a href=&#34;http://weblogs.asp.net/scottgu/docker-and-microsoft-integrating-docker-with-windows-server-and-microsoft-azure&#34;&gt;vice-versa&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;what-s-in-it-for-devs&#34;&gt;What&amp;rsquo;s in it for Devs?&lt;/h1&gt;
+
+&lt;p&gt;Just like Vagrant changed the way we provision and develop applications, Docker is the next step to solving the problem of &amp;ldquo;well, it works on my machine&amp;rdquo;. Using Docker, you can now have an multi-service environment that is almost exactly like production running on your local machine.&lt;/p&gt;
+
+&lt;p&gt;With &lt;a href=&#34;http://www.thoughtworks.com/insights/blog/microservices-nutshell&#34;&gt;micro-services&lt;/a&gt; gaining popularity, we&amp;rsquo;re going to see a lot of software complexity pushed from away from dev effort and into the ops realm. But in order to remain effective devs, we&amp;rsquo;re going to have care a lot more about how our code is deployed and lives in production. This partially what the &lt;strong&gt;DevOps&lt;/strong&gt; movement is all about. Being able to deploy and run our entire application locally, make changes and trust that it will behave the same way in all stages is a massive win for developers and operations folk alike.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used docker to provide a local development environment for an app that consumed 7 individual services. By packaging each one into separate containers and then bundling them into a single vagrant box that can be fired up through a &lt;a href=&#34;http://www.thoughtworks.com/insights/blog/praise-go-script-part-i&#34;&gt;go script&lt;/a&gt;. Sadly, we never got around to using it production but it greatly aided the production support and feature development.&lt;/p&gt;
+
+&lt;p&gt;It turns out Docker is also an extremely useful tool when dealing with critical database migrations. I&amp;rsquo;ve used it to create a snapshot of a production database and test migrations locally. Fortunately, it was small enough. Because of its underling AUFS filesystem, rolling back meant I simply could kill the container and firing it up again would revert it to its initial state.&lt;/p&gt;
+
+&lt;h1 id=&#34;end&#34;&gt;End&lt;/h1&gt;
+
+&lt;p&gt;I hope that this post has been helpful and gives you an idea of where docker fits in and how it came about. In the next post I&amp;rsquo;ll explain how to get started with Docker and get our hands dirty. Cheers.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:internet&#34;&gt;these principles would lay the foundation of computer interaction that we now call The Internet.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:internet&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:linux&#34;&gt;Linux needs no introduction but it was an attempt at making an operating system that was free, unlike UNIX which only massive organisations could afford.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:linux&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:OSX&#34;&gt;OSX is actually based off of BSD!
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:OSX&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:8088&#34;&gt;the 8088&amp;rsquo;s predecessor is the 8086, which the term x86 architecture comes from.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:8088&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:systems-development&#34;&gt;You know, like C, C++, Golang and Rust where knowing about memory management is more important than REST/SOAP calls and HTTP.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:systems-development&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:userspace&#34;&gt;also known as userland, it&amp;rsquo;s the context in which non-kernel programs and drivers are run. I&amp;rsquo;m unaware if Windows has the equivalent architecture. &lt;a href=&#34;https://en.wikipedia.org/wiki/Operating-system-level_virtualization&#34;&gt;Read more&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:userspace&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:cgroups&#34;&gt;I won&amp;rsquo;t go into more technical detail here, mostly because I don&amp;rsquo;t know much about cgroups other than you can use it to limit memory and CPU resources to users and groups. See &lt;a href=&#34;https://wiki.archlinux.org/index.php/Cgroups&#34;&gt;https://wiki.archlinux.org/index.php/Cgroups&lt;/a&gt; for more info.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:cgroups&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:PaaS&#34;&gt;Remember IaaS? PaaS is the same thing but instead of spinning up VMs with specified RAM, vCPUs and HDD you work with spinning up services like Apache, MySQL, MongoDB, Logstache with ports, credentials and loadbalancing directly.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:PaaS&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
