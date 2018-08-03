@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Sett Wai</title>
+    <link>https://sett.sh/posts/</link>
+    <description>Recent content in Posts on Sett Wai</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
+    <lastBuildDate>Mon, 30 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sett.sh/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>On dilettantism, craft and mastery</title>
+      <link>https://sett.sh/posts/2018/07/on-dilettantism-craft-and-mastery/</link>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/posts/2018/07/on-dilettantism-craft-and-mastery/</guid>
+      <description>Hello, world. It&amp;rsquo;s been a while. There are some words that I&amp;rsquo;ve been holding on to that I&amp;rsquo;d like to set free. I&amp;rsquo;ve also been hiding somewhat and now taking some tentative steps back into the light. This is the first meager step. I have some more to follow. Please be gentle and patient with me.
+For continuity, I&amp;rsquo;ve cross-posted my last public appearance here.
+I&amp;rsquo;ve always been a generalist. And this has served me well.</description>
+    </item>
+    
+    <item>
+      <title>Four years, infinite gratitude</title>
+      <link>https://sett.sh/posts/2017/12/four-years-infinite-gratitude/</link>
+      <pubDate>Sun, 17 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/posts/2017/12/four-years-infinite-gratitude/</guid>
+      <description>This is a cross-post of my original Facebook note, announcing my decision to exit TW and tech to take a break.
+San Antonio, Kampala, Porto Alegre, San Francisco, Nairobi, Johannesburg. These are the cities I have worked in during my time at ThoughtWorks (TW), that quirky (yet “elite”) global IT consultancy that Martin Fowler works for, little known outside of tech circles. Needless to say, I am the most privileged person I know.</description>
+    </item>
+    
+    <item>
+      <title>Docker for Windows Users</title>
+      <link>https://sett.sh/posts/2015/04/docker-for-windows-users/</link>
+      <pubDate>Tue, 21 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/posts/2015/04/docker-for-windows-users/</guid>
+      <description>As with many people my age (27), I primarily started working and playing on computers when graphical user interfaces were already the norm and Windows 95 had just hit the peak of popularity. Unless your parents were engineers of some sort, personal computers were generally seen as just a new home appliance. If you had a computer in the 90s, it most likely was a Packard Bell that came with Windows 95 and Intel Pentium processor of some sort.</description>
+    </item>
+    
+    <item>
+      <title>A day in Gramado</title>
+      <link>https://sett.sh/posts/2015/04/day-in-gramado/</link>
+      <pubDate>Sat, 18 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/posts/2015/04/day-in-gramado/</guid>
+      <description>Last Saturday three of my colleagues and I embarked on a day trip to the odd, little town of Gramado, Rio Grande du Sol.
+2h 11min is a lie! Does not include time getting inexplicably lost.
+You only need to drive about an hour towards Nova Petrópolis to understand why that particular area of Brazil is so odd. From the moment you leave the industrial cities of São Leopoldo and Novo Hamburgo1 the landscape changes drastically, revealing lush green, forested hills and meandering roads.</description>
+    </item>
+    
+    <item>
+      <title>Contributing to Pixelated</title>
+      <link>https://sett.sh/posts/2015/04/contributing-to-pixelated/</link>
+      <pubDate>Wed, 15 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/posts/2015/04/contributing-to-pixelated/</guid>
+      <description>Last week the pixelated team here in TW Porto Alegre hosted a hack night which allowed me to dive into the enigmatic Pixelated Project and even submit a pull request! Read on if you&amp;rsquo;d like to know more.
+The majority of the world&amp;rsquo;s emails are hosted at large, centralised providers. Let&amp;rsquo;s face it, there is practically no substitute for Gmail and in light of the Snowden Revelations we&amp;rsquo;ve willingly sacrificed our privacy for convenience.</description>
+    </item>
+    
+    <item>
+      <title>An Easter in POA</title>
+      <link>https://sett.sh/posts/2015/04/easter-in-poa/</link>
+      <pubDate>Mon, 06 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/posts/2015/04/easter-in-poa/</guid>
+      <description>I had finally arrived in Porto Alegre on Tuesday night after approximately a 16 hour trip(transit via GRU). A quick 15 minute taxi ride took me to neighbourhood of Bom Fim, where I&amp;rsquo;d be staying in a hotel until more permanent living arrangements were made. Marcelo, my cab driver was a helpful guy and offered a lot of advice and information about the city as we drove through it. I was too bewildered and tired to take note of any of it.</description>
+    </item>
+    
+  </channel>
+</rss>

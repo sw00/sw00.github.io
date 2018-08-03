@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Announcement on Sett Wai</title>
+    <link>https://sett.sh/tags/announcement/</link>
+    <description>Recent content in Announcement on Sett Wai</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
+    <lastBuildDate>Sun, 17 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sett.sh/tags/announcement/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Four years, infinite gratitude</title>
+      <link>https://sett.sh/posts/2017/12/four-years-infinite-gratitude/</link>
+      <pubDate>Sun, 17 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/posts/2017/12/four-years-infinite-gratitude/</guid>
+      <description>This is a cross-post of my original Facebook note, announcing my decision to exit TW and tech to take a break.
+San Antonio, Kampala, Porto Alegre, San Francisco, Nairobi, Johannesburg. These are the cities I have worked in during my time at ThoughtWorks (TW), that quirky (yet “elite”) global IT consultancy that Martin Fowler works for, little known outside of tech circles. Needless to say, I am the most privileged person I know.</description>
+    </item>
+    
+  </channel>
+</rss>

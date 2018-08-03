@@ -1,89 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sett Wai</title>
-    <link>https://sett.sh/tags/open-source/index.xml</link>
-    <description>Recent content on Sett Wai</description>
+    <title>Open Source on Sett Wai</title>
+    <link>https://sett.sh/tags/open-source/</link>
+    <description>Recent content in Open Source on Sett Wai</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2016</copyright>
-    <atom:link href="https://sett.sh/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
+    <lastBuildDate>Wed, 15 Apr 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sett.sh/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Contributing to Pixelated</title>
-      <link>https://sett.sh/post/contributing-to-pixelated/</link>
+      <link>https://sett.sh/posts/2015/04/contributing-to-pixelated/</link>
       <pubDate>Wed, 15 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://sett.sh/post/contributing-to-pixelated/</guid>
-      <description>
-
-&lt;p&gt;Last week the pixelated team here in TW Porto Alegre hosted a hack night which allowed me to dive into the enigmatic &lt;a href=&#34;https://pixelated-project.org/&#34;&gt;Pixelated Project&lt;/a&gt; and even submit a pull request! Read on if you&amp;rsquo;d like to know more.&lt;/p&gt;
-
-&lt;p&gt;The majority of the world&amp;rsquo;s emails are hosted at large, centralised providers. Let&amp;rsquo;s face it, there is practically no substitute for Gmail and in light of the Snowden Revelations we&amp;rsquo;ve willingly sacrificed our privacy for convenience. Pixelated aims to provide a secure alternative that everyone can use.&lt;/p&gt;
-
-&lt;p&gt;#Architecture&lt;/p&gt;
-
-&lt;p&gt;Pixelated consists of two major components, namely the Pixelated &lt;a href=&#34;https://github.com/pixelated-project/pixelated-user-agent&#34;&gt;User Agent&lt;/a&gt; and the &lt;a href=&#34;https://github.com/pixelated-project/leap_platform&#34;&gt;LEAP Platform&lt;/a&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-
-&lt;p&gt;The User Agent is practically a conventional web application that acts as your mail client. It consists of a really lightweight UI built with Foundation CSS framework and &lt;a href=&#34;https://github.com/flightjs/flight&#34;&gt;FlightJS&lt;/a&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. For the back-end it&amp;rsquo;s using &lt;a href=&#34;https://twistedmatrix.com/trac/&#34;&gt;Twisted&lt;/a&gt;, the infamous asynchronous web framework for Python. This acts as the backbone for sending and receiving emails from providers (hosts), either over plain old SMTP or &lt;a href=&#34;https://leap.se/soledad&#34;&gt;soledad&lt;/a&gt; if your provider is a LEAP Platform.&lt;/p&gt;
-
-&lt;h1 id=&#34;get-it-run-it&#34;&gt;Get it, run it&lt;/h1&gt;
-
-&lt;p&gt;The Pixelated team has made it as easy as possible for anyone who&amp;rsquo;d like to dive in and contribute. I&amp;rsquo;m also really impressed by the progress they&amp;rsquo;ve made in just 9 months.&lt;/p&gt;
-
-&lt;p&gt;You&amp;rsquo;re going to need:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Git&lt;/li&gt;
-&lt;li&gt;Vagrant &amp;amp; Virtualbox&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;You&amp;rsquo;ll want to clone the user agent repository from github into a directory of your choice:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;git clone https://github.com/pixelated-project/pixelated-user-agent.git&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;There is a &lt;code&gt;Vagrantfile&lt;/code&gt; that will provision a local development environment for you. Be warned however, it will first download the LEAP base box from &lt;a href=&#34;https://downloads.leap.se/platform/vagrant/virtualbox/leap-wheezy.box&#34;&gt;https://downloads.leap.se/platform/vagrant/virtualbox/leap-wheezy.box&lt;/a&gt; if you don&amp;rsquo;t have it already. If you&amp;rsquo;re unconcerned, just run:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;vagrant up&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Once the box is up, it also will provision it with Puppet - I had to do this several times because Puppet will still run even if there are failures. If you&amp;rsquo;re curious as to what puppet is doing, have a look in the &lt;code&gt;provisioning/&lt;/code&gt; directory.&lt;/p&gt;
-
-&lt;p&gt;Provisioning will take almost 20 minutes so while that&amp;rsquo;s happening, head on over to the Pixelated dev provider at &lt;a href=&#34;https://dev.pixelated-project.org/&#34;&gt;https://dev.pixelated-project.org/&lt;/a&gt; and sign up for an account.&lt;/p&gt;
-
-&lt;p&gt;Once the box has been provisioned you&amp;rsquo;ll need to run the go script&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; which will setup the npm and (bower)[&lt;a href=&#34;http://bower.io/&#34;&gt;http://bower.io/&lt;/a&gt;] side of things:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;vagrant ssh
-cd service
-./go setup
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, just one more step to get it running. The user agent needs to connect to a provider that you&amp;rsquo;ve registered with. In traditional terms, this is meant to be your ISP&amp;rsquo;s mail server, Gmail, company&amp;rsquo;s Exchange server&amp;hellip;except this is a Pixelated provider.&lt;/p&gt;
-
-&lt;p&gt;To fire up the user agent, just type the command below and follow the prompts. Be sure to enter &lt;code&gt;dev.pixelated-project.org&lt;/code&gt; as the host and ensure your path to the certificate is correct. I had trouble initially because I had typos in my path that I didn&amp;rsquo;t find.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pixelated-user-agent --host 0.0.0.0 -lc /vagrant/service/pixelated/certificates/dev.pixelated-project.org.ca.crt&lt;/code&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;contribute&#34;&gt;Contribute&lt;/h1&gt;
-
-&lt;p&gt;The team has &lt;a href=&#34;https://github.com/pixelated-project/pixelated-user-agent/issues?q=is%3Aopen+is%3Aissue+label%3ABeginners&#34;&gt;a few dozen issues&lt;/a&gt; on github tagged with &lt;strong&gt;Beginner&lt;/strong&gt; label to encourage contributions from newbies. Simply pick one and dive right in, the problems range from changing icons to exposing some property via RESTful API. So great little pieces of work that can take less than 3 hours to complete (what&amp;rsquo;s more interesting is that it allows you get to know the codebase better)&lt;/p&gt;
-
-&lt;p&gt;I found the project really easy to get into and just getting your first pull request to be accepted feels awesome. I would highly recommend getting involved with Pixelated Project, not only does it have a great, fun tech stack with pieces for anyone, it&amp;rsquo;s also a high impact social project.&lt;/p&gt;
-
-&lt;p&gt;I can easily see this being used in by organisations internally instead of the poorly supported Gmail for Enterprise. Wouldn&amp;rsquo;t it be great to free yourself from Gmail but keep all the functionality and have an even better UI? Not to mention the security benefits.&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;I think a lot of the focus will be on the User Agent, since the LEAP platform will be implementation specific and is well supported by the &lt;a href=&#34;LEAP Foundation&#34;&gt;https://leap.se/&lt;/a&gt; already. Although I did hear something about developing ability for  infrastructure to fire up docker containers for each User Agent&amp;rsquo;s session (!! way too cool)
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;FlightJS is an extremely basic JS library that gives you the event emitter/subscriber pattern. This is great because it allows you build your app interaction any way you&amp;rsquo;d like without buying into a whole framework&amp;rsquo;s way of doing things.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:3&#34;&gt;A go script is that script in every software project that is the central point to trigger tasks such as setting up the environment, database migrations, build and run tests. It just has a name now: the &lt;code&gt;./go&lt;/code&gt; script.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
+      <guid>https://sett.sh/posts/2015/04/contributing-to-pixelated/</guid>
+      <description>Last week the pixelated team here in TW Porto Alegre hosted a hack night which allowed me to dive into the enigmatic Pixelated Project and even submit a pull request! Read on if you&amp;rsquo;d like to know more.
+The majority of the world&amp;rsquo;s emails are hosted at large, centralised providers. Let&amp;rsquo;s face it, there is practically no substitute for Gmail and in light of the Snowden Revelations we&amp;rsquo;ve willingly sacrificed our privacy for convenience.</description>
     </item>
     
   </channel>

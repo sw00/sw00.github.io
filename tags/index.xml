@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Sett Wai</title>
+    <link>https://sett.sh/tags/</link>
+    <description>Recent content in Tags on Sett Wai</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
+    <lastBuildDate>Sun, 17 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://sett.sh/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Announcement</title>
+      <link>https://sett.sh/tags/announcement/</link>
+      <pubDate>Sun, 17 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/announcement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Career</title>
+      <link>https://sett.sh/tags/career/</link>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/career/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code</title>
+      <link>https://sett.sh/tags/code/</link>
+      <pubDate>Wed, 15 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Craft</title>
+      <link>https://sett.sh/tags/craft/</link>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/craft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Devops</title>
+      <link>https://sett.sh/tags/devops/</link>
+      <pubDate>Tue, 21 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://sett.sh/tags/docker/</link>
+      <pubDate>Tue, 21 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Open Source</title>
+      <link>https://sett.sh/tags/open-source/</link>
+      <pubDate>Wed, 15 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Personal</title>
+      <link>https://sett.sh/tags/personal/</link>
+      <pubDate>Sat, 18 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/personal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Philosophy</title>
+      <link>https://sett.sh/tags/philosophy/</link>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/philosophy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reflection</title>
+      <link>https://sett.sh/tags/reflection/</link>
+      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/reflection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>https://sett.sh/tags/security/</link>
+      <pubDate>Wed, 15 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>https://sett.sh/tags/tools/</link>
+      <pubDate>Tue, 21 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Travel</title>
+      <link>https://sett.sh/tags/travel/</link>
+      <pubDate>Sat, 18 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/tags/travel/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

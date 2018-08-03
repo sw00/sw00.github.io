@@ -1,29 +1,131 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sett.sh/</loc>
+    <loc>https://sett.sh/posts/2018/07/on-dilettantism-craft-and-mastery/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/posts/2017/12/four-years-infinite-gratitude/</loc>
+    <lastmod>2017-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/posts/2015/04/docker-for-windows-users/</loc>
     <lastmod>2015-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sett.sh/post/docker-for-windows-users/</loc>
-    <lastmod>2015-04-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sett.sh/post/day-in-gramado/</loc>
+    <loc>https://sett.sh/posts/2015/04/day-in-gramado/</loc>
     <lastmod>2015-04-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sett.sh/post/contributing-to-pixelated/</loc>
+    <loc>https://sett.sh/posts/2015/04/contributing-to-pixelated/</loc>
     <lastmod>2015-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sett.sh/post/easter-in-poa/</loc>
+    <loc>https://sett.sh/posts/2015/04/easter-in-poa/</loc>
     <lastmod>2015-04-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/announcement/</loc>
+    <lastmod>2017-12-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/career/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/code/</loc>
+    <lastmod>2015-04-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/craft/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/devops/</loc>
+    <lastmod>2015-04-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/docker/</loc>
+    <lastmod>2015-04-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/open-source/</loc>
+    <lastmod>2015-04-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/personal/</loc>
+    <lastmod>2015-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/philosophy/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/posts/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/reflection/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/security/</loc>
+    <lastmod>2015-04-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/</loc>
+    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/</loc>
+    <lastmod>2017-12-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/tools/</loc>
+    <lastmod>2015-04-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sett.sh/tags/travel/</loc>
+    <lastmod>2015-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>
