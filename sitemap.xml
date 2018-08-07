@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sett.sh/posts/2018/08/dude-wheres-my-flow/</loc>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sett.sh/posts/2018/07/on-dilettantism-craft-and-mastery/</loc>
     <lastmod>2018-07-30T00:00:00+00:00</lastmod>
   </url>
@@ -76,7 +81,7 @@
   
   <url>
     <loc>https://sett.sh/tags/personal/</loc>
-    <lastmod>2015-04-18T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -88,13 +93,13 @@
   
   <url>
     <loc>https://sett.sh/posts/</loc>
-    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sett.sh/tags/reflection/</loc>
-    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -106,7 +111,7 @@
   
   <url>
     <loc>https://sett.sh/</loc>
-    <lastmod>2018-07-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

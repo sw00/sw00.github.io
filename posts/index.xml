@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
-    <lastBuildDate>Mon, 30 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sett.sh/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dude, where&#39;s my flow?</title>
+      <link>https://sett.sh/posts/2018/08/dude-wheres-my-flow/</link>
+      <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/posts/2018/08/dude-wheres-my-flow/</guid>
+      <description>Or, In Which Sett Loses His Shit.
+Toward the end of last year I realised had lost the ability to focus. To compound matters, I was in a position where focus wasn&amp;rsquo;t really required of me - I was tech lead, but in this case my resposibilities had drifted from the concerns of technical delivery and all of my energy was spent solely on trying to sort signal from noise1. Needless to say, it was an astronomically dysfunctional and frustrating environment.</description>
+    </item>
     
     <item>
       <title>On dilettantism, craft and mastery</title>
