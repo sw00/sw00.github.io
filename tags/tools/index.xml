@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
-    <lastBuildDate>Tue, 21 Apr 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Aug 2018 19:23:38 +0200</lastBuildDate>
     
 	<atom:link href="https://sett.sh/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Sublime Tool</title>
+      <link>https://sett.sh/posts/2018/08/the-sublime-tool/</link>
+      <pubDate>Tue, 21 Aug 2018 19:23:38 +0200</pubDate>
+      
+      <guid>https://sett.sh/posts/2018/08/the-sublime-tool/</guid>
+      <description>This was initially meant to be a technical post like I promised, but I was faced with several dilemmas:
+ Any particular tech I write about will be obsolete by next Tuesday, the standard unit of time it takes for unlikely events to occur in computing.. There will always be much better resources elsewhere, because I&amp;rsquo;m not an expert in anything.  So instead of yet another tutorial on test-driven Ansible, Kafka or whatever the hottest web framework of the week, I present to you some general ideas with that come with a better shelf-life.</description>
+    </item>
     
     <item>
       <title>Docker for Windows Users</title>

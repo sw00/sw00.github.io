@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>The Sublime Tool | Sett Wai</title>
+
+<meta property='og:title' content='The Sublime Tool - Sett Wai'>
+<meta property='og:description' content='This was initially meant to be a technical post like I promised, but I was faced with several dilemmas:
+ Any particular tech I write about will be obsolete by next Tuesday, the standard unit of time it takes for unlikely events to occur in computing.. There will always be much better resources elsewhere, because I&rsquo;m not an expert in anything.  So instead of yet another tutorial on test-driven Ansible, Kafka or whatever the hottest web framework of the week, I present to you some general ideas with that come with a better shelf-life.'>
+<meta property='og:url' content='https://sett.sh/posts/2018/08/the-sublime-tool/'>
+<meta property='og:site_name' content='Sett Wai'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/5fa0ac61f6703b5a0dfbb4250f11e329?s=256'><meta property='article:section' content='Posts'><meta property='article:tag' content='craft'><meta property='article:tag' content='tools'><meta property='article:tag' content='software dev'><meta property='article:published_time' content='2018-08-21T19:23:38&#43;02:00'/><meta property='article:modified_time' content='2018-08-21T19:23:38&#43;02:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@settface'><meta name='twitter:creator' content='@settface'>
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://sett.sh/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"></script>
+</head>
+<body>
+
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://sett.sh/"><h1 class="title is-4">Sett Wai</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="email" href='mailto:exec@sett.sh' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="github" href='https://github.com/sw00' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="twitter" href='https://twitter.com/settface' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+
+    <nav class="nav">
+      
+
+      
+    </nav>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+      
+<a class="subtitle is-6" href="/tags/craft">#craft</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/tools">#tools</a>
+  
+  | <a class="subtitle is-6" href="/tags/software-dev">#software dev</a>
+  
+
+      
+    </div>
+    <h2 class="subtitle is-6">August 21, 2018</h2>
+    <h1 class="title">The Sublime Tool</h1>
+    
+    <div class="content">
+      
+
+<p>This was initially meant to be a technical post like I promised, but I was faced with several
+dilemmas:</p>
+
+<ol>
+<li>Any particular tech I write about will be obsolete by <a href="https://blogs.msdn.microsoft.com/larryosterman/2004/03/30/one-in-a-million-is-next-tuesday/" target="_blank">next
+Tuesday</a>, the standard unit of time it takes for unlikely events to
+occur in computing..</li>
+<li>There will always be much better resources elsewhere, because</li>
+<li>I&rsquo;m not an expert in anything.</li>
+</ol>
+
+<p>So instead of yet another tutorial on test-driven Ansible, Kafka or whatever
+the hottest web framework of the week, I present to you some general ideas with
+that come with a better shelf-life.</p>
+
+<hr />
+
+<p>I recently finished reading a rather interesting book, <a href="https://www.goodreads.com/book/show/19075322-the-craftsman" target="_blank"><em>The Craftsman</em> by
+Richard Sennett</a>.
+It had quite a lot of insights that reified some of the intuitions I&rsquo;ve been
+having about the nature of work, learning, teaching, flow state, craft and
+mastery. Whether explicitly or not, I&rsquo;d like to unpack some of
+the little big ideas in the book here as I digest them over time.</p>
+
+<p>It&rsquo;s impossible to speak of craft without mentioning tools. Tools will form an
+essential part of any technical pursuit. But in fact, most of any human
+activity will involve a tool of some kind. They&rsquo;re so ubiquitous and obvious
+that we take them for granted, but it can be argued that our tools are an
+extension of ourselves <sup class="footnote-ref" id="fnref:kubrick"><a href="#fn:kubrick">1</a></sup>.</p>
+
+<blockquote>
+<p>“When we bring down the hammer we do not feel that its handle has struck our
+palm but that its head has struck the nail... I have a subsidiary awareness
+of the feeling in the palm of my hand which is merged into my focal awareness
+of my driving in the nail.”</p>
+</blockquote>
+
+<h1 id="fit-for-purpose-vs-all-purpose">Fit-for-purpose vs all-purpose</h1>
+
+<p>In the book, Sennett reflects on the nature of tools and their role and
+significance to the craftsperson. He discovers that tools tend to fall into two
+broad categories and have distinct properties. The first is the
+<em>fit-for-purpose</em> tool, which yields no ambiguity about how it should be used.
+He uses the Phillips head screwdriver as an example, but this notion can be
+easily extended to the realm of software development (think
+<a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank">DSL</a>s or GNU
+tools). In the abstract, the notion of tools can be expanded to
+include shopping lists, agile methodologies or even musical scales.</p>
+
+<p>The thing about <em>fit-for-purpose</em> tools though, is that the very quality that
+makes them highly effective is also what makes them inflexible and rigid in
+their use. This imbues them with a bias toward singular, goal-oriented
+activities. But this is all obvious. It&rsquo;s really why we have the mantra:
+<em>pick the right tool for the job</em>.</p>
+
+<p>A far more interesting object in contrast to the <em>fit-for-purpose</em> tool, is the
+<em>all-purpose</em> tool. Such a tool is challenging because it&rsquo;s not immediate
+obvious how to use it most effectively<sup class="footnote-ref" id="fnref:scalpels"><a href="#fn:scalpels">2</a></sup>. It&rsquo;s often so basic in form that it
+seems incomplete but that makes it highly adaptable. It&rsquo;s up to the wielder to
+improvise with it, adapting its form to meet the challenges they&rsquo;re facing. Such
+a tool can be described as being <em>sublime</em>: an object simple in form that can
+seemingly do anything.</p>
+
+<blockquote>
+<p>Getting better at using tools comes to us, in part, when the tools challenge
+us, and this challenge often occurs just because the tools are not
+fit-for-purpose.</p>
+</blockquote>
+
+<p>An <em>all-purpose</em> tool, by nature, demands a deeper engagement in the act of
+using it. Not only that, it demands a nuanced awareness of the situation to
+which the tool is applied. It can then be said that it&rsquo;s well suited to open
+problems with high uncertainty and ambiguity that direct, mechanical
+application cannot solve.</p>
+
+<h1 id="cool-story-bro">Cool story, bro?</h1>
+
+<p>&ldquo;Great, but how is this useful?&rdquo;, you ask. What does it have to do with
+software development? Well, let&rsquo;s break it down into some simple propositions
+about the nature of software development as a broad activity:</p>
+
+<ol>
+<li>The details of developing software are extremely context-sensitive<sup class="footnote-ref" id="fnref:context"><a href="#fn:context">3</a></sup>.</li>
+<li>The inputs to sofware development are numerous and ambiguous<sup class="footnote-ref" id="fnref:ambiguous"><a href="#fn:ambiguous">4</a></sup>.</li>
+</ol>
+
+<p>Seeing the connection yet? These insights should should raise a rather
+important question: what is the <em>sublime</em>, <em>all-purpose</em> tool in software
+development? One that&rsquo;s adaptable and not tightly coupled to any tech stack,
+context or situation? Such an instrument would be the most valuable thing in a
+developer&rsquo;s proverbial toolbox.</p>
+
+<p>I&rsquo;d hazard that the closest thing to something like that is the <em>ability to
+reason</em>. <strong>There is no substitute for thinking</strong>. Again, so obvious it seems like
+a cop-out, but it&rsquo;s difficult to understate how much we try to avoid using this
+tool. As individuals, reaching for the newest latest [buzzword] technology and
+as organisations, investing millions into agile methodology certifications. We
+succumb to the selective pressure of achieving arbitrary measures of success,
+rather than engaging with the things we&rsquo;re trying to produce<sup class="footnote-ref" id="fnref:arbitrary"><a href="#fn:arbitrary">5</a></sup>.</p>
+
+<p>We also tend to overlook that the sublime tool is not static. It has the
+potential to be a precision instrument, like a surgeon&rsquo;s scalpel. It can be
+mastered, adapted, the technique behind its use improved upon.</p>
+
+<h1 id="acquiring-precision">Acquiring precision</h1>
+
+<p>I think, to improve is equivalent to being more precise. Precision can&rsquo;t be
+acquired if meaning is implicit, hidden and we&rsquo;re being lackadaisical in the
+way we communicate. Based on this idea, we can smell that the use of language
+is a strong input to quality of thinking. See what I just did there?</p>
+
+<p>So semantics are important. But fluency in language comes with exposure, so I&rsquo;d
+encourage you to read. A lot. Read code, read documentation, read fiction, read
+magazines, read comics, film screenplays, cooking recipes, cereal box
+ingredients, lease agreements and contracts. And I don&rsquo;t mean this only in
+an Anglo-centric sense. Read in the language that you think in. The benefit
+you want to acquire is ultimately richness in thought (knowing a lot of words
+is just a second-order effect).</p>
+
+<p>What else? Pointing out the relationship between language and cognition and
+telling you to read isn&rsquo;t exactly &ldquo;precise&rdquo;. True, there are more formal
+methods. I think being exposed to Propositional Logic<sup class="footnote-ref" id="fnref:logic"><a href="#fn:logic">6</a></sup> is the best hack
+to mastering our sublime tools. In fact, I think Propositional Logic is probably
+the closest manifestation of a truly &ldquo;all-purpose&rdquo; tool. Simple in form and not
+immediately obvious in its use, but mastering it yields great benefit in every
+sphere of life. And it&rsquo;s not just for developers either. Really, go get your
+grandma hooked on Propositional Logic, you won&rsquo;t regret it<sup class="footnote-ref" id="fnref:grandma"><a href="#fn:grandma">7</a></sup>.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:kubrick">This idea is stretched to the most profound extent by Kubrick in that single, iconic, brilliant <a href="https://youtu.be/mI3s5fA7Zhk" target="_blank">match cut</a>.
+ <a class="footnote-return" href="#fnref:kubrick"><sup>[return]</sup></a></li>
+<li id="fn:scalpels">Sennett uses the scalpel as an example: early surgeons learnt how to use the new precision instrument only by trial and error.
+ <a class="footnote-return" href="#fnref:scalpels"><sup>[return]</sup></a></li>
+<li id="fn:context">As evidenced by the failure of methodologies like SaFE, SCRUM, etc. to produce consistent repeatable results. No other technical discipline sees such huge variances between input/outputs. The same practices and principles will yield completely different results when implemented by different teams, orgs or projects: there are no silver bullets.
+ <a class="footnote-return" href="#fnref:context"><sup>[return]</sup></a></li>
+<li id="fn:ambiguous">Unlike physical production, which is more-or-less constrained by the natural laws of physics, the building software often more of a social process than it is an engineering discipline. There are an intractable amount of dependent variables that affect the production of working software. However, this does not mean we aren&rsquo;t systematic or can&rsquo;t be.
+ <a class="footnote-return" href="#fnref:ambiguous"><sup>[return]</sup></a></li>
+<li id="fn:arbitrary">Part of the problem is that we view success as a one-dimensional &ldquo;thing to be achieved&rdquo; rather than an ongoing process with no discrete parts. Ironically, this &ldquo;ends-means&rdquo; thinking is a big obstacle in producing good work.
+ <a class="footnote-return" href="#fnref:arbitrary"><sup>[return]</sup></a></li>
+<li id="fn:logic">A great introductory tutorial: <a href="https://brilliant.org/wiki/propositional-logic/" target="_blank">https://brilliant.org/wiki/propositional-logic/</a>
+ <a class="footnote-return" href="#fnref:logic"><sup>[return]</sup></a></li>
+<li id="fn:grandma">Realistically though, you should start with people you work with professionally.
+ <a class="footnote-return" href="#fnref:grandma"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+      
+      <div class="related">
+
+<h3>Similar articles:</h3>
+<ul>
+	
+	<li><a href="/posts/2018/07/on-dilettantism-craft-and-mastery/">On dilettantism, craft and mastery</a></li>
+	
+	<li><a href="/posts/2015/04/docker-for-windows-users/">Docker for Windows Users</a></li>
+	
+</ul>
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'sett-sh';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/sw00">Sett Wai</a> 2018</p>
+    
+  </div>
+</section>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-61607130-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script>renderMathInElement(document.body);</script>
+</body>
+</html>
+
