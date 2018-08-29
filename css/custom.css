@@ -2,6 +2,14 @@
   margin: 40px 0 0;
 }
 
+.footnotes {
+  font-size: smaller;
+}
+
+.footnotes li {
+  margin: 9pt 0;
+}
+
 .related {
   margin: 40px 0;
 }

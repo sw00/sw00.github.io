@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
-    <lastBuildDate>Tue, 21 Aug 2018 19:23:38 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 28 Aug 2018 17:46:57 +0200</lastBuildDate>
     
 	<atom:link href="https://sett.sh/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Critical failure and the mechanics of causality</title>
+      <link>https://sett.sh/posts/2018/08/critical-failure/</link>
+      <pubDate>Tue, 28 Aug 2018 17:46:57 +0200</pubDate>
+      
+      <guid>https://sett.sh/posts/2018/08/critical-failure/</guid>
+      <description>The biggest critical failure that I&amp;rsquo;ve ever experienced on a project happened on the first week of 2014 and caused a recurring outage that lasted a full four days.
+It was my very first large-scale, distributed production system with multi-national integrations and real-time messaging component. I had been on the project for 3 months and had inherited the tech lead role which I shared with a senior colleague who had joined after me.</description>
+    </item>
     
     <item>
       <title>The Sublime Tool</title>

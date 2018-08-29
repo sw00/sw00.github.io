@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sett.sh/posts/2018/08/critical-failure/</loc>
+    <lastmod>2018-08-28T17:46:57+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sett.sh/posts/2018/08/the-sublime-tool/</loc>
     <lastmod>2018-08-21T19:23:38+02:00</lastmod>
   </url>
@@ -79,6 +84,12 @@
   </url>
   
   <url>
+    <loc>https://sett.sh/tags/failure/</loc>
+    <lastmod>2018-08-28T17:46:57+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://sett.sh/tags/open-source/</loc>
     <lastmod>2015-04-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -98,7 +109,7 @@
   
   <url>
     <loc>https://sett.sh/posts/</loc>
-    <lastmod>2018-08-21T19:23:38+02:00</lastmod>
+    <lastmod>2018-08-28T17:46:57+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -116,13 +127,13 @@
   
   <url>
     <loc>https://sett.sh/</loc>
-    <lastmod>2018-08-21T19:23:38+02:00</lastmod>
+    <lastmod>2018-08-28T17:46:57+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sett.sh/tags/software-dev/</loc>
-    <lastmod>2018-08-21T19:23:38+02:00</lastmod>
+    <lastmod>2018-08-28T17:46:57+02:00</lastmod>
     <priority>0</priority>
   </url>
   

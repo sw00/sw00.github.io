@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Critical failure and the mechanics of causality | Sett Wai</title>
+
+<meta property='og:title' content='Critical failure and the mechanics of causality - Sett Wai'>
+<meta property='og:description' content='The biggest critical failure that I&rsquo;ve ever experienced on a project happened on the first week of 2014 and caused a recurring outage that lasted a full four days.
+It was my very first large-scale, distributed production system with multi-national integrations and real-time messaging component. I had been on the project for 3 months and had inherited the tech lead role which I shared with a senior colleague who had joined after me.'>
+<meta property='og:url' content='https://sett.sh/posts/2018/08/critical-failure/'>
+<meta property='og:site_name' content='Sett Wai'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='failure'><meta property='article:tag' content='software-dev'><meta property='article:published_time' content='2018-08-28T17:46:57&#43;02:00'/><meta property='article:modified_time' content='2018-08-28T17:46:57&#43;02:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@settface'><meta name='twitter:creator' content='@settface'>
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://sett.sh/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"></script>
+
+</head>
+<body>
+
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://sett.sh/"><h1 class="title is-4">Sett Wai</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="email" href='mailto:exec@sett.sh' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="github" href='https://github.com/sw00' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="twitter" href='https://twitter.com/settface' target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+
+    <nav class="nav">
+      
+
+      
+    </nav>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+      
+<a class="subtitle is-6" href="/tags/failure">#failure</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/software-dev">#software-dev</a>
+  
+
+      
+    </div>
+    <h2 class="subtitle is-6">August 28, 2018</h2>
+    <h1 class="title">Critical failure and the mechanics of causality</h1>
+    
+    <div class="content">
+      
+
+<p>The biggest critical failure that I&rsquo;ve ever experienced on a project happened
+on the first week of 2014 and caused a recurring outage that lasted a full four
+days.</p>
+
+<p>It was my very first large-scale, distributed production system with
+multi-national integrations and real-time messaging component.  I had been on
+the project for 3 months and had inherited the tech lead role which I shared
+with a senior colleague who had joined after me. Suffice to say we lost a
+lifetime&rsquo;s worth of sleep that week.</p>
+
+<p>The project itself was replete with problems.  In spite of the excellent
+technical foundations the original tech leads had laid, the core web
+application had been eroded into a (well-tested) ball of mud<sup class="footnote-ref" id="fnref:mud"><a href="#fn:mud">1</a></sup> and for
+various legitimate reasons nobody understood the current runtime architecture
+or how it got deployed to production<sup class="footnote-ref" id="fnref:automation"><a href="#fn:automation">2</a></sup>.</p>
+
+<blockquote>
+<p>&ldquo;A Big Ball of Mud is a haphazardly structured, sprawling, sloppy,
+duct-tape-and-baling-wire, spaghetti-code jungle. These systems show
+unmistakable signs of unregulated growth, and repeated, expedient
+repair.&rdquo;<sup class="footnote-ref" id="fnref:mud"><a href="#fn:mud">1</a></sup></p>
+</blockquote>
+
+<p>Our client, the product owner, had been using us to bootstrap his startup and
+was aggressively chasing growth (i.e. features) without any reprieve for almost
+2 years<sup class="footnote-ref" id="fnref:agile"><a href="#fn:agile">3</a></sup>. All while leveraging a relatively inexperienced team that
+suffered high attrition, unhealthy levels of priority and context-switching,
+breaks in project continuity and working in a highly sophisticated tech stack
+nobody had any significant experience in<sup class="footnote-ref" id="fnref:nonprofit"><a href="#fn:nonprofit">4</a></sup>.</p>
+
+<p>There was a lot of firefighting and the problems seemed serious enough that I
+was absolutely terrified of not being able to cope.  So armed with a rigorous
+report of about two dozen urgent &ldquo;tech debt&rdquo; items, I recommended a complete
+feature freeze as my first act as tech lead. Alas, greatness is not achieved by
+capitulating to the demands of harsh reality, so feature development was (of
+course) prioritised above all else.</p>
+
+<p><img src="https://i.imgflip.com/1rojys.jpg#c" alt="Scotty from Star Trek" /></p>
+
+<p>It was certainly not ideal, but the journey to finding the root cause was not
+without some personal cognitive failures (jumping to conclusions is best done
+in an excited panic).</p>
+
+<h1 id="the-technical-details">The technical details</h1>
+
+<p>The central part of the system was a few message broker(worker) processes that
+would respond directly to incoming user messages fast as possible<sup class="footnote-ref" id="fnref:brokers"><a href="#fn:brokers">5</a></sup>. In
+practice this was a bunch of Celery workers subscribed to queues on a RabbitMQ
+cluster and acting on data lookups to a MongoDB cluster. Because there was some
+business logic they needed to leverage, the workers lived in the same
+repository as the Django web application to keep things DRY. There was actually
+more than one type of worker and they were differentiated by means of <a href="https://12factor.net/config" target="_blank">injected
+configuration</a>. These workers were failing to
+reply to incoming messages and we didn&rsquo;t know why. It was a highly critical
+problem, and in certain cases could lead to a potential life-and-death
+situation. No pressure.</p>
+
+<p>We couldn&rsquo;t find any issue in staging and we hadn&rsquo;t deployed in the past two
+weeks. It was also clear that the usual approaches to debugging<sup class="footnote-ref" id="fnref:debugging"><a href="#fn:debugging">6</a></sup>
+could not be applied:</p>
+
+<ul>
+<li>Production was orders of magnitude larger than staging (thanks MongoDB and
+&ldquo;big&rdquo; data)</li>
+</ul>
+
+<p>I think it had almost reached the 300GB upper bound of the Linode disk we had
+provisioned for it. For testing, we had a job regularly sync a small subset of
+records from the production cluster to the much smaller staging instances.</p>
+
+<ul>
+<li>We couldn&rsquo;t be sure what production actually looked like versus what it was
+meant to look like.</li>
+</ul>
+
+<p>There was a collection of Puppet manifests and roles that were mostly
+inscrutable due to my lack of experience with its Ruby-esque DSL and best
+practices hadn&rsquo;t quite emerged yet <sup class="footnote-ref" id="fnref:puppet"><a href="#fn:puppet">7</a></sup>. Also we didn&rsquo;t know when last the
+scripts had been run and (to my abject horror) I found lots of dead code and
+traces of orphaned configuration on some of the servers themselves. This was
+also before the advent of docker and immutable, phoenix servers. In fact it was
+everybody&rsquo;s first signficant exposure to Infrastructure as Code<sup class="footnote-ref" id="fnref:iac"><a href="#fn:iac">8</a></sup>,
+including my own<sup class="footnote-ref" id="fnref:impostor"><a href="#fn:impostor">9</a></sup>.</p>
+
+<h1 id="assume-the-assumption-pose">Assume the assumption pose</h1>
+
+<p>So what could be done? Of course, I thought, this is exactly what automated
+build &amp; deployment pipelines are for and promptly redeployed the latest trunk
+to production. It seemed to resolve the issue, we could see the messages being
+picked up and responded to...at least until the afternoon when it stubbornly
+reappeared. And so the pattern would repeat: deploy, fixed, broken again,
+deploy, fixed, broken again. The definition of insanity.</p>
+
+<p>Toward the end of the day, mild panic had set in. We reviewed the brokers&rsquo; code
+over and over, ran some production data through staging and observed the output
+by logs and queries to Mongo. I dreaded the seemingly inevitable realisation
+that something was wrong with the infrastructure itself. Perhaps the Linode, or
+even the way RabbitMQ is configured causing an edge case bug to appear (the two
+most opaque parts of the system for all of us).</p>
+
+<p>I didn&rsquo;t sleep much that night and spent most of it reading up on everything I
+possibly could on message queues and brokers. I also looked through RabbitMQ&rsquo;s
+mailing lists and issues looking for a mention of similar symptoms and in the
+hopes of finding a quick fix. Stackoverflow posts were made. And at some point
+I even logged into the Freenode IRC chatroom to ask for assistance.</p>
+
+<p>Day two came around and it was clear to me that we had to pursue the nuclear
+option: we needed to rebuild production. This entailed provisioning new Linode
+machines and running the dubious Puppet scripts against them, then carefully
+teasing apart each Linode box and reconstituting them into the new clusters. I
+was also  wary of copying the problem over to the new environment so it was a
+manual process of educated <em>guesswork</em> and <em>intuition</em>, by poor developers with
+the minimal experience in system adminstration. There is no universe in which
+this is an even remotely pleasant experience, but we were forced to learn the
+system&rsquo;s run state configuration quite intimately and make best-effort
+decisions where there were gaps and ambiguities...</p>
+
+<h1 id="it-follows">It follows.</h1>
+
+<p>I don&rsquo;t remember all of it, but I believe this took us the next whole day and
+half. And it was unsuccessful. To my complete disbelief, the issue had managed
+to follow us into a fresh environment. I was too tired to even despair and
+mulled over the terrible consequences to come. I mentally prepared myself to
+the reality that this might cause the client&rsquo;s company to collapse and I might
+be losing my job<sup class="footnote-ref" id="fnref:job"><a href="#fn:job">10</a></sup>. Or so it goes.</p>
+
+<p>Then, as I tried eat my lunch with a dry mouth, fatigued, my thoughts wandered
+to something I had seen in the codebase during the whole ordeal. Some of the
+Celery workers were set to operate on a timer to complete <em>recurring</em> tasks
+instead of responding to messages. The purpose of these tasks were to generate
+reports from MongoDB records and they were set to run every 5 minutes to
+provide an almost real-time statistics. But why couldn&rsquo;t they be in realtime?</p>
+
+<p>Fuck.</p>
+
+<p>The dots finally connected and coalesced into a single phrase I may have muttererd out loud: &ldquo;fuck you, map reduce.&rdquo;</p>
+
+<h1 id="two-facts-two-implications-one-conclusion">Two facts, two implications, one conclusion</h1>
+
+<ul>
+<li><p>Celery uses a backend broker to consume messages <em>and</em> schedule tasks.</p>
+
+<ul>
+<li>This means a worker with a scheduled, recurring task is not just a
+consumer, but pushes messages on to RabbitMQ.</li>
+</ul></li>
+
+<li><p>The processing of reports is a long-running MapReduce across all records in
+the most populous MongoDB collection.</p>
+
+<ul>
+<li>This collection has been growing at a linear rate since the project&rsquo;s first
+deployment and so too would its running time.</li>
+</ul></li>
+</ul>
+
+<p><strong>Conlusion</strong>: The time it took to run the reports had overtaken the scheduling
+period. The natural consequence of this was that on average, more tasks were
+being created than completed so over time the possibility of completing tasks
+trended toward zero.</p>
+
+<h1 id="the-solution">The solution</h1>
+
+<p>The immediate fix was trivial. Increase the scheduled period to
+be much longer than the time it takes to run the report. However, this was also
+a result of a flaw in our configuration there was no separation of concerns
+reflected in our RabbitMQ setup. It might have been an acceptable shortcut to
+have all brokers share the same queues in the beginning, but it wasn&rsquo;t any
+longer. Lesson learnt, we gave the long-running workers their own queues.</p>
+
+<p>But this only kicks the can down the road a little further. The complete
+solution was to to refactor the mapreduce code to operate on a rolling window
+of the records instead of the entire collection. Something I will never forget
+now whenever I&rsquo;m  writing report-generating code.</p>
+
+<hr />
+
+<h1 id="the-meta-solution">The meta-solution</h1>
+
+<p>The issue and its solution seems quite arbitrary in retrospect. Any dev better
+versed in RabbitMQ and Celery would have gleaned the problem immediately by
+inspecting the RabbitMQ admin console and its queues. But I wondered if we
+could&rsquo;ve done better and how I could avoid dead-ends.</p>
+
+<p>It turns out we can. It&rsquo;s all about being a little more rigorous and explicit
+with our assumptions. Doing so exposes our biases when debugging and
+troubleshooting an issue.  If we felt like overachieving, it may also be
+helpful to slow down and actually write down:</p>
+
+<ol>
+<li>the behaviour we&rsquo;re seeing</li>
+<li>its potential causes</li>
+<li>a list of hypotheses (along with observable behaviour that would falsify
+them)</li>
+</ol>
+
+<p>Godmode would of course be writing this all in <em>first-order predicate calculus</em>
+and you&rsquo;d certainly make Djikstra proud. But having a general grasp of it
+should be good enough.</p>
+
+<p>There is however an extremely important idea that has helped me in my
+thinking: the difference between <em>necessary</em> and <em>sufficient</em> conditions.</p>
+
+<h1 id="the-mechanics-of-causality">The mechanics of causality</h1>
+
+<p>In logic there is a notion of <em>implication</em>, which for our intents and purposes
+can be regarded as analogous to causality<sup class="footnote-ref" id="fnref:causality"><a href="#fn:causality">11</a></sup>. It&rsquo;s often denoted with an arrow like so: <span class="jsonly">
+                  
+        \(\rightarrow{}\)
+    
+</span>
+<noscript>
+                  
+        <img style="display:inline;vertical-align:middle;" src="https://latex.codecogs.com/gif.latex?\inline&space;%5crightarrow%7b%7d" title="\rightarrow{}" />
+    
+</noscript>
+</p>
+
+<p>If we want to describe a scenario when a condition <em>A</em> holds then condition
+<em>B</em> also holds (that is if <em>A</em> is true then <em>B</em> is also true), it can be
+said that <em>A</em> <em>implies</em> <em>B</em> and denoted as follows:</p>
+
+<p><span class="jsonly">
+     
+        $$A \rightarrow B$$
+    
+</span>
+<noscript>
+     
+        <div style="text-align:center;">
+            <img src="https://latex.codecogs.com/gif.latex?A%20%5crightarrow%20B" title="A \rightarrow B" />
+        </div>
+    
+</noscript>
+
+<span class="jsonly">
+     
+        $$antecedent \rightarrow consequent$$
+    
+</span>
+<noscript>
+     
+        <div style="text-align:center;">
+            <img src="https://latex.codecogs.com/gif.latex?antecedent%20%5crightarrow%20consequent" title="antecedent \rightarrow consequent" />
+        </div>
+    
+</noscript>
+</p>
+
+<p>So one of the assumptions I had made implicitly can be denoted as follows:</p>
+
+<span class="jsonly">
+     
+        $$\text{There is a bug in RabbitMQ} \rightarrow{} \text{Workers are failing to consume messages}$$
+    
+</span>
+<noscript>
+     
+        <div style="text-align:center;">
+            <img src="https://latex.codecogs.com/gif.latex?%5ctext%7bThere%20is%20a%20bug%20in%20RabbitMQ%7d%20%5crightarrow%7b%7d%20%5ctext%7bWorkers%20are%20failing%20to%20consume%20messages%7d" title="\text{There is a bug in RabbitMQ} \rightarrow{} \text{Workers are failing to consume messages}" />
+        </div>
+    
+</noscript>
+
+
+<p>This implication does hold. But we know that this wasn&rsquo;t the root cause. So what was my logical error? Say we reversed the implication:</p>
+
+<span class="jsonly">
+     
+        $$\text{Workers are failing to consume messages} \rightarrow{} \text{There is a bug in RabbitMQ}$$
+    
+</span>
+<noscript>
+     
+        <div style="text-align:center;">
+            <img src="https://latex.codecogs.com/gif.latex?%5ctext%7bWorkers%20are%20failing%20to%20consume%20messages%7d%20%5crightarrow%7b%7d%20%5ctext%7bThere%20is%20a%20bug%20in%20RabbitMQ%7d" title="\text{Workers are failing to consume messages} \rightarrow{} \text{There is a bug in RabbitMQ}" />
+        </div>
+    
+</noscript>
+
+
+<p>Now that doesn&rsquo;t seem quite correct does it? This is because implication is a <strong>one way</strong> street.
+There can be many reasons why workers are failing and a bug in RabbitMQ could be one of them, but whenever workers fail to consume messages it does not always <em>imply</em> that is a bug in RabbitMQ. This is the notion of <strong>sufficiency</strong>: <em>A</em> is <strong>sufficient</strong> for <em>B</em>, but it doesn&rsquo;t mean <em>B</em> also implies <em>A</em>.</p>
+
+<p>Another relation is that of <strong>neccessity</strong>. It&rsquo;s a bit trickier because of the way the word is used in natural language. Here&rsquo;s an example:</p>
+
+<span class="jsonly">
+     
+        $$\text{The server is reachable} \rightarrow{} \text{The system is working correctly}$$
+    
+</span>
+<noscript>
+     
+        <div style="text-align:center;">
+            <img src="https://latex.codecogs.com/gif.latex?%5ctext%7bThe%20server%20is%20reachable%7d%20%5crightarrow%7b%7d%20%5ctext%7bThe%20system%20is%20working%20correctly%7d" title="\text{The server is reachable} \rightarrow{} \text{The system is working correctly}" />
+        </div>
+    
+</noscript>
+
+
+<p>Stated here, being able to reach the server is neither necessary nor sufficient condition for the system to be working correctly. However if we reversed the relation it works out. We can say that a the server being reachable is <em>necessary</em> for the system to be working (I like to reverse the arrow instead of swapping the terms in this case because it helps me reason about it better).</p>
+
+<span class="jsonly">
+     
+        $$\text{The server is reachable} \leftarrow{} \text{The system is working correctly}$$
+    
+</span>
+<noscript>
+     
+        <div style="text-align:center;">
+            <img src="https://latex.codecogs.com/gif.latex?%5ctext%7bThe%20server%20is%20reachable%7d%20%5cleftarrow%7b%7d%20%5ctext%7bThe%20system%20is%20working%20correctly%7d" title="\text{The server is reachable} \leftarrow{} \text{The system is working correctly}" />
+        </div>
+    
+</noscript>
+
+
+<p>Confused? Yeah, me too most of the time. The final idea is that a condition <em>A</em> is both <strong>necessary</strong> and <strong>sufficient</strong> for <em>B</em> if that is the only property that implies <em>B</em>. This is the strongest implication and holds both ways, exclusively.</p>
+
+<span class="jsonly">
+     
+        $$\text{The same input produces the same output} \Leftrightarrow{} \text{The system is deterministic}$$
+    
+</span>
+<noscript>
+     
+        <div style="text-align:center;">
+            <img src="https://latex.codecogs.com/gif.latex?%5ctext%7bThe%20same%20input%20produces%20the%20same%20output%7d%20%5cLeftrightarrow%7b%7d%20%5ctext%7bThe%20system%20is%20deterministic%7d" title="\text{The same input produces the same output} \Leftrightarrow{} \text{The system is deterministic}" />
+        </div>
+    
+</noscript>
+
+
+<p>A deterministic system is <strong>necessary</strong> for the same inputs to produce the same outputs. However, if we negate the one condition then the other condition must also be negated for the to hold: if the same input doesn&rsquo;t produce the same output, then the system isn&rsquo;t deterministic.</p>
+
+<p>I&rsquo;d encourage you to look the <a href="https://en.wikipedia.org/wiki/Necessity_and_sufficiency#Definitions" target="_blank">truth table</a> on Wikpedia to grok these concepts a little better. I keep having to revisit them myself.</p>
+
+<h1 id="fin">Fin</h1>
+
+<p>In a lot of ways, this post has been years in the making. I&rsquo;ve kept bits and
+pieces of this written and scattered around. The experience sticks out as one
+of those career defining moments where you completely get your ass kicked and
+come out a completely changed person. That said, I&rsquo;ve definitely had many more
+failures<sup class="footnote-ref" id="fnref:failure"><a href="#fn:failure">12</a></sup> than successes and will probably have many more. I suspect
+that everyone else has too - we just don&rsquo;t share them enough.</p>
+
+<p>That&rsquo;s why I was finally compelled to complete this post when a smart friend
+shared her <a href="https://medium.com/@alienelf/how-solve-a-hard-bug-617874a28326" target="_blank">bug-solving
+experiences</a>
+(go <a href="https://twitter.com/alienelf" target="_blank">follow her</a>, she&rsquo;s cool). Along with that
+Tesla worker posting about their <a href="https://twitter.com/atomicthumbs/status/1032939617404645376" target="_blank">technical
+troubles</a>, it
+seems critical failures are more prevalent than we may think. There are
+no perfect projects, or teams but I hope this adds to the discourse in a meaningful way.</p>
+
+<p><center><blockquote class="twitter-tweet"><p lang="en" dir="ltr">How I Hacked My Morning Routine:<br><br>I wiped a production database and now I am 100% definitely awake</p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/status/1034824761833136128?ref_src=twsrc%5Etfw">August 29, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:mud"><a href="http://laputan.org/mud/" target="_blank">Brian Foote and Joseph Yoder, <em>Big Ball of Mud</em>. Fourth Conference on Patterns Languages of Programs (PLoP &lsquo;97/EuroPLoP &lsquo;97) Monticello, Illinois, September 1997</a>
+ <a class="footnote-return" href="#fnref:mud"><sup>[return]</sup></a></li>
+<li id="fn:automation">The dark side to automation is that it reduces the need for humans to understand what&rsquo;s under the hood. There was a fully automated build and deploy pipeline and infrastructure defined in Puppet that nobody dared to touch for lack of expertise.
+ <a class="footnote-return" href="#fnref:automation"><sup>[return]</sup></a></li>
+<li id="fn:agile">Unfortunately, they&rsquo;d also been bitten with the Agile bug in the wrong way and seemed to think that it meant no process and spontaneous changing of priorities.
+ <a class="footnote-return" href="#fnref:agile"><sup>[return]</sup></a></li>
+<li id="fn:nonprofit">The work was originally billed as non-profit, social impact which has a tendency to be viewed as trivial and thus staffed accordingly. Ironically, it was actually the most technically sophisticated project I&rsquo;ve ever worked on in some respects.
+ <a class="footnote-return" href="#fnref:nonprofit"><sup>[return]</sup></a></li>
+<li id="fn:brokers">At its peak, this could be up to 400 messages a minute, serviced by 2-4 worker processes.
+ <a class="footnote-return" href="#fnref:brokers"><sup>[return]</sup></a></li>
+<li id="fn:debugging">Try to replicate the problem in another environment, then poke and prod until you find the cause.
+ <a class="footnote-return" href="#fnref:debugging"><sup>[return]</sup></a></li>
+<li id="fn:puppet">For the record, Puppet is my least favourite Config Management tool even years later.
+ <a class="footnote-return" href="#fnref:puppet"><sup>[return]</sup></a></li>
+<li id="fn:iac">Declaring your infrastructure in code so that it can be built and tested automatically just like your application software. There&rsquo;s a whole set of principles and practices to this but think Puppet, Chef, Ansible and you&rsquo;re on the right track.
+ <a class="footnote-return" href="#fnref:iac"><sup>[return]</sup></a></li>
+<li id="fn:impostor">Compound this with the fact that I had only just learnt what a message broker even is and had only dealt with NoSQL document data stores in theory. I was a hot mess of self-doubt and (well-justified) impostor syndrome.
+ <a class="footnote-return" href="#fnref:impostor"><sup>[return]</sup></a></li>
+<li id="fn:job">An absurd thought in retrospect, but I&rsquo;ve had many such times over the years.
+ <a class="footnote-return" href="#fnref:job"><sup>[return]</sup></a></li>
+<li id="fn:causality">Be careful though, it&rsquo;s really not the <a href="https://philosophy.stackexchange.com/questions/24170/causality-vs-implication" target="_blank">same thing</a>.
+ <a class="footnote-return" href="#fnref:causality"><sup>[return]</sup></a></li>
+<li id="fn:failure">Like the one time I introduced a bug by refactoring someone else&rsquo;s story which halted an entire release on a massive 7+ dev squad project. Or when I pushed up private source code to my personal github in the same week that someone else got fired for the same thing.
+ <a class="footnote-return" href="#fnref:failure"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'sett-sh';
+      (function() {
+        if (window.location.hostname == "localhost")
+          return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/sw00">Sett Wai</a> 2018</p>
+    
+  </div>
+</section>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-61607130-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+  <script>renderMathInElement(document.body);</script>
+
+</body>
+</html>
+

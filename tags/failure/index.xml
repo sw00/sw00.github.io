@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software Dev on Sett Wai</title>
-    <link>https://sett.sh/tags/software-dev/</link>
-    <description>Recent content in Software Dev on Sett Wai</description>
+    <title>Failure on Sett Wai</title>
+    <link>https://sett.sh/tags/failure/</link>
+    <description>Recent content in Failure on Sett Wai</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
     <lastBuildDate>Tue, 28 Aug 2018 17:46:57 +0200</lastBuildDate>
     
-	<atom:link href="https://sett.sh/tags/software-dev/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sett.sh/tags/failure/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,16 +20,6 @@
       <guid>https://sett.sh/posts/2018/08/critical-failure/</guid>
       <description>The biggest critical failure that I&amp;rsquo;ve ever experienced on a project happened on the first week of 2014 and caused a recurring outage that lasted a full four days.
 It was my very first large-scale, distributed production system with multi-national integrations and real-time messaging component. I had been on the project for 3 months and had inherited the tech lead role which I shared with a senior colleague who had joined after me.</description>
-    </item>
-    
-    <item>
-      <title>The Sublime Tool</title>
-      <link>https://sett.sh/posts/2018/08/the-sublime-tool/</link>
-      <pubDate>Tue, 21 Aug 2018 19:23:38 +0200</pubDate>
-      
-      <guid>https://sett.sh/posts/2018/08/the-sublime-tool/</guid>
-      <description>This was initially meant to be a technical post like I promised, but I was faced with several dilemmas:
- Any particular tech I write about will be obsolete by next Tuesday, the standard unit of time it takes for unlikely events to occur in computing.. There will always be much better resources elsewhere, because I&amp;rsquo;m not an expert in anything.  So instead of yet another tutorial on test-driven Ansible, Kafka or whatever the hottest web framework of the week, I present to you some great ideas that have a better shelf-life.</description>
     </item>
     
   </channel>
