@@ -8,7 +8,7 @@
 
 <meta property='og:title' content='Critical failure and the mechanics of causality - Sett Wai'>
 <meta property='og:description' content='The biggest critical failure that I&rsquo;ve ever experienced on a project happened on the first week of 2014 and caused a recurring outage that lasted a full four days.
-It was my very first large-scale, distributed production system with multi-national integrations and real-time messaging component. I had been on the project for 3 months and had inherited the tech lead role which I shared with a senior colleague who had joined after me.'>
+It was my very first large-scale, distributed production system with multi-national integrations and a real-time messaging component. I had been on the project for 3 months and had inherited the tech lead role which I shared with a senior colleague who had joined after me.'>
 <meta property='og:url' content='https://sett.sh/posts/2018/08/critical-failure/'>
 <meta property='og:site_name' content='Sett Wai'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='failure'><meta property='article:tag' content='software-dev'><meta property='article:published_time' content='2018-08-28T17:46:57&#43;02:00'/><meta property='article:modified_time' content='2018-08-28T17:46:57&#43;02:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@settface'><meta name='twitter:creator' content='@settface'>
@@ -99,7 +99,7 @@ on the first week of 2014 and caused a recurring outage that lasted a full four
 days.</p>
 
 <p>It was my very first large-scale, distributed production system with
-multi-national integrations and real-time messaging component.  I had been on
+multi-national integrations and a real-time messaging component.  I had been on
 the project for 3 months and had inherited the tech lead role which I shared
 with a senior colleague who had joined after me. Suffice to say we lost a
 lifetime&rsquo;s worth of sleep that week.</p>
@@ -125,7 +125,7 @@ breaks in project continuity and working in a highly sophisticated tech stack
 nobody had any significant experience in<sup class="footnote-ref" id="fnref:nonprofit"><a href="#fn:nonprofit">4</a></sup>.</p>
 
 <p>There was a lot of firefighting and the problems seemed serious enough that I
-was absolutely terrified of not being able to cope.  So armed with a rigorous
+was absolutely terrified of not being able to cope. So armed with a rigorous
 report of about two dozen urgent &ldquo;tech debt&rdquo; items, I recommended a complete
 feature freeze as my first act as tech lead. Alas, greatness is not achieved by
 capitulating to the demands of harsh reality, so feature development was (of
@@ -133,9 +133,10 @@ course) prioritised above all else.</p>
 
 <p><img src="https://i.imgflip.com/1rojys.jpg#c" alt="Scotty from Star Trek" /></p>
 
-<p>It was certainly not ideal, but the journey to finding the root cause was not
-without some personal cognitive failures (jumping to conclusions is best done
-in an excited panic).</p>
+<p>It was in this context that we were faced with a spectacular outage. While
+certainly not ideal, the journey to finding the root cause was not without
+some personal cognitive failures (jumping to conclusions is best done in an
+excited panic).</p>
 
 <h1 id="the-technical-details">The technical details</h1>
 
@@ -223,9 +224,9 @@ be losing my job<sup class="footnote-ref" id="fnref:job"><a href="#fn:job">10</a
 <p>Then, as I tried eat my lunch with a dry mouth, fatigued, my thoughts wandered
 to something I had seen in the codebase during the whole ordeal. Some of the
 Celery workers were set to operate on a timer to complete <em>recurring</em> tasks
-instead of responding to messages. The purpose of these tasks were to generate
+instead of responding to messages. The purpose of these tasks was to generate
 reports from MongoDB records and they were set to run every 5 minutes to
-provide an almost real-time statistics. But why couldn&rsquo;t they be in realtime?</p>
+provide close-to real-time statistics. But why couldn&rsquo;t they be in realtime?</p>
 
 <p>Fuck.</p>
 
@@ -428,7 +429,7 @@ There can be many reasons why workers are failing and a bug in RabbitMQ could be
 
 <p>A deterministic system is <strong>necessary</strong> for the same inputs to produce the same outputs. However, if we negate the one condition then the other condition must also be negated for the to hold: if the same input doesn&rsquo;t produce the same output, then the system isn&rsquo;t deterministic.</p>
 
-<p>I&rsquo;d encourage you to look the <a href="https://en.wikipedia.org/wiki/Necessity_and_sufficiency#Definitions" target="_blank">truth table</a> on Wikpedia to grok these concepts a little better. I keep having to revisit them myself.</p>
+<p>I&rsquo;d encourage you to look at the <a href="https://en.wikipedia.org/wiki/Necessity_and_sufficiency#Definitions" target="_blank">truth table</a> on Wikpedia to grok these concepts a little better. I keep having to revisit them myself.</p>
 
 <h1 id="fin">Fin</h1>
 
