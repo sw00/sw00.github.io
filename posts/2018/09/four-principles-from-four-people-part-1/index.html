@@ -116,7 +116,7 @@ principle was not stated so explicitly, upon reflection I realised a lot of my
 own approaches to software development has been deeply influenced if not learnt
 directly from him. Let&rsquo;s see if I can lay out the main ideas below:</p>
 
-<p><strong>Adopt a bias for action</strong>. Not every decision the same impact, so minimise
+<p><strong>Adopt a bias for action</strong>. Not every decision has the same impact, so minimise
 its cost and overhead. It&rsquo;s perfectly acceptable (and fun) to play
 rock-paper-scissors with your pair to make low-impact decisions. This blew my
 mind the first time. But I&rsquo;ve used this often, though people sometimes find it
@@ -138,7 +138,7 @@ techniques and practices you can adopt to achieve this and it&rsquo;s pretty muc
 what all Agile, Continuous Delivery, Lean and DevOps is about in principle.</p>
 
 <p><strong>Make feedback a first-class citizen</strong>. Invest heavily in the things that will
-give you the right level of information very quickly. On technical level, this
+give you the right level of information very quickly. On a technical level, this
 means Test-Driven Development and Automation. Ask yourself: what is the
 expected impact of this decision and how do I verify it? Write that automated
 test, make friends with your testers and users, push for read access to
@@ -146,18 +146,19 @@ environments, send those emails to other teams and managers. This applies to
 meta-decisions too: retrospectives and one-on-one sessions create a feedback
 loop for how you&rsquo;re working as a team.</p>
 
-<p><strong>Leverage the last responsible moment</strong><sup class="footnote-ref" id="fnref:lrm"><a href="#fn:lrm">3</a></sup>. You will always have more or
+<p><strong>Leverage the last responsible moment</strong><sup class="footnote-ref" id="fnref:lrm"><a href="#fn:lrm">3</a></sup>. You will always have more or a
 higher grade of information later in time than you do right now. Given this,
 your best bet at making an informed decision is later, so all decisions that
 can be deferred should be. Seems simple, but I&rsquo;ve found the difficulty is
-actuall in deciding whether you can afford to defer it. Two things are helpful
+actually in deciding whether you can afford to defer it. Two things are helpful
 in this regard: divide-and-conquer and maximising options.</p>
 
 <p>The first approach is about investigating whether you can break the decision
 down into smaller, low-impact ones. For example, what if you simply load the
-data from a flat text file in memory for now instead of committing to a
+data from a flat text file in memory for now instead of committing to using a
 particular database? The second approach is about making the choices that will
-yield you more options. In a way this is closely related to the
+yield you more options. How about an interface or container object to abstract
+some details instead of a direct interaction? In a way this is closely related to the
 divide-and-conquer approach too because the former will likely yield more
 options anyway.</p>
 
@@ -216,11 +217,11 @@ later, armed with better understanding and more mastery.</p>
 <ol>
 <li id="fn:euphemism">I guess this is a euphemism for making slide decks together.
  <a class="footnote-return" href="#fnref:euphemism"><sup>[return]</sup></a></li>
-<li id="fn:cussing">Truly demonstrable value of expressing your authentic self.
+<li id="fn:cussing">Truly demonstrable value in expressing your authentic self.
  <a class="footnote-return" href="#fnref:cussing"><sup>[return]</sup></a></li>
 <li id="fn:lrm"><a href="https://blog.codinghorror.com/the-last-responsible-moment/" target="_blank">https://blog.codinghorror.com/the-last-responsible-moment/</a>
  <a class="footnote-return" href="#fnref:lrm"><sup>[return]</sup></a></li>
-<li id="fn:task">There was a time when I felt very strongly that my worth is tied to how quickly I can tick off boxes and objectives. The problem is that completing tasks quickly doesn&rsquo;t imply that they are valuable or even the right things to do.
+<li id="fn:task">There was a time when I felt very strongly that my worth is tied to how quickly I can tick off boxes and objectives (and I still regress sometimes). The problem is that completing tasks quickly doesn&rsquo;t imply that they are valuable or even the right things to do.
  <a class="footnote-return" href="#fnref:task"><sup>[return]</sup></a></li>
 <li id="fn:frustration">This often leads to a Sisyphian cycle of frustration-then-catharsis.
  <a class="footnote-return" href="#fnref:frustration"><sup>[return]</sup></a></li>
