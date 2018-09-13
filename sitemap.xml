@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sett.sh/posts/2018/09/four-principles-from-four-people-part-2/</loc>
+    <lastmod>2018-09-12T19:29:46+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sett.sh/posts/2018/09/four-principles-from-four-people-part-1/</loc>
     <lastmod>2018-09-09T15:43:11+02:00</lastmod>
   </url>
@@ -114,13 +119,13 @@
   
   <url>
     <loc>https://sett.sh/posts/</loc>
-    <lastmod>2018-09-09T15:43:11+02:00</lastmod>
+    <lastmod>2018-09-12T19:29:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sett.sh/tags/principles/</loc>
-    <lastmod>2018-09-09T15:43:11+02:00</lastmod>
+    <lastmod>2018-09-12T19:29:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -138,13 +143,13 @@
   
   <url>
     <loc>https://sett.sh/</loc>
-    <lastmod>2018-09-09T15:43:11+02:00</lastmod>
+    <lastmod>2018-09-12T19:29:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://sett.sh/tags/software-dev/</loc>
-    <lastmod>2018-09-09T15:43:11+02:00</lastmod>
+    <lastmod>2018-09-12T19:29:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -156,7 +161,7 @@
   
   <url>
     <loc>https://sett.sh/tags/techniques/</loc>
-    <lastmod>2018-09-09T15:43:11+02:00</lastmod>
+    <lastmod>2018-09-12T19:29:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
