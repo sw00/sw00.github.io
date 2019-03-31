@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
-    <lastBuildDate>Wed, 12 Sep 2018 19:29:46 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 25 Mar 2019 20:47:54 +0200</lastBuildDate>
     
 	<atom:link href="https://sett.sh/tags/software-dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Knowledge Workers Toolkit</title>
+      <link>https://sett.sh/posts/2019/03/a-knowledge-workers-toolkit/</link>
+      <pubDate>Mon, 25 Mar 2019 20:47:54 +0200</pubDate>
+      
+      <guid>https://sett.sh/posts/2019/03/a-knowledge-workers-toolkit/</guid>
+      <description>Knowledge work can have some pretty tricky characteristics that renders it distinct from physical work. For one, it defies quantification. While chefs, carpenters and other tradespeople can see their efforts take shape into concrete, material output, the knowledge worker is not so fortunate.
+Our raw materials are intangible - what tools could we use to manipulate them? Likewise, our output can seem quite ephemeral - did the thing we produced actually add value, by what measure1?</description>
+    </item>
     
     <item>
       <title>Four principles from four people (part 2)</title>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Philosophy on Sett Wai</title>
-    <link>https://sett.sh/tags/philosophy/</link>
-    <description>Recent content in Philosophy on Sett Wai</description>
+    <title>Insight on Sett Wai</title>
+    <link>https://sett.sh/tags/insight/</link>
+    <description>Recent content in Insight on Sett Wai</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
     <lastBuildDate>Mon, 25 Mar 2019 20:47:54 +0200</lastBuildDate>
     
-	<atom:link href="https://sett.sh/tags/philosophy/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sett.sh/tags/insight/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,17 +20,6 @@
       <guid>https://sett.sh/posts/2019/03/a-knowledge-workers-toolkit/</guid>
       <description>Knowledge work can have some pretty tricky characteristics that renders it distinct from physical work. For one, it defies quantification. While chefs, carpenters and other tradespeople can see their efforts take shape into concrete, material output, the knowledge worker is not so fortunate.
 Our raw materials are intangible - what tools could we use to manipulate them? Likewise, our output can seem quite ephemeral - did the thing we produced actually add value, by what measure1?</description>
-    </item>
-    
-    <item>
-      <title>On dilettantism, craft and mastery</title>
-      <link>https://sett.sh/posts/2018/07/on-dilettantism-craft-and-mastery/</link>
-      <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://sett.sh/posts/2018/07/on-dilettantism-craft-and-mastery/</guid>
-      <description>Hello, world. It&amp;rsquo;s been a while. There are some words that I&amp;rsquo;ve been holding on to that I&amp;rsquo;d like to set free. I&amp;rsquo;ve also been hiding somewhat and now taking some tentative steps back into the light. This is the first meager step. I have some more to follow. Please be gentle and patient with me.
-For continuity, I&amp;rsquo;ve cross-posted my last public appearance here.
-I&amp;rsquo;ve always been a generalist. And this has served me well.</description>
     </item>
     
   </channel>
