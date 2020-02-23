@@ -6,11 +6,21 @@
     <description>Recent content in Posts on Sett Wai</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
-    <lastBuildDate>Mon, 25 Mar 2019 20:47:54 +0200</lastBuildDate>
+    <copyright>© Sett Wai 2020</copyright>
+    <lastBuildDate>Sat, 22 Feb 2020 09:29:34 +0200</lastBuildDate>
     
 	<atom:link href="https://sett.sh/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sweating the Right Details</title>
+      <link>https://sett.sh/posts/2020/02/sweating-the-right-details/</link>
+      <pubDate>Sat, 22 Feb 2020 09:29:34 +0200</pubDate>
+      
+      <guid>https://sett.sh/posts/2020/02/sweating-the-right-details/</guid>
+      <description>Some things have been bothering me for a while now, about programming as an activity and the software engineering discipline from which it follows. As usual, I&amp;rsquo;ve been struggling for a while to articulate the insights that I&amp;rsquo;m grappling at. But let me finally commit to trying, at least.
+I&amp;rsquo;ve been spending a lot of time with infrastructure in my current role, wrangling automation, troubleshooting environments, configuring and optimising builds. Operating machinary that pushes buttons and pulls levers on other machines ad infinitum.</description>
+    </item>
     
     <item>
       <title>A Knowledge Workers Toolkit</title>

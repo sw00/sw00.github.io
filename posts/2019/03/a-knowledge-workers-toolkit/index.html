@@ -8,30 +8,36 @@
 
 <meta property='og:title' content='A Knowledge Workers Toolkit - Sett Wai'>
 <meta property='og:description' content='Knowledge work can have some pretty tricky characteristics that renders it distinct from physical work. For one, it defies quantification. While chefs, carpenters and other tradespeople can see their efforts take shape into concrete, material output, the knowledge worker is not so fortunate.
-Our raw materials are intangible - what tools could we use to manipulate them? Likewise, our output can seem quite ephemeral - did the thing we produced actually add value, and by what measure1?'>
+Our raw materials are intangible - what tools could we use to manipulate them? Likewise, our output can seem quite ephemeral - did the thing we produced actually add value, by what measure1?'>
 <meta property='og:url' content='https://sett.sh/posts/2019/03/a-knowledge-workers-toolkit/'>
 <meta property='og:site_name' content='Sett Wai'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='insight'><meta property='article:tag' content='software-dev'><meta property='article:tag' content='philosophy'><meta property='article:published_time' content='2019-03-25T20:47:54&#43;02:00'/><meta property='article:modified_time' content='2019-03-25T20:47:54&#43;02:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@settface'><meta name='twitter:creator' content='@settface'>
+
+
+<link href="https://sett.sh/index.xml" rel="alternate" type="application/rss+xml" title="Sett Wai" />
+
 <link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://sett.sh/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="canonical" href="https://sett.sh/posts/2019/03/a-knowledge-workers-toolkit/">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 
 </head>
 <body>
-
-
 <section class="section">
   <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://sett.sh/"><h1 class="title is-4">Sett Wai</h1></a>
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://sett.sh/">
+          <h1 id="nav-heading" class="title is-4">Sett Wai</h1>
+        </a>
       </div>
       <div class="nav-right">
-        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="email" href='mailto:exec@sett.sh' target='_blank' rel='noopener'>
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="email" href='mailto:exec@sett.sh'
+            target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
     
@@ -40,7 +46,8 @@ Our raw materials are intangible - what tools could we use to manipulate them? L
     
   </svg></i>
             </span>
-          </a><a class="level-item" aria-label="github" href='https://github.com/sw00' target='_blank' rel='noopener'>
+          </a><a class="level-item" aria-label="github" href='https://github.com/sw00'
+            target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
     
@@ -48,11 +55,21 @@ Our raw materials are intangible - what tools could we use to manipulate them? L
     
   </svg></i>
             </span>
-          </a><a class="level-item" aria-label="twitter" href='https://twitter.com/settface' target='_blank' rel='noopener'>
+          </a><a class="level-item" aria-label="twitter" href='https://twitter.com/settface'
+            target='_blank' rel='noopener'>
             <span class="icon">
               <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
     
     <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="rss" href='/posts/index.xml'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle>
     
   </svg></i>
             </span>
@@ -67,8 +84,8 @@ Our raw materials are intangible - what tools could we use to manipulate them? L
     </nav>
 
   </div>
+  <script src="/js/navicon-shift.js"></script>
 </section>
-
 <section class="section">
   <div class="container">
     <div class="subtitle tags is-6 is-pulled-right">
@@ -97,41 +114,40 @@ distinct from physical work. For one, it defies quantification. While chefs,
 carpenters and other tradespeople can see their efforts take shape into
 concrete, material output, the knowledge worker is not so fortunate.</p>
 
-<p>Our raw materials are intangible - what tools could we use to manipulate
-them? Likewise, our output can seem quite ephemeral - did the thing
-we produced actually add value, and by what measure<sup class="footnote-ref" id="fnref:value"><a href="#fn:value">1</a></sup>? Worst of all,
-the effort we spend<sup class="footnote-ref" id="fnref:effort"><a href="#fn:effort">2</a></sup> is elastic and difficult to wield in a
-consistent and predictable way. Time and attention spent often never
-translates directly into value extracted. Sometimes something as nebulous
-like a change of perspective can yield great benefits in orders of magnitude,
-but other times we may stutter and struggle for days to make any
-progress<sup class="footnote-ref" id="fnref:parkinsons"><a href="#fn:parkinsons">3</a></sup>.</p>
+<p>Our raw materials are intangible - what tools could we use to manipulate them?
+Likewise, our output can seem quite ephemeral - did the thing we produced
+actually add value, by what measure<sup class="footnote-ref" id="fnref:value"><a href="#fn:value">1</a></sup>? Worst of all, our effort<sup class="footnote-ref" id="fnref:effort"><a href="#fn:effort">2</a></sup>
+is elastic and difficult to wield in a consistent and predictable way.  Effort
+spent does not always translate into value extracted. Often something as
+nebulous as a change of perspective can yield great benefits in orders of
+magnitude, but other times stutter and struggle for days to achieve a
+basic goal<sup class="footnote-ref" id="fnref:parkinsons"><a href="#fn:parkinsons">3</a></sup>.</p>
 
 <p>Despair. How are we to cope with this and take control of our own faculties?
-What tools can we build to apply to our problems? Perhaps by applying a little
+What tools can we build to apply to our problems? By applying a little
 metacognition (thinking about how we&rsquo;re thinking), we can be a bit more
-deliberate and maybe obtain some tools for thought.</p>
+deliberate and perhaps obtain some tools for thought.</p>
 
 <h1 id="mental-models">Mental Models</h1>
 
-<p>Arguably the closest thing to real tools we have are the mental models we
-employ when working on a problem. This is true is the most general sense, from
-changing a tyre to analysing a dataset. We&rsquo;re always using an abstraction to
-make sense of the world. It helps us to make decisions that will give us the
-outcome we want. Success depends greatly on how closely the mental model we
-employ corresponds to the external world.</p>
+<p>Arguably the closests thing to tools we have are the mental models we employ
+when working on a task. This is true is the most general sense, from changing a
+tyre to analysing a dataset. We&rsquo;re always using an abstraction to make sense of
+the world and help us to make decisions that will give us the outcome we want.
+Success depends greatly on how closely the mental model we employ corresponds
+to the external world.</p>
 
 <p>All models have limitations, however. They&rsquo;re always bounded approximations
-since we&rsquo;re only human and not omiscient: we can&rsquo;t keep the full description
-of the universe in our heads. So it&rsquo;s useful to be aware of the limitations
-and assumptions of the model we&rsquo;re using. Find the boundaries, so to speak,
-and we may expose some biases.</p>
+since we&rsquo;re only human and not omiscient: we can&rsquo;t keep the full description of
+the universe in our heads. So it&rsquo;s useful to be aware of the limitations and
+assumptions of the model we&rsquo;re using. Find the boundaries, so to speak, and we
+may expose our own biases.</p>
 
 <h2 id="bias">Bias</h2>
 
-<p>Bias in this case is the tendency for a mental model to favour certain
-outcomes when applied in a context. I don&rsquo;t think this is categorically bad,
-as we&rsquo;re usually led to believe.</p>
+<p>Bias in this case is the tendency for a mental model to favour certain outcomes
+when applied in a context. I don&rsquo;t think this is categorically bad, as we&rsquo;re
+led to believe.</p>
 
 <p>To reason about this, I like to think of the oft-cited quote by George
 Box<sup class="footnote-ref" id="fnref:box"><a href="#fn:box">4</a></sup>:</p>
@@ -142,41 +158,41 @@ Box<sup class="footnote-ref" id="fnref:box"><a href="#fn:box">4</a></sup>:</p>
 
 <p>A cleaver is great at chopping meat but perhaps rather unwieldy for peeling
 potatoes. This is because a cleaver has the characteristic of being large and
-weighty, with a flat blade edge well suited for chopping motions. However, it lacks
-a small, sharp, angled blade that is more suited to slicing and peeling.</p>
+weighty, with a flat blade edge well suited for a chopping motion. It lacks the
+small, sharp, angled blade that is more suited to slicing and peeling.</p>
 
 <p>We can analyse mental models in the same way we do with real tools. But first
-it may be useful to say that they all exhibit at least two types of
-properties. Ones that are <em>direct</em> and <em>intentional</em> (by design), but also
-some traits that are <em>unintentional</em> and <em>emergent</em>.</p>
+it may be useful to say that they all exhibit at least two types of properties.
+Ones that are <em>direct</em> and <em>intentional</em> (by design), but also some properties that
+are <em>unintentional</em> and <em>emergent</em>.</p>
 
-<p>For example, using a metaphor of building construction to frame how software
-is created immediately brings us to think about it as a <em>sequential</em> process.
-One in which we lay blocks upon blocks of foundations until we complete a
-structure. The unintentional consquence of this model is that it hides the
-relationship between local and global components. Even worse, the metaphor
-offers no helpful description of how the software might behave. Its bias is
-the assumption that the whole is merely the sum of its parts. And that could
-obfuscate other aspects that may be important.</p>
+<p>For example, using a metaphor of building construction to frame how software is
+created immediately brings us to think about it as a <em>sequential</em> process. One in
+which we lay blocks upon blocks of foundations until we complete a structure.
+The unintentional consquence of this model is that it hides the relationship
+between local and global components. Even worse, the metaphor offers no helpful
+description of how the software might behave. Its bias is the assumption that
+the whole is merely the sum of its parts that obfuscates other aspects that
+may be important.</p>
 
 <h2 id="some-characteristics-of-models">Some Characteristics of Models</h2>
 
 <p>In order to be more mindful of the mental models we&rsquo;re using, it&rsquo;s useful to
-know some qualities we may want to evaluate them against<sup class="footnote-ref" id="fnref:context"><a href="#fn:context">5</a></sup>. I&rsquo;ve
-often used the following points to try and explore a problem space:</p>
+know some qualities we may want to evaluate them against<sup class="footnote-ref" id="fnref:context"><a href="#fn:context">5</a></sup>. I&rsquo;ve often
+used the following to try and explore a problem space:</p>
 
 <ul>
 <li><p><strong>Precision</strong>: does the model have a quality of precision that can be
-tweaked? Does precision mean being being more specific (semantics) or purely
+tweaked?  Does precision mean being being more specific (semantics) or purely
 in the mathematical/quantitative sense?</p></li>
 
 <li><p><strong>Fidelity</strong>: is there a threshold of quality we can increase/decrease to
-make different things noticable?</p></li>
+different things noticable?</p></li>
 
 <li><p><strong>Topology</strong>: is distance and connectedness important aspects of the model?</p></li>
 
 <li><p><strong>Boundaries</strong>: are there any delineations between things? Are they strong or
-weak/porous?</p></li>
+porous?</p></li>
 
 <li><p><strong>Temporality</strong>: does time play a central role in interactions? Are events
 sequential or asynchronous?</p></li>
@@ -194,12 +210,11 @@ interact? Are they fuzzy and probabilistic, or concrete and deterministic?</p></
 </ul>
 
 <p>These are just some general things that may be useful to think about when
-approaching a problem. They are incomplete (this is not an exhaustive list)
-but I&rsquo;ve often found some of them helpful when applied deliberately to problem solving.</p>
-
-<p>In future posts, I hope to expand on specific models that
-I&rsquo;ve used to make sense of phenomena I&rsquo;ve encountered in software
-development. Hopefully, they will useful or at least entertaining to explore.</p>
+approaching a problem. They are incomplete and this is not an exhaustive list
+but I&rsquo;ve often found some of them helpful when applied prudently in
+problem-solving.  In future posts, I hope to expand on specific models that
+I&rsquo;ve used to make sense of phenomena I&rsquo;ve encountered in software development.
+Hopefully, they will useful or at least entertaining to explore.</p>
 <div class="footnotes">
 
 <hr />
@@ -213,7 +228,7 @@ development. Hopefully, they will useful or at least entertaining to explore.</p
  <a class="footnote-return" href="#fnref:parkinsons"><sup>[return]</sup></a></li>
 <li id="fn:box">He was of course referring specifically to statistical models, but I think it can be generalised into &ldquo;all abstractions are wrong but some are useful&rdquo;.
  <a class="footnote-return" href="#fnref:box"><sup>[return]</sup></a></li>
-<li id="fn:context">Unfortunately, none of this is ultimately useful without a context, but they offer a good foundation for exploring.
+<li id="fn:context">Unfortunately, none of this is ultimately useful without a context, but they offer a good foundation.
  <a class="footnote-return" href="#fnref:context"><sup>[return]</sup></a></li>
 </ol>
 </div>
@@ -242,19 +257,34 @@ development. Hopefully, they will useful or at least entertaining to explore.</p
   </div>
 </section>
 
+
 <section class="section">
   <div class="container">
     <aside><div id="disqus_thread"></div></aside>
+  
+    <div id="show_comments"><a id="load_comments" class="button is-link">Load comments</a></div>
+  
     <script type="text/javascript">
       var disqus_shortname = 'sett-sh';
-      (function() {
-        if (window.location.hostname == "localhost")
-          return;
-
+      function disqus() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
+      }
+  
+      
+      var hash = window.location.hash.substr(1);
+      if ((hash.length > 8) && (hash.substring(0, 8) === "comment-")) {
+        disqus();
+        document.getElementById("show_comments").style.display = "none";
+      } else {
+        document.getElementById('load_comments').onclick = function() {
+          disqus();
+          document.getElementById("show_comments").style.display = "none";
+        };
+      }
+  
+
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   </div>
@@ -263,7 +293,7 @@ development. Hopefully, they will useful or at least entertaining to explore.</p
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/sw00">Sett Wai</a> 2018</p>
+    <p>© Sett Wai 2020</p>
     
   </div>
 </section>
@@ -275,6 +305,8 @@ ga('create', 'UA-61607130-1', 'auto');
 ga('send', 'pageview');
 </script>
 <script async src='//www.google-analytics.com/analytics.js'></script>
+
+
 
 
 

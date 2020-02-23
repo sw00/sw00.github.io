@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Engineering on Sett Wai</title>
+    <link>https://sett.sh/tags/software-engineering/</link>
+    <description>Recent content in Software Engineering on Sett Wai</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© Sett Wai 2020</copyright>
+    <lastBuildDate>Sat, 22 Feb 2020 09:29:34 +0200</lastBuildDate>
+    
+	<atom:link href="https://sett.sh/tags/software-engineering/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sweating the Right Details</title>
+      <link>https://sett.sh/posts/2020/02/sweating-the-right-details/</link>
+      <pubDate>Sat, 22 Feb 2020 09:29:34 +0200</pubDate>
+      
+      <guid>https://sett.sh/posts/2020/02/sweating-the-right-details/</guid>
+      <description>Some things have been bothering me for a while now, about programming as an activity and the software engineering discipline from which it follows. As usual, I&amp;rsquo;ve been struggling for a while to articulate the insights that I&amp;rsquo;m grappling at. But let me finally commit to trying, at least.
+I&amp;rsquo;ve been spending a lot of time with infrastructure in my current role, wrangling automation, troubleshooting environments, configuring and optimising builds. Operating machinary that pushes buttons and pulls levers on other machines ad infinitum.</description>
+    </item>
+    
+  </channel>
+</rss>

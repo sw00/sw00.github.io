@@ -4,132 +4,1804 @@
     <title>Sett Wai</title>
     <link>https://sett.sh/</link>
     <description>Recent content on Sett Wai</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo - gohugo.io</generator>
     <language>en</language>
-    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sw00&#34;&gt;Sett Wai&lt;/a&gt; 2018</copyright>
-    <lastBuildDate>Mon, 25 Mar 2019 20:47:54 +0200</lastBuildDate>
+    <contact>exec@sett.sh</contact>
+    <copyright>© Sett Wai 2020</copyright>
     
-	<atom:link href="https://sett.sh/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://sett.sh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sweating the Right Details</title>
+      <link>https://sett.sh/posts/2020/02/sweating-the-right-details/</link>
+      <pubDate>Sat, 22 Feb 2020 09:29:34 +0200</pubDate>
+      <author>Sett Wai</author>
+      <guid>https://sett.sh/posts/2020/02/sweating-the-right-details/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;Some things have been bothering me for a while now, about programming as an activity and the software engineering discipline from which it follows.
+As usual, I&amp;rsquo;ve been struggling for a while to articulate the insights that I&amp;rsquo;m grappling at. But let me finally commit to trying, at least.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been spending a lot of time with infrastructure in my current role, wrangling automation, troubleshooting environments, configuring and optimising builds.
+Operating machinary that pushes buttons and pulls levers on other machines ad infinitum.
+In this world the conventional notions of &lt;em&gt;software design&lt;/em&gt; and &lt;em&gt;architecture&lt;/em&gt; seem to be hidden away in a galaxy of configuration details, sharded amongst the plethora of YAML files, and smothered under the avalanche of container images, build scripts and orchestration tools.&lt;/p&gt;
+
+&lt;p&gt;We often justify all this work as necessary and driven by the inherent nature of the world large-scale, distributed systems we&amp;rsquo;re working in.
+Unfortunately, this distributed systems world is still a very messy space where technology, culture and methodology coalesces into some supermassive complex, adaptive web of socio-technical interactions.
+I tend to think of it as a giant multi-dimensional &lt;a href=&#34;https://en.wikipedia.org/wiki/Jenga&#34; target=&#34;_blank&#34;&gt;Jenga&lt;/a&gt; game.&lt;/p&gt;
+
+&lt;p&gt;I try to cope with this by doubling down on first principles. &lt;em&gt;Easy-isn&amp;rsquo;t-simple&lt;/em&gt;. Keep things &lt;em&gt;SOLID&lt;/em&gt;. Draw boxes and lines in my mind to model aggregates, properties and relations of the Rube Goldberg machine that produced these... log lines.
+It&amp;rsquo;s difficult to look at all this activity and not feel a little overwhelmed, a bit perplexed and suspicious about where we are and where we&amp;rsquo;re going as an industry and discipline.
+And then I see the tools we have been offered up to help us, and then... despair:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://landscape.cncf.io&#34; target=&#34;new&#34;&gt;&lt;img src=&#34;https://sett.sh/posts/2020/02/img/landscape.png&#34; alt=&#34;The &amp;quot;landscape&amp;quot; of cloud tools published by the CNCF&#34; /&gt;&lt;/a&gt;
+&lt;small&gt;The image above illustrates the ecosystem of tools used to build and maintain a modern software system today.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s difficult to reconcile the picture above with the notion of writing software as a problem solving activity, realised by humble text-editor and compiler/interpreter.
+But perhaps this vision was always only a myth, cooked up by well-meaning, rational people in ivory towers.&lt;/p&gt;
+
+&lt;p&gt;Still, it raises the question: how &lt;em&gt;did&lt;/em&gt; we get here?
+This feeling is quite possibly exemplified in the following statement by Jonathan Edwards, a respectable figure in the language design community.&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Programming today is exactly what you’d expect to get by paying an isolated subculture of nerdy young men to entertain themselves for fifty years. You get a cross between Dungeons &amp;amp; Dragons and Rubik’s Cube, elaborated a thousand-fold. &lt;a href=&#34;https://t.co/Mug9k7ioIG&#34;&gt;https://t.co/Mug9k7ioIG&lt;/a&gt;&lt;/p&gt;&amp;mdash; Jonathan Edwards (@jonathoda) &lt;a href=&#34;https://twitter.com/jonathoda/status/1024098312398536704?ref_src=twsrc%5Etfw&#34;&gt;July 31, 2018&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;As a nerdy guy who does indeed enjoy Dungeons and Dragons and Rubik&amp;rsquo;s Cube, this struck a chord. But it&amp;rsquo;s not an empty, inflammatory statement, as Mr Edwards expounds further:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I’m serious: Dungeons &amp;amp; Dragons requires mastery of an encyclopedia of minutiae; Rubik’s Cube is a puzzle requiring abstract mathematical thinking.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;While I don&amp;rsquo;t agree with the entire article, it&amp;rsquo;s a compelling description of sofware development in practice.
+Programming, being the most elementary activity in software development, does seem to superficially favour those who have the requisite level of monomania to master these &lt;a href=&#34;https://stackoverflow.com/questions/26021181/not-enough-entropy-to-support-dev-random-in-docker-containers-running-in-boot2d&#34; target=&#34;_blank&#34;&gt;minutaie&lt;/a&gt;.
+But far more insidious than that, is that it hints at a design philosophy and solution approach that is incrementalist and potentially suffering from &lt;a href=&#34;https://en.wikipedia.org/wiki/Einstellung_effect&#34; target=&#34;_blank&#34;&gt;Einstellung&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I suppose this isn&amp;rsquo;t a novel insight or complaint.
+Maybe it&amp;rsquo;s just a rite of passage that all developers must go through: a mid-career crisis that forms a better appreciation for software complexity, after getting burnt for the umpteenth time, finally learning...
+Fortunately, I know there are many movements, practices and tools before that offer an escape to lift us out of &amp;ldquo;The Tar Pit&amp;rdquo; and into the realm of deliberate design and problem solving.
+Things such as &lt;em&gt;&lt;a href=&#34;https://wiki.c2.com/?DomainDrivenDesign&#34; target=&#34;_blank&#34;&gt;Domain Driven Design&lt;/a&gt;&lt;/em&gt;, &lt;em&gt;Functional Reactive Programming&lt;/em&gt;, even the venerable &lt;em&gt;Design Patterns&lt;/em&gt; offer some escape routes.
+But putting them to practice often feels like trying to steer an oil tanker, against its own tremendous momentum.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m hopeful that these approaches will win. But not in the same way that Agile has &amp;ldquo;won&amp;rdquo;.
+Software problems cannot be solved by simply playing with stickies and JIRA reports.
+These are artifacts and tools of bureaucracy, of managing work from a production-based worldview&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:taylorism&#34;&gt;&lt;a href=&#34;#fn:taylorism&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, and ill-suited for problems of software engineering which is knowledge work.
+I&amp;rsquo;ve come to believe (cautiously) that the problems of software engineering are fundamentally about dealing with complexity in its many forms.
+This requires tools and approaches rooted in design, critical thinking and problem solving - general skills that people can excel at when given the chance to be people in their own full complexity instead of being hostage to methodology and process.&lt;/p&gt;
+
+&lt;p&gt;Generally, I think we&amp;rsquo;re reaching new levels of scale and complexity at which incremental approaches to design are insufficient.
+This will force the fore-runners in the field to return to the fundamentals and experiment.
+Perhaps the advent of &lt;a href=&#34;https://serverless-stack.com/chapters/what-is-serverless.html&#34; target=&#34;_blank&#34;&gt;serverless&lt;/a&gt; and &lt;a href=&#34;https://thenewstack.io/dark-a-new-programming-language-for-deployless-deployments/&#34; target=&#34;_blank&#34;&gt;deployless&lt;/a&gt; represents the start of this shift&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:low-code&#34;&gt;&lt;a href=&#34;#fn:low-code&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.
+Hopefully we can learn and apply that same philosophy in our own daily work.
+Hopefully, reaching for fundamentals can give us more leverage and help us sweat the right details. More on this later.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:taylorism&#34;&gt;writing software is more like research and design of a new car than assembling that car in a conveyor belt.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:taylorism&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:low-code&#34;&gt;there also seems to be a revival of &amp;ldquo;no-code&amp;rdquo; or &amp;ldquo;low-code&amp;rdquo; approaches and tools might belong here too (although I&amp;rsquo;m skeptical).
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:low-code&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
+    </item>
     
     <item>
       <title>A Knowledge Workers Toolkit</title>
       <link>https://sett.sh/posts/2019/03/a-knowledge-workers-toolkit/</link>
       <pubDate>Mon, 25 Mar 2019 20:47:54 +0200</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2019/03/a-knowledge-workers-toolkit/</guid>
-      <description>Knowledge work can have some pretty tricky characteristics that renders it distinct from physical work. For one, it defies quantification. While chefs, carpenters and other tradespeople can see their efforts take shape into concrete, material output, the knowledge worker is not so fortunate.
-Our raw materials are intangible - what tools could we use to manipulate them? Likewise, our output can seem quite ephemeral - did the thing we produced actually add value, by what measure1?</description>
+      <description></description>
+      
+      <content>
+
+&lt;p&gt;Knowledge work can have some pretty tricky characteristics that renders it
+distinct from physical work. For one, it defies quantification. While chefs,
+carpenters and other tradespeople can see their efforts take shape into
+concrete, material output, the knowledge worker is not so fortunate.&lt;/p&gt;
+
+&lt;p&gt;Our raw materials are intangible - what tools could we use to manipulate them?
+Likewise, our output can seem quite ephemeral - did the thing we produced
+actually add value, by what measure&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:value&#34;&gt;&lt;a href=&#34;#fn:value&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;? Worst of all, our effort&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:effort&#34;&gt;&lt;a href=&#34;#fn:effort&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
+is elastic and difficult to wield in a consistent and predictable way.  Effort
+spent does not always translate into value extracted. Often something as
+nebulous as a change of perspective can yield great benefits in orders of
+magnitude, but other times stutter and struggle for days to achieve a
+basic goal&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:parkinsons&#34;&gt;&lt;a href=&#34;#fn:parkinsons&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;Despair. How are we to cope with this and take control of our own faculties?
+What tools can we build to apply to our problems? By applying a little
+metacognition (thinking about how we&amp;rsquo;re thinking), we can be a bit more
+deliberate and perhaps obtain some tools for thought.&lt;/p&gt;
+
+&lt;h1 id=&#34;mental-models&#34;&gt;Mental Models&lt;/h1&gt;
+
+&lt;p&gt;Arguably the closests thing to tools we have are the mental models we employ
+when working on a task. This is true is the most general sense, from changing a
+tyre to analysing a dataset. We&amp;rsquo;re always using an abstraction to make sense of
+the world and help us to make decisions that will give us the outcome we want.
+Success depends greatly on how closely the mental model we employ corresponds
+to the external world.&lt;/p&gt;
+
+&lt;p&gt;All models have limitations, however. They&amp;rsquo;re always bounded approximations
+since we&amp;rsquo;re only human and not omiscient: we can&amp;rsquo;t keep the full description of
+the universe in our heads. So it&amp;rsquo;s useful to be aware of the limitations and
+assumptions of the model we&amp;rsquo;re using. Find the boundaries, so to speak, and we
+may expose our own biases.&lt;/p&gt;
+
+&lt;h2 id=&#34;bias&#34;&gt;Bias&lt;/h2&gt;
+
+&lt;p&gt;Bias in this case is the tendency for a mental model to favour certain outcomes
+when applied in a context. I don&amp;rsquo;t think this is categorically bad, as we&amp;rsquo;re
+led to believe.&lt;/p&gt;
+
+&lt;p&gt;To reason about this, I like to think of the oft-cited quote by George
+Box&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:box&#34;&gt;&lt;a href=&#34;#fn:box&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;All models are wrong but some are useful.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A cleaver is great at chopping meat but perhaps rather unwieldy for peeling
+potatoes. This is because a cleaver has the characteristic of being large and
+weighty, with a flat blade edge well suited for a chopping motion. It lacks the
+small, sharp, angled blade that is more suited to slicing and peeling.&lt;/p&gt;
+
+&lt;p&gt;We can analyse mental models in the same way we do with real tools. But first
+it may be useful to say that they all exhibit at least two types of properties.
+Ones that are &lt;em&gt;direct&lt;/em&gt; and &lt;em&gt;intentional&lt;/em&gt; (by design), but also some properties that
+are &lt;em&gt;unintentional&lt;/em&gt; and &lt;em&gt;emergent&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;For example, using a metaphor of building construction to frame how software is
+created immediately brings us to think about it as a &lt;em&gt;sequential&lt;/em&gt; process. One in
+which we lay blocks upon blocks of foundations until we complete a structure.
+The unintentional consquence of this model is that it hides the relationship
+between local and global components. Even worse, the metaphor offers no helpful
+description of how the software might behave. Its bias is the assumption that
+the whole is merely the sum of its parts that obfuscates other aspects that
+may be important.&lt;/p&gt;
+
+&lt;h2 id=&#34;some-characteristics-of-models&#34;&gt;Some Characteristics of Models&lt;/h2&gt;
+
+&lt;p&gt;In order to be more mindful of the mental models we&amp;rsquo;re using, it&amp;rsquo;s useful to
+know some qualities we may want to evaluate them against&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:context&#34;&gt;&lt;a href=&#34;#fn:context&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;. I&amp;rsquo;ve often
+used the following to try and explore a problem space:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Precision&lt;/strong&gt;: does the model have a quality of precision that can be
+tweaked?  Does precision mean being being more specific (semantics) or purely
+in the mathematical/quantitative sense?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Fidelity&lt;/strong&gt;: is there a threshold of quality we can increase/decrease to
+different things noticable?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Topology&lt;/strong&gt;: is distance and connectedness important aspects of the model?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Boundaries&lt;/strong&gt;: are there any delineations between things? Are they strong or
+porous?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Temporality&lt;/strong&gt;: does time play a central role in interactions? Are events
+sequential or asynchronous?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Directionality&lt;/strong&gt;: is there a direction in which things go important?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Authorship&lt;/strong&gt;: do we have direct control on the outcome or can we merely
+direct it by manipulating second-order things?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Economics&lt;/strong&gt;: is it useful to introduce an element of cost? What should be
+made cheaper or more expensive?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Relational&lt;/strong&gt;: are there traits that make certain things belong together or
+interact? Are they fuzzy and probabilistic, or concrete and deterministic?&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are just some general things that may be useful to think about when
+approaching a problem. They are incomplete and this is not an exhaustive list
+but I&amp;rsquo;ve often found some of them helpful when applied prudently in
+problem-solving.  In future posts, I hope to expand on specific models that
+I&amp;rsquo;ve used to make sense of phenomena I&amp;rsquo;ve encountered in software development.
+Hopefully, they will useful or at least entertaining to explore.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:value&#34;&gt;And does it retain value or will it diminish?
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:value&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:effort&#34;&gt;What does it mean to expend effort? Can &amp;ldquo;effort&amp;rdquo; be substituted for &amp;ldquo;attention&amp;rdquo; or something else?
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:effort&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:parkinsons&#34;&gt;Chances are, you&amp;rsquo;ve probably experienced a fair share of &lt;a href=&#34;https://en.wikipedia.org/wiki/Parkinson%27s_law&#34; target=&#34;_blank&#34;&gt;Parkinson&amp;rsquo;s Law&lt;/a&gt;, especially if you work in an office.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:parkinsons&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:box&#34;&gt;He was of course referring specifically to statistical models, but I think it can be generalised into &amp;ldquo;all abstractions are wrong but some are useful&amp;rdquo;.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:box&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:context&#34;&gt;Unfortunately, none of this is ultimately useful without a context, but they offer a good foundation.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:context&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>Four principles from four people (part 2)</title>
       <link>https://sett.sh/posts/2018/09/four-principles-from-four-people-part-2/</link>
       <pubDate>Wed, 12 Sep 2018 19:29:46 +0200</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2018/09/four-principles-from-four-people-part-2/</guid>
-      <description>This is the second part of a blog post in which I share four principles that I picked up from four different people I&amp;rsquo;ve been fortunate enough to have worked with. The last two principles are less well-formed, they&amp;rsquo;re still cooking, incubating so the ideas below will be rough, the writing will be (necessarily) context-rich and less concise. Bear with me🐻.
-If you haven&amp;rsquo;t read it yet, part 1 is over here.</description>
+      <description></description>
+      
+      <content>
+
+&lt;p&gt;This is the second part of a blog post in which I share four principles that I
+picked up from four different people I&amp;rsquo;ve been fortunate enough to have worked
+with. The last two principles are less well-formed, they&amp;rsquo;re still cooking,
+incubating so the ideas below will be rough, the writing will be (necessarily)
+context-rich and less concise. Bear with me🐻.&lt;/p&gt;
+
+&lt;p&gt;If you haven&amp;rsquo;t read it yet, part 1 is over &lt;a href=&#34;https://sett.sh/posts/2018/09/four-principles-from-four-people-part-1/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;know-what-you-know&#34;&gt;Know what you know&lt;/h1&gt;
+
+&lt;p&gt;I have a lifelong friend and pair programming buddy with whom I shared an
+assortment of (mis)adventures&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:adventure&#34;&gt;&lt;a href=&#34;#fn:adventure&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; during the year I spent in Brazil.
+We&amp;rsquo;d spend almost every day musing about every conceivable thing while breaking
+builds and getting up to no good. We&amp;rsquo;d talk about philosophy, physics, code,
+politics, transportation, sociology, food, municipal governance, world history,
+beer, linguistics, labour law, culture, technology, tax policy and music.
+Clearly someone who shares the child-like awe for knowledge and understands how
+strange it is that anything could be something at all.&lt;/p&gt;
+
+&lt;p&gt;We worked together on one particularly big, unruly AngularJS
+codebase. It was a large project with at least half a dozen squads all
+contributing to the same build and the feedback cycle was slow and
+expensive&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:electric-commander&#34;&gt;&lt;a href=&#34;#fn:electric-commander&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. One day, a change we made introduced a bug which
+halted the release for the entire project. I recall it happened a few times and
+it was due to our lack of understanding of the nuances in the often inscrutable
+JS code we encountered.&lt;/p&gt;
+
+&lt;p&gt;At this point, out of frustration, my friend resolved to learn the language
+itself from the ground up. He asked how JS scope worked and to my dismay, I
+found that I could not accurately explain it. At this point I had written a lot
+of JS, having experience in many generations of front-end JS dev from JQuery to
+BackboneJS, KnockoutJS and now finally AngularJS. However, I found I had no
+true understanding of lexical scope, variable hoisting and how the language
+handles &lt;em&gt;this&lt;/em&gt;. Despite this deficiency, I had gone years of being quite
+productive in it&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:js&#34;&gt;&lt;a href=&#34;#fn:js&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;. But now, in this nontrivial project we regularly
+encountered race conditions and unexpected behaviours that seemed impossible to
+trace.&lt;/p&gt;
+
+&lt;p&gt;I admired the remarkable need for exact understanding my friend had. He did
+not feel comfortable starting a task unless he had a thorough and complete
+understanding of the tools we were meant to use. This is because he&amp;rsquo;s a
+scientist: he created a programming language for his masters thesis&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:age&#34;&gt;&lt;a href=&#34;#fn:age&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;, a
+variant of ALGOL that used Portuguese keywords - perfect for teaching young
+Brazilian children computer programming. As such, he had the qualities and
+&lt;strong&gt;grit of a scientist&lt;/strong&gt; - a need to fully understand the theory in order to
+wield it effectively - whereas up until then I had always favoured pragmatic,
+exploratory approaches that relied primarily on large quantities of feedback.&lt;/p&gt;
+
+&lt;p&gt;Because of this trait, he would sometimes seem a little slower in comparison.
+But this is false. He would have have a much higher fidelity of knowledge which
+could then be employed confidently and therefore much faster because of less
+uncertainty. &lt;em&gt;By starting with first principles, you can inductively build up
+understanding of a subject&lt;/em&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:physicists&#34;&gt;&lt;a href=&#34;#fn:physicists&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;. This helps you avoid &lt;a href=&#34;https://pragprog.com/the-pragmatic-programmer/extracts/coincidence&#34; target=&#34;_blank&#34;&gt;coding by
+coincidence&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-model-for-learning&#34;&gt;A model for learning&lt;/h2&gt;
+
+&lt;p&gt;Another developer on the same project once asked me how I seemingly know so
+much and how to cope with the endless expanse of things to know. She was
+feeling very overwhelmed by the sheer amount of moving parts, intricacies,
+exceptions, assumptions, information, environments, code, plans involved in the
+project. To be quite honest, this is often also how I feel most of the time in
+any context.&lt;/p&gt;
+
+&lt;p&gt;So for the first time, I really tried to think explicitly about how I&amp;rsquo;ve
+approached tasks in the past. And then I drew something like this for her:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/B3mj4nF.jpg&#34; alt=&#34;A map of dots with some paths connected through them&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I was trying to represent knowledge as a map of infinite space. Each dot is a
+single bit of information (or fact, if you will) and the activity of completing a
+task is a journey through this space, connecting the dots. Some dots would get
+me closer to completion, other times I&amp;rsquo;d end up meandering a little. The point
+is that if I were to do this for a few years, some areas of knowledge would
+become more dense with &amp;ldquo;bits&amp;rdquo; of information I&amp;rsquo;ve gathered in completing tasks.
+Something resembling expertise would emerge, eventually&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:iterative-deepening&#34;&gt;&lt;a href=&#34;#fn:iterative-deepening&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;This model has one useful property: it allows you to &lt;strong&gt;consider things
+locally&lt;/strong&gt;, making you more resilient to information overload. A single task
+might require you to learn and understand a bit about the Linux file system, user
+permissions administration, Java security keystore, Chef infrastructure,
+rubycop, test-kitchen, Selenium e2e testing, organisational coding standards
+and async patterns. It would be difficult to fully understand the entire stack
+in detail.  But you only need to &lt;em&gt;find the next closest bit of information&lt;/em&gt; to
+get you closer to the end.&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t realise it at the time, but I was basically illustrating a crude,
+inefficient form of &lt;a href=&#34;https://en.wikipedia.org/wiki/Iterative_deepening_depth-first_search&#34; target=&#34;_blank&#34;&gt;iterative
+deepening&lt;/a&gt;,
+albeit with different conclusions&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:dreyfus&#34;&gt;&lt;a href=&#34;#fn:dreyfus&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;. Essentially, I was actually
+touching on a particular class of problem: &amp;ldquo;learning how to learn&amp;rdquo;. Something
+I&amp;rsquo;ve been actively trying to engage in lately. This is something Edward Kmett
+put into perspective quite well for me in this wonderful talk, &lt;a href=&#34;https://youtu.be/j0XmixCsWjs?t=14m6s&#34; target=&#34;_blank&#34;&gt;Stop Treading
+Water: Learning to Learn&lt;/a&gt; - check it out
+you won&amp;rsquo;t regret it.&lt;/p&gt;
+
+&lt;p&gt;So, how does the principle &lt;strong&gt;know what you know&lt;/strong&gt; emerge out of this? If you
+apply metacognition and think about knowledge, information and learning
+you can acquire some extra tools to continuously improve and grow.
+By taking a deliberate, critical approach to learning, you can situate yourself
+and the next step you need to take. So, through truly knowing what you know
+&lt;em&gt;you gain a comfortable point of departure for discovering what you don&amp;rsquo;t yet
+know&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;final-principle-never-compromise-sometimes&#34;&gt;Final Principle: Never compromise (sometimes)&lt;/h1&gt;
+
+&lt;p&gt;I was once designated tech lead for a small, 3-month greenfield project that
+never took off for reasons that requires another long, carefully worded post I
+don&amp;rsquo;t want to get into here. We were building an API to expose an upstream
+system&amp;rsquo;s functionality to a new channel&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ussd&#34;&gt;&lt;a href=&#34;#fn:ussd&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;. There were only two of us
+developers and it was in a tech stack neither of us were too familiar with. The
+perfect scenario for pairing.&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t meet my pair until the project was already in gear. He joined me two
+weeks in, but quickly discovered that he was staunch follower of Uncle Bob&amp;rsquo;s
+&lt;a href=&#34;https://www.safaribooksonline.com/library/view/clean-code/9780136083238/&#34; target=&#34;_blank&#34;&gt;Clean
+Code&lt;/a&gt;
+philosophy. Not only that, he also was quite ahead of me in his reading of
+&lt;a href=&#34;https://dzone.com/refcardz/getting-started-domain-driven&#34; target=&#34;_blank&#34;&gt;Domain Driven
+Design&lt;/a&gt;. So
+naturally, every decision we made needed to be motivated by a reference to
+either book.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, my patience and enthusiasm for the project and situation was at
+the lowest they&amp;rsquo;ve ever been. I was tired. I didn&amp;rsquo;t want to be there, and my
+usual love of travel was tainted by a homesickness I hadn&amp;rsquo;t felt so intensely
+before&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:accomodation&#34;&gt;&lt;a href=&#34;#fn:accomodation&#34;&gt;9&lt;/a&gt;&lt;/sup&gt;. I just wanted to get it done and go home. But there were
+so many problems and obstacles.&lt;/p&gt;
+
+&lt;p&gt;A substantial portion of the thing we were building was authentication and I
+recall a large point of contention about what the best abstraction to use. I
+favoured a quick and dirty implementation that would quickly allow us to move
+on and start the rest of the features. However, my pair was having none of that
+and we had an impasse that lasted a few days. During this time, the both of us
+ended up deeply researching the tech stack (.Net Core), clean/hexagonal
+architecture&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:clean&#34;&gt;&lt;a href=&#34;#fn:clean&#34;&gt;10&lt;/a&gt;&lt;/sup&gt; to make our case. Him, in favour of large effort in
+redesign, while I was trying to avoid this work altogether.&lt;/p&gt;
+
+&lt;p&gt;I conceded eventually and we dug into the effort. I think one of the problems
+was that this was rework and it pushed out our estimates and timelines.
+However, we came out with a much better grasp of the tech stack and very
+elegant domain model that allowed us to implement the next set of features much
+faster.&lt;/p&gt;
+
+&lt;p&gt;In retrospect, I&amp;rsquo;m quite grateful to him for being so stubborn and
+uncompromising. In fact, he told me once how has absolutely refused to work on
+features and changes that he didn&amp;rsquo;t believe in, quite literally telling product
+owners and clients to &amp;ldquo;find someone else&amp;rdquo; to implement them&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:prickly&#34;&gt;&lt;a href=&#34;#fn:prickly&#34;&gt;11&lt;/a&gt;&lt;/sup&gt;. I
+couldn&amp;rsquo;t help but find this quality quite admirable&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:pushover&#34;&gt;&lt;a href=&#34;#fn:pushover&#34;&gt;12&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;Being consistent and &lt;strong&gt;sticking to your principles&lt;/strong&gt; is important. Sometimes
+stubbornness is a valuable trait if you know quite clearly that your position
+will lead to better things for all. &lt;em&gt;But&lt;/em&gt;, it could be disastrous if you&amp;rsquo;re
+wrong. So it&amp;rsquo;s worth being critical and finding approaches worth defending,
+especially ones that are designed to help you discover when you&amp;rsquo;re wrong. A
+significant point in my anecdote is that we were both aligned in values (we
+both appreciated craftsmanship and clean code) and I believe that&amp;rsquo;s what
+eventually led to a good outcome. Being stubborn and misaligned will only lead
+to unhappiness for everyone.&lt;/p&gt;
+
+&lt;h1 id=&#34;fin&#34;&gt;Fin&lt;/h1&gt;
+
+&lt;p&gt;There you have it. Four principles, some more refined and concise than the
+others. To recap:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Go fast&lt;/strong&gt;: be wary of proportional effort/impact and optimise for feedback.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Go slow&lt;/strong&gt;: doing good requires struggle, a full appreciation of the
+context, and time.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Know what you know&lt;/strong&gt;: have a good grasp of your base knowledge and learn to learn.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Never compromise (sometimes)&lt;/strong&gt;: be stubborn if you&amp;rsquo;re sure it&amp;rsquo;ll lead to
+optimal outcomes.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;These will hopefully never become static and prescriptive. It&amp;rsquo;s not a
+manifesto. I think they&amp;rsquo;ll forever be works in progress that I&amp;rsquo;ll take with me
+and adapt. Most importantly, I like that they&amp;rsquo;re kind of artifacts that reflect
+the people and situations that have shaped my perspective.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:adventure&#34;&gt;I particularly enjoyed that long weekend trip to Uruguay we failed to adequately plan for (of course) and ended up interstate bus-hopping from Chuy all the way to Montevideo. Neither of us spoke Spanish, or had a concrete plan of how to get back i time for work next week except that we&amp;rsquo;ll hopefully find another bus or something.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:adventure&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:electric-commander&#34;&gt;The CI at that time was a single instance, crumbling old thing shared by the entire organisation. It was also a tightly coupled microservices architecture in that all changes culminated in changes in the UI layer.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:electric-commander&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:js&#34;&gt;Sorry. I was &lt;em&gt;that&lt;/em&gt; programmer. There is a lot of JS code I&amp;rsquo;ve written that I&amp;rsquo;m not proud of now.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:js&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:age&#34;&gt;&lt;a href=&#34;https://knowyourmeme.com/memes/by-age-35&#34; target=&#34;_blank&#34;&gt;By age 35&lt;/a&gt;, every programmer should have created their own programming language.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:age&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:physicists&#34;&gt;For some reason, I get the impression physicists are particularly good at this.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:physicists&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:iterative-deepening&#34;&gt;This is sufficient for a dilettante, but inadequate if you want to pursue true mastery of any field.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:iterative-deepening&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:dreyfus&#34;&gt;Admittedly, it&amp;rsquo;s not as rich as the the &lt;a href=&#34;https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition&#34; target=&#34;_blank&#34;&gt;Dreyfus skills acquisition&lt;/a&gt; model, but there is a certain simple elegance to it.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:dreyfus&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ussd&#34;&gt;Basically a stock trading system that could be accessed over USSD(it sounds more fancy than it actually is).
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ussd&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:accomodation&#34;&gt;The project was set up to be delivered on site in Nairobi, and I had just returned from a year abroad in Brazil just two weeks prior.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:accomodation&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:clean&#34;&gt;Sometimes also known as the &lt;em&gt;Ports and Adapters pattern&lt;/em&gt; or &lt;em&gt;Onion architecture&lt;/em&gt;. See &lt;a href=&#34;http://codingcanvas.com/hexagonal-architecture/&#34; target=&#34;_blank&#34;&gt;http://codingcanvas.com/hexagonal-architecture/&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:clean&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:prickly&#34;&gt;To be clear, he&amp;rsquo;s actually genuinely nice and not the prickly character my description makes him seem.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:prickly&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:pushover&#34;&gt;In contrast, I tend to be a pushover most of the time.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:pushover&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>Four principles from four people (part 1)</title>
       <link>https://sett.sh/posts/2018/09/four-principles-from-four-people-part-1/</link>
       <pubDate>Sun, 09 Sep 2018 15:43:11 +0200</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2018/09/four-principles-from-four-people-part-1/</guid>
-      <description>I&amp;rsquo;ve been extremely privileged to have worked with so many different people, in so many different contexts. Being exposed to such diversity has greatly benefited me and enriched my world view. But there&amp;rsquo;s also a little bit of everyone I&amp;rsquo;ve internalised - little tools, values and principles for which I am grateful.
-You get to learn a lot about a person just by pairing with them on a technical problem or even collaborating on something more strategic1.</description>
+      <description></description>
+      
+      <content>
+
+&lt;p&gt;I&amp;rsquo;ve been extremely privileged to have worked with so many different people, in so
+many different contexts. Being exposed to such diversity has greatly benefited
+me and enriched my world view. But there&amp;rsquo;s also a little bit of everyone I&amp;rsquo;ve
+internalised - little tools, values and principles for which I am grateful.&lt;/p&gt;
+
+&lt;p&gt;You get to learn a lot about a person just by pairing with
+them on a technical problem or even collaborating on something more
+strategic&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:euphemism&#34;&gt;&lt;a href=&#34;#fn:euphemism&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. You experience their idiosyncracies and philosophy. And
+in doing so, a little bit of your own idiosyncracies surface, like looking into
+the proverbial &amp;ldquo;mirror&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;d like to share four principles I picked up from four people that have had
+tremendous impact on me and how I approach work. Here below, I&amp;rsquo;ll introduce the
+first two.&lt;/p&gt;
+
+&lt;h1 id=&#34;go-fast&#34;&gt;Go fast&lt;/h1&gt;
+
+&lt;p&gt;Embodied by a certain ridiculously charismatic, Irish-American developer who
+wasn&amp;rsquo;t afraid of using some cusswords to get his point across&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:cussing&#34;&gt;&lt;a href=&#34;#fn:cussing&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;, from
+whom I learnt pretty much most of everything I know now. Although this
+principle was not stated so explicitly, upon reflection I realised a lot of my
+own approaches to software development has been deeply influenced if not learnt
+directly from him. Let&amp;rsquo;s see if I can lay out the main ideas below:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Adopt a bias for action&lt;/strong&gt;. Not every decision has the same impact, so minimise
+its cost and overhead. It&amp;rsquo;s perfectly acceptable (and fun) to play
+rock-paper-scissors with your pair to make low-impact decisions. This blew my
+mind the first time. But I&amp;rsquo;ve used this often, though people sometimes find it
+unnerving that I make some tech decisions by chance.&lt;/p&gt;
+
+&lt;p&gt;What&amp;rsquo;s the thinking behind this? Well, a lot of details in software development
+are indeed trivial from a larger perspective. Which test runner should we use?
+What should I really name this function? Who cares, they both have minimal
+impact &lt;em&gt;and&lt;/em&gt; cost little to change. Another thing to understand is that when
+starting a new project, feature or change you will be at the &lt;em&gt;highest level of
+ignorance&lt;/em&gt; such that you might not have the right understanding to competently
+choose one over the other: a random choice is just as good as an ignorant
+choice.&lt;/p&gt;
+
+&lt;p&gt;When framed this way, it follows that even making the wrong choice is valuable
+because it will reduce your level of ignorance. The trick is reducing the
+impact of wrong choices so you&amp;rsquo;re free to make mistakes for learning. There are
+techniques and practices you can adopt to achieve this and it&amp;rsquo;s pretty much
+what all Agile, Continuous Delivery, Lean and DevOps is about in principle.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Make feedback a first-class citizen&lt;/strong&gt;. Invest heavily in the things that will
+give you the right level of information very quickly. On a technical level, this
+means Test-Driven Development and Automation. Ask yourself: what is the
+expected impact of this decision and how do I verify it? Write that automated
+test, make friends with your testers and users, push for read access to
+environments, send those emails to other teams and managers. This applies to
+meta-decisions too: retrospectives and one-on-one sessions create a feedback
+loop for how you&amp;rsquo;re working as a team.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Leverage the last responsible moment&lt;/strong&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:lrm&#34;&gt;&lt;a href=&#34;#fn:lrm&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;. You will always have more or a
+higher grade of information later in time than you do right now. Given this,
+your best bet at making an informed decision is later, so all decisions that
+can be deferred should be. Seems simple, but I&amp;rsquo;ve found the difficulty is
+actually in deciding whether you can afford to defer it. Two things are helpful
+in this regard: divide-and-conquer and maximising options.&lt;/p&gt;
+
+&lt;p&gt;The first approach is about investigating whether you can break the decision
+down into smaller, low-impact ones. For example, what if you simply load the
+data from a flat text file in memory for now instead of committing to using a
+particular database? The second approach is about making the choices that will
+yield you more options. How about an interface or container object to abstract
+some details instead of a direct interaction? In a way this is closely related to the
+divide-and-conquer approach too because the former will likely yield more
+options anyway.&lt;/p&gt;
+
+&lt;h1 id=&#34;go-slow&#34;&gt;Go slow&lt;/h1&gt;
+
+&lt;p&gt;There are very few people who are so brilliant and smart that they consistently
+and effortlessly outperform everyone else. Give a smart person a task and they
+will complete it to perfect specification in very little time. But rarer yet
+are people who seem to possess innate wisdom and endless compassion. The
+following principle I learnt from someone who embodies the latter, who I
+consider a role model and had the tremendous privilege of being mentored by at
+first, but then in more official terms as my boss.&lt;/p&gt;
+
+&lt;p&gt;To be precise, the principle is better stated: &lt;strong&gt;go as slow as you need to&lt;/strong&gt;.
+Though it may seem in contradiction to the first principle, it&amp;rsquo;s actually quite
+complementary.&lt;/p&gt;
+
+&lt;p&gt;Tasks, goals, missions, objectives. They suffer from a certain effect: that
+once they are explicitly declared, they collapse the problem space and
+obfuscate the &lt;em&gt;a priori&lt;/em&gt; assumptions that were necessary to produce them.&lt;/p&gt;
+
+&lt;p&gt;There are always numerous ways to tackle a problem. One way is to solve the
+immediate, first-order situation that you&amp;rsquo;re presented with: if a building&amp;rsquo;s on
+fire, use the buckets you have to put it out.&lt;/p&gt;
+
+&lt;p&gt;An alternative is to take a step back and consider the context and processes
+that led to its emergence: the building is on fire, rebuild it with
+fire-resistant material or better yet, move it out of the volcano it&amp;rsquo;s in.&lt;/p&gt;
+
+&lt;p&gt;This requires a deeper wisdom and discipline than the first-order &amp;ldquo;task&amp;rdquo;
+oriented thinking&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:task&#34;&gt;&lt;a href=&#34;#fn:task&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;. It is worth taking a detour and spending the time to
+consider and work out a strategy to tackling these second-order problems. The
+kicker here is that &lt;em&gt;learning a problem takes time to struggle with it&lt;/em&gt;.
+Something I didn&amp;rsquo;t quite grok for ages because my de facto urge is feeling
+pressured to get the result as quickly as possible when presented with a
+challenge&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:frustration&#34;&gt;&lt;a href=&#34;#fn:frustration&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;What does this actually look like in real life? It means, spending the time to
+set up Continuous Delivery and path to production&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:path&#34;&gt;&lt;a href=&#34;#fn:path&#34;&gt;6&lt;/a&gt;&lt;/sup&gt; right (including the
+time it takes you to learn it). Or putting in effort to position a solid
+proposal for project that gives value not just to the client, but to the people
+working on it too. It means taking some longer detours to build some
+second-order tools to help you produce the first-order thing in higher quality,
+but faster later.&lt;/p&gt;
+
+&lt;p&gt;Learn that new technique, fail and master it. Didn&amp;rsquo;t meet your sprint
+commitments? There&amp;rsquo;s always next sprint, really. If something needs to
+absolutely be done, then trust that it will need to get done. If not now then
+later, armed with better understanding and more mastery.&lt;/p&gt;
+
+&lt;p&gt;There is tremendous value in going slow.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:euphemism&#34;&gt;I guess this is a euphemism for making slide decks together.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:euphemism&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:cussing&#34;&gt;Truly demonstrable value in expressing your authentic self.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:cussing&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:lrm&#34;&gt;&lt;a href=&#34;https://blog.codinghorror.com/the-last-responsible-moment/&#34; target=&#34;_blank&#34;&gt;https://blog.codinghorror.com/the-last-responsible-moment/&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:lrm&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:task&#34;&gt;There was a time when I felt very strongly that my worth is tied to how quickly I can tick off boxes and objectives (and I still regress sometimes). The problem is that completing tasks quickly doesn&amp;rsquo;t imply that they are valuable or even the right things to do.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:task&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:frustration&#34;&gt;This often leads to a Sisyphian cycle of frustration-then-catharsis.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:frustration&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:path&#34;&gt;This is one of my pet peeves. There have been so many projects that have lacked this basic concept of a &amp;ldquo;path to production&amp;rdquo;. Oh well, maybe the real path to production was all the friends we made along the way.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:path&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>Critical failure and the mechanics of causality</title>
       <link>https://sett.sh/posts/2018/08/critical-failure/</link>
       <pubDate>Tue, 28 Aug 2018 17:46:57 +0200</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2018/08/critical-failure/</guid>
-      <description>The biggest critical failure that I&amp;rsquo;ve ever experienced on a project happened on the first week of 2014 and caused a recurring outage that lasted a full four days.
-It was my very first large-scale, distributed production system with multi-national integrations and a real-time messaging component. I had been on the project for 3 months and had inherited the tech lead role which I shared with a senior colleague who had joined after me.</description>
+      <description></description>
+      
+      <content>
+
+&lt;p&gt;The biggest critical failure that I&amp;rsquo;ve ever experienced on a project happened
+on the first week of 2014 and caused a recurring outage that lasted a full four
+days.&lt;/p&gt;
+
+&lt;p&gt;It was my very first large-scale, distributed production system with
+multi-national integrations and a real-time messaging component.  I had been on
+the project for 3 months and had inherited the tech lead role which I shared
+with a senior colleague who had joined after me. Suffice to say we lost a
+lifetime&amp;rsquo;s worth of sleep that week.&lt;/p&gt;
+
+&lt;p&gt;The project itself was replete with problems.  In spite of the excellent
+technical foundations the original tech leads had laid, the core web
+application had been eroded into a (well-tested) ball of mud&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:mud&#34;&gt;&lt;a href=&#34;#fn:mud&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; and for
+various legitimate reasons nobody understood the current runtime architecture
+or how it got deployed to production&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:automation&#34;&gt;&lt;a href=&#34;#fn:automation&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;A Big Ball of Mud is a haphazardly structured, sprawling, sloppy,
+duct-tape-and-baling-wire, spaghetti-code jungle. These systems show
+unmistakable signs of unregulated growth, and repeated, expedient
+repair.&amp;rdquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:mud&#34;&gt;&lt;a href=&#34;#fn:mud&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Our client, the product owner, had been using us to bootstrap his startup and
+was aggressively chasing growth (i.e. features) without any reprieve for almost
+2 years&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:agile&#34;&gt;&lt;a href=&#34;#fn:agile&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;. All while leveraging a relatively inexperienced team that
+suffered high attrition, unhealthy levels of priority and context-switching,
+breaks in project continuity and working in a highly sophisticated tech stack
+nobody had any significant experience in&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:nonprofit&#34;&gt;&lt;a href=&#34;#fn:nonprofit&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;There was a lot of firefighting and the problems seemed serious enough that I
+was absolutely terrified of not being able to cope. So armed with a rigorous
+report of about two dozen urgent &amp;ldquo;tech debt&amp;rdquo; items, I recommended a complete
+feature freeze as my first act as tech lead. Alas, greatness is not achieved by
+capitulating to the demands of harsh reality, so feature development was (of
+course) prioritised above all else.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://i.imgflip.com/1rojys.jpg#c&#34; alt=&#34;Scotty from Star Trek&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It was in this context that we were faced with a spectacular outage. While
+certainly not ideal, the journey to finding the root cause was not without
+some personal cognitive failures (jumping to conclusions is best done in an
+excited panic).&lt;/p&gt;
+
+&lt;h1 id=&#34;the-technical-details&#34;&gt;The technical details&lt;/h1&gt;
+
+&lt;p&gt;The central part of the system was a few message broker(worker) processes that
+would respond directly to incoming user messages fast as possible&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:brokers&#34;&gt;&lt;a href=&#34;#fn:brokers&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;. In
+practice this was a bunch of Celery workers subscribed to queues on a RabbitMQ
+cluster and acting on data lookups to a MongoDB cluster. Because there was some
+business logic they needed to leverage, the workers lived in the same
+repository as the Django web application to keep things DRY. There was actually
+more than one type of worker and they were differentiated by means of &lt;a href=&#34;https://12factor.net/config&#34; target=&#34;_blank&#34;&gt;injected
+configuration&lt;/a&gt;. These workers were failing to
+reply to incoming messages and we didn&amp;rsquo;t know why. It was a highly critical
+problem, and in certain cases could lead to a potential life-and-death
+situation. No pressure.&lt;/p&gt;
+
+&lt;p&gt;We couldn&amp;rsquo;t find any issue in staging and we hadn&amp;rsquo;t deployed in the past two
+weeks. It was also clear that the usual approaches to debugging&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:debugging&#34;&gt;&lt;a href=&#34;#fn:debugging&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;
+could not be applied:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Production was orders of magnitude larger than staging (thanks MongoDB and
+&amp;ldquo;big&amp;rdquo; data)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I think it had almost reached the 300GB upper bound of the Linode disk we had
+provisioned for it. For testing, we had a job regularly sync a small subset of
+records from the production cluster to the much smaller staging instances.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;We couldn&amp;rsquo;t be sure what production actually looked like versus what it was
+meant to look like.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There was a collection of Puppet manifests and roles that were mostly
+inscrutable due to my lack of experience with its Ruby-esque DSL and best
+practices hadn&amp;rsquo;t quite emerged yet &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:puppet&#34;&gt;&lt;a href=&#34;#fn:puppet&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;. Also we didn&amp;rsquo;t know when last the
+scripts had been run and (to my abject horror) I found lots of dead code and
+traces of orphaned configuration on some of the servers themselves. This was
+also before the advent of docker and immutable, phoenix servers. In fact it was
+everybody&amp;rsquo;s first signficant exposure to Infrastructure as Code&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:iac&#34;&gt;&lt;a href=&#34;#fn:iac&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;,
+including my own&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:impostor&#34;&gt;&lt;a href=&#34;#fn:impostor&#34;&gt;9&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;assume-the-assumption-pose&#34;&gt;Assume the assumption pose&lt;/h1&gt;
+
+&lt;p&gt;So what could be done? Of course, I thought, this is exactly what automated
+build &amp;amp; deployment pipelines are for and promptly redeployed the latest trunk
+to production. It seemed to resolve the issue, we could see the messages being
+picked up and responded to...at least until the afternoon when it stubbornly
+reappeared. And so the pattern would repeat: deploy, fixed, broken again,
+deploy, fixed, broken again. The definition of insanity.&lt;/p&gt;
+
+&lt;p&gt;Toward the end of the day, mild panic had set in. We reviewed the brokers&amp;rsquo; code
+over and over, ran some production data through staging and observed the output
+by logs and queries to Mongo. I dreaded the seemingly inevitable realisation
+that something was wrong with the infrastructure itself. Perhaps the Linode, or
+even the way RabbitMQ is configured causing an edge case bug to appear (the two
+most opaque parts of the system for all of us).&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t sleep much that night and spent most of it reading up on everything I
+possibly could on message queues and brokers. I also looked through RabbitMQ&amp;rsquo;s
+mailing lists and issues looking for a mention of similar symptoms and in the
+hopes of finding a quick fix. Stackoverflow posts were made. And at some point
+I even logged into the Freenode IRC chatroom to ask for assistance.&lt;/p&gt;
+
+&lt;p&gt;Day two came around and it was clear to me that we had to pursue the nuclear
+option: we needed to rebuild production. This entailed provisioning new Linode
+machines and running the dubious Puppet scripts against them, then carefully
+teasing apart each Linode box and reconstituting them into the new clusters. I
+was also  wary of copying the problem over to the new environment so it was a
+manual process of educated &lt;em&gt;guesswork&lt;/em&gt; and &lt;em&gt;intuition&lt;/em&gt;, by poor developers with
+the minimal experience in system adminstration. There is no universe in which
+this is an even remotely pleasant experience, but we were forced to learn the
+system&amp;rsquo;s run state configuration quite intimately and make best-effort
+decisions where there were gaps and ambiguities...&lt;/p&gt;
+
+&lt;h1 id=&#34;it-follows&#34;&gt;It follows.&lt;/h1&gt;
+
+&lt;p&gt;I don&amp;rsquo;t remember all of it, but I believe this took us the next whole day and
+half. And it was unsuccessful. To my complete disbelief, the issue had managed
+to follow us into a fresh environment. I was too tired to even despair and
+mulled over the terrible consequences to come. I mentally prepared myself to
+the reality that this might cause the client&amp;rsquo;s company to collapse and I might
+be losing my job&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:job&#34;&gt;&lt;a href=&#34;#fn:job&#34;&gt;10&lt;/a&gt;&lt;/sup&gt;. Or so it goes.&lt;/p&gt;
+
+&lt;p&gt;Then, as I tried eat my lunch with a dry mouth, fatigued, my thoughts wandered
+to something I had seen in the codebase during the whole ordeal. Some of the
+Celery workers were set to operate on a timer to complete &lt;em&gt;recurring&lt;/em&gt; tasks
+instead of responding to messages. The purpose of these tasks was to generate
+reports from MongoDB records and they were set to run every 5 minutes to
+provide close-to real-time statistics. But why couldn&amp;rsquo;t they be in realtime?&lt;/p&gt;
+
+&lt;p&gt;Fuck.&lt;/p&gt;
+
+&lt;p&gt;The dots finally connected and coalesced into a single phrase I may have muttererd out loud: &amp;ldquo;fuck you, map reduce.&amp;rdquo;&lt;/p&gt;
+
+&lt;h1 id=&#34;two-facts-two-implications-one-conclusion&#34;&gt;Two facts, two implications, one conclusion&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Celery uses a backend broker to consume messages &lt;em&gt;and&lt;/em&gt; schedule tasks.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This means a worker with a scheduled, recurring task is not just a
+consumer, but pushes messages on to RabbitMQ.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The processing of reports is a long-running MapReduce across all records in
+the most populous MongoDB collection.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This collection has been growing at a linear rate since the project&amp;rsquo;s first
+deployment and so too would its running time.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Conlusion&lt;/strong&gt;: The time it took to run the reports had overtaken the scheduling
+period. The natural consequence of this was that on average, more tasks were
+being created than completed so over time the possibility of completing tasks
+trended toward zero.&lt;/p&gt;
+
+&lt;h1 id=&#34;the-solution&#34;&gt;The solution&lt;/h1&gt;
+
+&lt;p&gt;The immediate fix was trivial. Increase the scheduled period to
+be much longer than the time it takes to run the report. However, this was also
+a result of a flaw in our configuration there was no separation of concerns
+reflected in our RabbitMQ setup. It might have been an acceptable shortcut to
+have all brokers share the same queues in the beginning, but it wasn&amp;rsquo;t any
+longer. Lesson learnt, we gave the long-running workers their own queues.&lt;/p&gt;
+
+&lt;p&gt;But this only kicks the can down the road a little further. The complete
+solution was to to refactor the mapreduce code to operate on a rolling window
+of the records instead of the entire collection. Something I will never forget
+now whenever I&amp;rsquo;m  writing report-generating code.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;the-meta-solution&#34;&gt;The meta-solution&lt;/h1&gt;
+
+&lt;p&gt;The issue and its solution seems quite arbitrary in retrospect. Any dev better
+versed in RabbitMQ and Celery would have gleaned the problem immediately by
+inspecting the RabbitMQ admin console and its queues. But I wondered if we
+could&amp;rsquo;ve done better and how I could avoid dead-ends.&lt;/p&gt;
+
+&lt;p&gt;It turns out we can. It&amp;rsquo;s all about being a little more rigorous and explicit
+with our assumptions. Doing so exposes our biases when debugging and
+troubleshooting an issue.  If we felt like overachieving, it may also be
+helpful to slow down and actually write down:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;the behaviour we&amp;rsquo;re seeing&lt;/li&gt;
+&lt;li&gt;its potential causes&lt;/li&gt;
+&lt;li&gt;a list of hypotheses (along with observable behaviour that would falsify
+them)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Godmode would of course be writing this all in &lt;em&gt;first-order predicate calculus&lt;/em&gt;
+and you&amp;rsquo;d certainly make Djikstra proud. But having a general grasp of it
+should be good enough.&lt;/p&gt;
+
+&lt;p&gt;There is however an extremely important idea that has helped me in my
+thinking: the difference between &lt;em&gt;necessary&lt;/em&gt; and &lt;em&gt;sufficient&lt;/em&gt; conditions.&lt;/p&gt;
+
+&lt;h1 id=&#34;the-mechanics-of-causality&#34;&gt;The mechanics of causality&lt;/h1&gt;
+
+&lt;p&gt;In logic there is a notion of &lt;em&gt;implication&lt;/em&gt;, which for our intents and purposes
+can be regarded as analogous to causality&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:causality&#34;&gt;&lt;a href=&#34;#fn:causality&#34;&gt;11&lt;/a&gt;&lt;/sup&gt;. It&amp;rsquo;s often denoted with an arrow like so: &lt;span class=&#34;jsonly&#34;&gt;
+                  
+        \(\rightarrow{}\)
+    
+&lt;/span&gt;
+&lt;noscript&gt;
+                  
+        &lt;img style=&#34;display:inline;vertical-align:middle;&#34; src=&#34;https://latex.codecogs.com/gif.latex?\inline&amp;space;%5crightarrow%7b%7d&#34; title=&#34;\rightarrow{}&#34; /&gt;
+    
+&lt;/noscript&gt;
+&lt;/p&gt;
+
+&lt;p&gt;If we want to describe a scenario when a condition &lt;em&gt;A&lt;/em&gt; holds then condition
+&lt;em&gt;B&lt;/em&gt; also holds (that is if &lt;em&gt;A&lt;/em&gt; is true then &lt;em&gt;B&lt;/em&gt; is also true), it can be
+said that &lt;em&gt;A&lt;/em&gt; &lt;em&gt;implies&lt;/em&gt; &lt;em&gt;B&lt;/em&gt; and denoted as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&#34;jsonly&#34;&gt;
+     
+        $$A \rightarrow B$$
+    
+&lt;/span&gt;
+&lt;noscript&gt;
+     
+        &lt;div style=&#34;text-align:center;&#34;&gt;
+            &lt;img src=&#34;https://latex.codecogs.com/gif.latex?A%20%5crightarrow%20B&#34; title=&#34;A \rightarrow B&#34; /&gt;
+        &lt;/div&gt;
+    
+&lt;/noscript&gt;
+
+&lt;span class=&#34;jsonly&#34;&gt;
+     
+        $$antecedent \rightarrow consequent$$
+    
+&lt;/span&gt;
+&lt;noscript&gt;
+     
+        &lt;div style=&#34;text-align:center;&#34;&gt;
+            &lt;img src=&#34;https://latex.codecogs.com/gif.latex?antecedent%20%5crightarrow%20consequent&#34; title=&#34;antecedent \rightarrow consequent&#34; /&gt;
+        &lt;/div&gt;
+    
+&lt;/noscript&gt;
+&lt;/p&gt;
+
+&lt;p&gt;So one of the assumptions I had made implicitly can be denoted as follows:&lt;/p&gt;
+
+&lt;span class=&#34;jsonly&#34;&gt;
+     
+        $$\text{There is a bug in RabbitMQ} \rightarrow{} \text{Workers are failing to consume messages}$$
+    
+&lt;/span&gt;
+&lt;noscript&gt;
+     
+        &lt;div style=&#34;text-align:center;&#34;&gt;
+            &lt;img src=&#34;https://latex.codecogs.com/gif.latex?%5ctext%7bThere%20is%20a%20bug%20in%20RabbitMQ%7d%20%5crightarrow%7b%7d%20%5ctext%7bWorkers%20are%20failing%20to%20consume%20messages%7d&#34; title=&#34;\text{There is a bug in RabbitMQ} \rightarrow{} \text{Workers are failing to consume messages}&#34; /&gt;
+        &lt;/div&gt;
+    
+&lt;/noscript&gt;
+
+
+&lt;p&gt;This implication does hold. But we know that this wasn&amp;rsquo;t the root cause. So what was my logical error? Say we reversed the implication:&lt;/p&gt;
+
+&lt;span class=&#34;jsonly&#34;&gt;
+     
+        $$\text{Workers are failing to consume messages} \rightarrow{} \text{There is a bug in RabbitMQ}$$
+    
+&lt;/span&gt;
+&lt;noscript&gt;
+     
+        &lt;div style=&#34;text-align:center;&#34;&gt;
+            &lt;img src=&#34;https://latex.codecogs.com/gif.latex?%5ctext%7bWorkers%20are%20failing%20to%20consume%20messages%7d%20%5crightarrow%7b%7d%20%5ctext%7bThere%20is%20a%20bug%20in%20RabbitMQ%7d&#34; title=&#34;\text{Workers are failing to consume messages} \rightarrow{} \text{There is a bug in RabbitMQ}&#34; /&gt;
+        &lt;/div&gt;
+    
+&lt;/noscript&gt;
+
+
+&lt;p&gt;Now that doesn&amp;rsquo;t seem quite correct does it? This is because implication is a &lt;strong&gt;one way&lt;/strong&gt; street.
+There can be many reasons why workers are failing and a bug in RabbitMQ could be one of them, but whenever workers fail to consume messages it does not always &lt;em&gt;imply&lt;/em&gt; that is a bug in RabbitMQ. This is the notion of &lt;strong&gt;sufficiency&lt;/strong&gt;: &lt;em&gt;A&lt;/em&gt; is &lt;strong&gt;sufficient&lt;/strong&gt; for &lt;em&gt;B&lt;/em&gt;, but it doesn&amp;rsquo;t mean &lt;em&gt;B&lt;/em&gt; also implies &lt;em&gt;A&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Another relation is that of &lt;strong&gt;neccessity&lt;/strong&gt;. It&amp;rsquo;s a bit trickier because of the way the word is used in natural language. Here&amp;rsquo;s an example:&lt;/p&gt;
+
+&lt;span class=&#34;jsonly&#34;&gt;
+     
+        $$\text{The server is reachable} \rightarrow{} \text{The system is working correctly}$$
+    
+&lt;/span&gt;
+&lt;noscript&gt;
+     
+        &lt;div style=&#34;text-align:center;&#34;&gt;
+            &lt;img src=&#34;https://latex.codecogs.com/gif.latex?%5ctext%7bThe%20server%20is%20reachable%7d%20%5crightarrow%7b%7d%20%5ctext%7bThe%20system%20is%20working%20correctly%7d&#34; title=&#34;\text{The server is reachable} \rightarrow{} \text{The system is working correctly}&#34; /&gt;
+        &lt;/div&gt;
+    
+&lt;/noscript&gt;
+
+
+&lt;p&gt;Stated here, being able to reach the server is neither necessary nor sufficient condition for the system to be working correctly. However if we reversed the relation it works out. We can say that a the server being reachable is &lt;em&gt;necessary&lt;/em&gt; for the system to be working (I like to reverse the arrow instead of swapping the terms in this case because it helps me reason about it better).&lt;/p&gt;
+
+&lt;span class=&#34;jsonly&#34;&gt;
+     
+        $$\text{The server is reachable} \leftarrow{} \text{The system is working correctly}$$
+    
+&lt;/span&gt;
+&lt;noscript&gt;
+     
+        &lt;div style=&#34;text-align:center;&#34;&gt;
+            &lt;img src=&#34;https://latex.codecogs.com/gif.latex?%5ctext%7bThe%20server%20is%20reachable%7d%20%5cleftarrow%7b%7d%20%5ctext%7bThe%20system%20is%20working%20correctly%7d&#34; title=&#34;\text{The server is reachable} \leftarrow{} \text{The system is working correctly}&#34; /&gt;
+        &lt;/div&gt;
+    
+&lt;/noscript&gt;
+
+
+&lt;p&gt;Confused? Yeah, me too most of the time. The final idea is that a condition &lt;em&gt;A&lt;/em&gt; is both &lt;strong&gt;necessary&lt;/strong&gt; and &lt;strong&gt;sufficient&lt;/strong&gt; for &lt;em&gt;B&lt;/em&gt; if that is the only property that implies &lt;em&gt;B&lt;/em&gt;. This is the strongest implication and holds both ways, exclusively.&lt;/p&gt;
+
+&lt;span class=&#34;jsonly&#34;&gt;
+     
+        $$\text{The same input produces the same output} \Leftrightarrow{} \text{The system is deterministic}$$
+    
+&lt;/span&gt;
+&lt;noscript&gt;
+     
+        &lt;div style=&#34;text-align:center;&#34;&gt;
+            &lt;img src=&#34;https://latex.codecogs.com/gif.latex?%5ctext%7bThe%20same%20input%20produces%20the%20same%20output%7d%20%5cLeftrightarrow%7b%7d%20%5ctext%7bThe%20system%20is%20deterministic%7d&#34; title=&#34;\text{The same input produces the same output} \Leftrightarrow{} \text{The system is deterministic}&#34; /&gt;
+        &lt;/div&gt;
+    
+&lt;/noscript&gt;
+
+
+&lt;p&gt;A deterministic system is &lt;strong&gt;necessary&lt;/strong&gt; for the same inputs to produce the same outputs. However, if we negate the one condition then the other condition must also be negated for the to hold: if the same input doesn&amp;rsquo;t produce the same output, then the system isn&amp;rsquo;t deterministic.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;d encourage you to look at the &lt;a href=&#34;https://en.wikipedia.org/wiki/Necessity_and_sufficiency#Definitions&#34; target=&#34;_blank&#34;&gt;truth table&lt;/a&gt; on Wikpedia to grok these concepts a little better. I keep having to revisit them myself.&lt;/p&gt;
+
+&lt;h1 id=&#34;fin&#34;&gt;Fin&lt;/h1&gt;
+
+&lt;p&gt;In a lot of ways, this post has been years in the making. I&amp;rsquo;ve kept bits and
+pieces of this written and scattered around. The experience sticks out as one
+of those career defining moments where you completely get your ass kicked and
+come out a completely changed person. That said, I&amp;rsquo;ve definitely had many more
+failures&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:failure&#34;&gt;&lt;a href=&#34;#fn:failure&#34;&gt;12&lt;/a&gt;&lt;/sup&gt; than successes and will probably have many more. I suspect
+that everyone else has too - we just don&amp;rsquo;t share them enough.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s why I was finally compelled to complete this post when a smart friend
+shared her &lt;a href=&#34;https://medium.com/@alienelf/how-solve-a-hard-bug-617874a28326&#34; target=&#34;_blank&#34;&gt;bug-solving
+experiences&lt;/a&gt;
+(go &lt;a href=&#34;https://twitter.com/alienelf&#34; target=&#34;_blank&#34;&gt;follow her&lt;/a&gt;, she&amp;rsquo;s cool). Along with that
+Tesla worker posting about their &lt;a href=&#34;https://twitter.com/atomicthumbs/status/1032939617404645376&#34; target=&#34;_blank&#34;&gt;technical
+troubles&lt;/a&gt;, it
+seems critical failures are more prevalent than we may think. There are
+no perfect projects, or teams but I hope this adds to the discourse in a meaningful way.&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;How I Hacked My Morning Routine:&lt;br&gt;&lt;br&gt;I wiped a production database and now I am 100% definitely awake&lt;/p&gt;&amp;mdash; I Am Devloper (@iamdevloper) &lt;a href=&#34;https://twitter.com/iamdevloper/status/1034824761833136128?ref_src=twsrc%5Etfw&#34;&gt;August 29, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:mud&#34;&gt;&lt;a href=&#34;http://laputan.org/mud/&#34; target=&#34;_blank&#34;&gt;Brian Foote and Joseph Yoder, &lt;em&gt;Big Ball of Mud&lt;/em&gt;. Fourth Conference on Patterns Languages of Programs (PLoP &amp;lsquo;97/EuroPLoP &amp;lsquo;97) Monticello, Illinois, September 1997&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:mud&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:automation&#34;&gt;The dark side to automation is that it reduces the need for humans to understand what&amp;rsquo;s under the hood. There was a fully automated build and deploy pipeline and infrastructure defined in Puppet that nobody dared to touch for lack of expertise.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:automation&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:agile&#34;&gt;Unfortunately, they&amp;rsquo;d also been bitten with the Agile bug in the wrong way and seemed to think that it meant no process and spontaneous changing of priorities.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:agile&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:nonprofit&#34;&gt;The work was originally billed as non-profit, social impact which has a tendency to be viewed as trivial and thus staffed accordingly. Ironically, it was actually the most technically sophisticated project I&amp;rsquo;ve ever worked on in some respects.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:nonprofit&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:brokers&#34;&gt;At its peak, this could be up to 400 messages a minute, serviced by 2-4 worker processes.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:brokers&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:debugging&#34;&gt;Try to replicate the problem in another environment, then poke and prod until you find the cause.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:debugging&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:puppet&#34;&gt;For the record, Puppet is my least favourite Config Management tool even years later.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:puppet&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:iac&#34;&gt;Declaring your infrastructure in code so that it can be built and tested automatically just like your application software. There&amp;rsquo;s a whole set of principles and practices to this but think Puppet, Chef, Ansible and you&amp;rsquo;re on the right track.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:iac&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:impostor&#34;&gt;Compound this with the fact that I had only just learnt what a message broker even is and had only dealt with NoSQL document data stores in theory. I was a hot mess of self-doubt and (well-justified) impostor syndrome.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:impostor&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:job&#34;&gt;An absurd thought in retrospect, but I&amp;rsquo;ve had many such times over the years.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:job&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:causality&#34;&gt;Be careful though, it&amp;rsquo;s really not the &lt;a href=&#34;https://philosophy.stackexchange.com/questions/24170/causality-vs-implication&#34; target=&#34;_blank&#34;&gt;same thing&lt;/a&gt;.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:causality&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:failure&#34;&gt;Like the one time I introduced a bug by refactoring someone else&amp;rsquo;s story which halted an entire release on a massive 7+ dev squad project. Or when I pushed up private source code to my personal github in the same week that someone else got fired for the same thing.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:failure&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>The Sublime Tool</title>
       <link>https://sett.sh/posts/2018/08/the-sublime-tool/</link>
       <pubDate>Tue, 21 Aug 2018 19:23:38 +0200</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2018/08/the-sublime-tool/</guid>
-      <description>This was initially meant to be a technical post like I promised, but I was faced with several dilemmas:
- Any particular tech I write about will be obsolete by next Tuesday, the standard unit of time it takes for unlikely events to occur in computing.. There will always be much better resources elsewhere, because I&amp;rsquo;m not an expert in anything.  So instead of yet another tutorial on test-driven Ansible, Kafka or whatever the hottest web framework of the week, I present to you some great ideas that have a better shelf-life.</description>
+      <description></description>
+      
+      <content>
+
+&lt;p&gt;This was initially meant to be a technical post like I promised, but I was faced with several
+dilemmas:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Any particular tech I write about will be obsolete by &lt;a href=&#34;https://blogs.msdn.microsoft.com/larryosterman/2004/03/30/one-in-a-million-is-next-tuesday/&#34; target=&#34;_blank&#34;&gt;next
+Tuesday&lt;/a&gt;, the standard unit of time it takes for unlikely events to
+occur in computing..&lt;/li&gt;
+&lt;li&gt;There will always be much better resources elsewhere, because&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;m not an expert in anything.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So instead of yet another tutorial on test-driven Ansible, Kafka or whatever
+the hottest web framework of the week, I present to you some great ideas that
+have a better shelf-life.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I recently finished reading a rather interesting book, &lt;a href=&#34;https://www.goodreads.com/book/show/19075322-the-craftsman&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;The Craftsman&lt;/em&gt; by
+Richard Sennett&lt;/a&gt;.
+It had quite a lot of insights that reified some of the intuitions I&amp;rsquo;ve been
+having about the nature of work, learning, teaching, flow state, craft and
+mastery. Whether explicitly or not, I&amp;rsquo;d like to unpack some of
+the little big ideas in the book here as I digest them over time.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s impossible to speak of craft without mentioning tools. Tools will form an
+essential part of any technical pursuit. But in fact, most of any human
+activity will involve a tool of some kind. They&amp;rsquo;re so ubiquitous and obvious
+that we take them for granted, but it can be argued that our tools are an
+extension of our selves &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:kubrick&#34;&gt;&lt;a href=&#34;#fn:kubrick&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“When we bring down the hammer we do not feel that its handle has struck our
+palm but that its head has struck the nail... I have a subsidiary awareness
+of the feeling in the palm of my hand which is merged into my focal awareness
+of my driving in the nail.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;fit-for-purpose-vs-all-purpose&#34;&gt;Fit-for-purpose vs all-purpose&lt;/h1&gt;
+
+&lt;p&gt;In the book, Sennett reflects on the nature of tools and their role and
+significance to the craftsperson. He discovers that tools tend to fall into two
+broad categories and have distinct properties. The first is the
+&lt;em&gt;fit-for-purpose&lt;/em&gt; tool, which yields no ambiguity about how it should be used.
+He uses the Phillips head screwdriver as an example, but this notion can be
+easily extended to the realm of software development (think
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Domain-specific_language&#34; target=&#34;_blank&#34;&gt;DSL&lt;/a&gt;s or GNU
+tools). In the abstract, the notion of tools can be expanded to
+include shopping lists, agile methodologies or even musical scales.&lt;/p&gt;
+
+&lt;p&gt;The thing about &lt;em&gt;fit-for-purpose&lt;/em&gt; tools though, is that the very quality that
+makes them highly effective is also what makes them inflexible and rigid in
+their use. This imbues them with a bias toward singular, goal-oriented
+activities. But this is all obvious. It&amp;rsquo;s really why we have the mantra:
+&lt;em&gt;pick the right tool for the job&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A far more interesting object in contrast to the &lt;em&gt;fit-for-purpose&lt;/em&gt; tool, is the
+&lt;em&gt;all-purpose&lt;/em&gt; tool. Such a tool is challenging because it&amp;rsquo;s not immediate
+obvious how to use it most effectively&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:scalpels&#34;&gt;&lt;a href=&#34;#fn:scalpels&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. It&amp;rsquo;s often so basic in form that it
+seems incomplete but that makes it highly adaptable. It&amp;rsquo;s up to the wielder to
+improvise with it, adapting its form to meet the challenges they&amp;rsquo;re facing. Such
+a tool, Sennett argues, can be described as being &lt;em&gt;sublime&lt;/em&gt;: an object simple
+in form that can seemingly do anything&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:sublime&#34;&gt;&lt;a href=&#34;#fn:sublime&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Getting better at using tools comes to us, in part, when the tools challenge
+us, and this challenge often occurs just because the tools are not
+fit-for-purpose.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;An &lt;em&gt;all-purpose&lt;/em&gt; tool, by nature, demands a deeper engagement in the act of
+using it. Not only that, it demands a nuanced awareness of the situation to
+which the tool is applied. It can then be said that it&amp;rsquo;s well suited to open
+problems with high uncertainty and ambiguity that direct, mechanical
+application cannot solve.&lt;/p&gt;
+
+&lt;h1 id=&#34;cool-story-bro&#34;&gt;Cool story, bro?&lt;/h1&gt;
+
+&lt;p&gt;&amp;ldquo;Great, but how is this useful?&amp;rdquo;, you ask. What does it have to do with
+software development? Well, let&amp;rsquo;s break it down into some simple propositions
+about the nature of software development as a broad activity:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The details of developing software are extremely context-sensitive&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:context&#34;&gt;&lt;a href=&#34;#fn:context&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
+&lt;li&gt;The inputs to sofware development are numerous and ambiguous&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:ambiguous&#34;&gt;&lt;a href=&#34;#fn:ambiguous&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Seeing the connection yet? These insights should should raise a rather
+important question: what is the &lt;em&gt;sublime&lt;/em&gt;, &lt;em&gt;all-purpose&lt;/em&gt; tool in software
+development? One that&amp;rsquo;s adaptable and not tightly coupled to any tech stack,
+context or situation? Such an instrument would be the most valuable thing in a
+developer&amp;rsquo;s proverbial toolbox.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;d hazard that the closest thing to something like that is the &lt;em&gt;ability to
+reason&lt;/em&gt;. &lt;strong&gt;There is no substitute for thinking&lt;/strong&gt;. Again, so obvious it seems
+like a cop-out, but it&amp;rsquo;s difficult to understate how much we try to avoid using
+this tool. As individuals, reaching for the latest [buzzword] technology and as
+organisations, investing millions into process management and certifications.
+We succumb to the selective pressure of achieving arbitrary measures of
+success, rather than engaging with the things we&amp;rsquo;re trying to
+produce&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:arbitrary&#34;&gt;&lt;a href=&#34;#fn:arbitrary&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;We also tend to overlook that the &lt;em&gt;all-purpose&lt;/em&gt; tool is not static. It has the
+potential to be a precision instrument, like a surgeon&amp;rsquo;s scalpel. It can be
+mastered, adapted, the technique behind its use improved upon.&lt;/p&gt;
+
+&lt;h1 id=&#34;acquiring-precision&#34;&gt;Acquiring precision&lt;/h1&gt;
+
+&lt;p&gt;I think, to improve is equivalent to being more precise. Precision can&amp;rsquo;t be
+acquired if meaning is implicit, hidden and we&amp;rsquo;re being lackadaisical in the
+way we communicate. Based on this idea, we can smell that the use of language
+is a strong input to quality of thinking. See what I just did there?&lt;/p&gt;
+
+&lt;p&gt;So semantics are important. But fluency in language comes with exposure, so I&amp;rsquo;d
+encourage you to read. A lot. Read code, read documentation, read fiction, read
+magazines, read comics, film screenplays, cooking recipes, cereal box
+ingredients, lease agreements and contracts. And I don&amp;rsquo;t mean this only in
+an Anglo-centric sense. Read in the language that you think in. The benefit
+you want to acquire is ultimately richness in thought (knowing a lot of words
+is just a second-order effect).&lt;/p&gt;
+
+&lt;p&gt;What else? Pointing out the relationship between language and cognition and
+telling you to read isn&amp;rsquo;t exactly &amp;ldquo;precise&amp;rdquo;. True, there are more formal
+methods. I think being exposed to Propositional Logic&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:logic&#34;&gt;&lt;a href=&#34;#fn:logic&#34;&gt;7&lt;/a&gt;&lt;/sup&gt; is the best hack
+to mastering our sublime tools. In fact, I think Propositional Logic is probably
+the closest manifestation of a truly &amp;ldquo;all-purpose&amp;rdquo; tool. Simple in form and not
+immediately obvious in its use, but mastering it yields great benefit in every
+sphere of life. And it&amp;rsquo;s not just for developers either. Really, go get your
+grandma hooked on Propositional Logic, you won&amp;rsquo;t regret it&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:grandma&#34;&gt;&lt;a href=&#34;#fn:grandma&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:kubrick&#34;&gt;This idea is stretched to the most profound extent by Kubrick in that single, iconic, brilliant &lt;a href=&#34;https://youtu.be/mI3s5fA7Zhk&#34; target=&#34;_blank&#34;&gt;match cut&lt;/a&gt;.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:kubrick&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:scalpels&#34;&gt;Sennett uses the scalpel as an example: early surgeons learnt how to use the new precision instrument only by trial and error.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:scalpels&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:sublime&#34;&gt;Sennett writes, &amp;ldquo;the word &lt;em&gt;sublime&lt;/em&gt; standing, as it does in philosophy and the arts, for the potently strange. [The sentiment, with respect to tools in craftwork refer to] objects very simple in form that seemingly can do anything&amp;rdquo;.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:sublime&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:context&#34;&gt;As evidenced by the failure of methodologies like SaFE, SCRUM, etc. to produce consistent repeatable results. No other technical discipline sees such huge variances between input/outputs. The same practices and principles will yield completely different results when implemented by different teams, orgs or projects: there are no silver bullets.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:context&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:ambiguous&#34;&gt;Unlike physical production, which is more-or-less constrained by the natural laws of physics, building software is often more of a social process than it is an engineering discipline. There are an intractable amount of dependent variables that affect the production of working software. However, this does not mean we aren&amp;rsquo;t systematic or can&amp;rsquo;t be.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:ambiguous&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:arbitrary&#34;&gt;Part of the problem is that we view success as a one-dimensional &amp;ldquo;thing to be achieved&amp;rdquo; rather than an ongoing process with no discrete parts. Ironically, this &amp;ldquo;ends-means&amp;rdquo; thinking is a big obstacle in producing good work.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:arbitrary&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:logic&#34;&gt;A great introductory tutorial: &lt;a href=&#34;https://brilliant.org/wiki/propositional-logic/&#34; target=&#34;_blank&#34;&gt;https://brilliant.org/wiki/propositional-logic/&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:logic&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:grandma&#34;&gt;Realistically though, you should start with people you work with professionally.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:grandma&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>Dude, where&#39;s my flow?</title>
       <link>https://sett.sh/posts/2018/08/dude-wheres-my-flow/</link>
       <pubDate>Mon, 06 Aug 2018 00:00:00 +0000</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2018/08/dude-wheres-my-flow/</guid>
-      <description>Or, In Which Sett Loses His Shit.
-Toward the end of last year I realised had lost the ability to focus. To compound matters, I was in a position where focus wasn&amp;rsquo;t really required of me - I was tech lead, but in this case my resposibilities had drifted from the concerns of technical delivery and all of my energy was spent solely on trying to sort signal from noise1. Needless to say, it was an astronomically dysfunctional and frustrating environment.</description>
+      <description></description>
+      
+      <content>&lt;p&gt;Or, In Which Sett Loses His Shit.&lt;/p&gt;
+
+&lt;p&gt;Toward the end of last year I realised had lost the ability to focus. To
+compound matters, I was in a position where focus wasn&amp;rsquo;t really required
+of me - I was tech lead, but in this case my resposibilities had drifted from
+the concerns of technical delivery and all of my energy was spent solely on
+trying to sort signal from noise&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:politics&#34;&gt;&lt;a href=&#34;#fn:politics&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. Needless to say, it was an
+&lt;em&gt;astronomically&lt;/em&gt; dysfunctional and frustrating environment. And it was turning
+me into a person I did not want to be, full of bitterness, frustration and
+rage.&lt;/p&gt;
+
+&lt;p&gt;I coped with this, tried to add value as much I could&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:working-software&#34;&gt;&lt;a href=&#34;#fn:working-software&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; but I
+realised fundamentally that it was a futile endeavour - the greater environment
+did not seem to be conducive for this kind work. And I was drifting
+increasingly away from the craft and simultaneously burning out. So I left. It
+affected me so much that I wanted to leave tech altogether too.&lt;/p&gt;
+
+&lt;p&gt;I went camping alone for a little bit. I took my mountain bike. It seems
+there&amp;rsquo;s a great calm that descends when the only thing you need to focus on is
+preparing your next meal, or trying not to die. A state of mind not too
+dissimilar to the state called flow&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:flow&#34;&gt;&lt;a href=&#34;#fn:flow&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;. In which the world is abstracted
+away and you&amp;rsquo;re fully immersed in the present, because your reaction time
+matters...&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/avLHCv1.jpg#c&#34; alt=&#34;Puff adder in the MTB trail&#34; /&gt;
+*Friendly snek&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:puff-adder&#34;&gt;&lt;a href=&#34;#fn:puff-adder&#34;&gt;4&lt;/a&gt;&lt;/sup&gt; on the MTB trail. To brake or to bunny hop?&lt;/p&gt;
+
+&lt;p&gt;I survived. And I haven&amp;rsquo;t entirely given up tech. But I&amp;rsquo;m unsure if I&amp;rsquo;m
+currently able to engage in full time work in an office environment, especially
+for any arbitrary project or organisation. It would be unethical to dive into
+something I cannot fully commit myself to&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:commitment&#34;&gt;&lt;a href=&#34;#fn:commitment&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;. But I do plan to inch
+my way back into the dev community. You might see me around some meetups and
+conferences.&lt;/p&gt;
+
+&lt;p&gt;So what am I actually up to right now? I&amp;rsquo;m still investing in learning&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:unisa&#34;&gt;&lt;a href=&#34;#fn:unisa&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;
+and getting good at the craft on a deeper level. I&amp;rsquo;m working on my mental
+health. I&amp;rsquo;ll be dabbling in technical writing as well as sharing general
+software dev experiences on this blog.  There are some technical items in my
+backlog I&amp;rsquo;m working through. And a particular project I have an eye on that I
+quite fancy and looking for an opportunity be a part of.&lt;/p&gt;
+
+&lt;p&gt;TL;DR You&amp;rsquo;ll see me around.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:politics&#34;&gt;Too much politics, project management and general corporate madness meant I had little time to focus on helping devs learn and build.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:politics&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:working-software&#34;&gt;My colleagues will know working software is usually always my primary concern. I tend to obsess over it: &amp;ldquo;how do we build the right thing and what&amp;rsquo;s its path to prod?&amp;rdquo;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:working-software&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:flow&#34;&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Flow_(psychology&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Flow_(psychology&lt;/a&gt;)
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:flow&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:puff-adder&#34;&gt;It was a &lt;a href=&#34;https://en.wikipedia.org/wiki/Bitis_arietans&#34; target=&#34;_blank&#34;&gt;Puff Adder&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:puff-adder&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:commitment&#34;&gt;I have trouble committing to banality. It&amp;rsquo;s one of my biggest deficiencies. I&amp;rsquo;m trying to work on it.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:commitment&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:unisa&#34;&gt;I&amp;rsquo;m enrolled in a postgrad programme with modules: Logic Programming, Ontology Engineering, Machine Learning. This takes up most of my time, as well as re-learning a whole lot of Math I&amp;rsquo;ve always tried to avoid.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:unisa&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>On dilettantism, craft and mastery</title>
       <link>https://sett.sh/posts/2018/07/on-dilettantism-craft-and-mastery/</link>
       <pubDate>Mon, 30 Jul 2018 00:00:00 +0000</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2018/07/on-dilettantism-craft-and-mastery/</guid>
-      <description>Hello, world. It&amp;rsquo;s been a while. There are some words that I&amp;rsquo;ve been holding on to that I&amp;rsquo;d like to set free. I&amp;rsquo;ve also been hiding somewhat and now taking some tentative steps back into the light. This is the first meager step. I have some more to follow. Please be gentle and patient with me.
-For continuity, I&amp;rsquo;ve cross-posted my last public appearance here.
-I&amp;rsquo;ve always been a generalist. And this has served me well.</description>
+      <description></description>
+      
+      <content>&lt;p&gt;Hello, world. It&amp;rsquo;s been a while. There are some words that I&amp;rsquo;ve been holding on to
+that I&amp;rsquo;d like to set free. I&amp;rsquo;ve also been hiding somewhat and now taking
+some tentative steps back into the light. This is the first meager step.
+I have some more to follow. Please be gentle and patient with me.&lt;/p&gt;
+
+&lt;p&gt;For continuity, I&amp;rsquo;ve cross-posted my last public appearance
+&lt;a href=&#34;https://sett.sh/posts/2017/12/four-years-infinite-gratitude&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I&amp;rsquo;ve always been a generalist. And this has served me well. It seems there is
+utility in this trait, especially in the realm of tech, and consulting in
+particular. The essence of which is being able to effectively filter noise and
+extract value across many different contexts. It relies a lot on the ability to
+identify patterns and make disparate connections, analogies, metaphors, models.
+And the dilettante has an endless plethora of references to draw from.&lt;/p&gt;
+
+&lt;p&gt;Ever since I can remember, I&amp;rsquo;ve had the urge to learn about and understand
+everything I encounter. How do countries work and why do starfish have an
+uneven amount of limbs? What kind of tax system can support a standing army in
+the iron age&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:roman&#34;&gt;&lt;a href=&#34;#fn:roman&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;? It was probably inevitable that I&amp;rsquo;d end up in tech. But
+apart from that, I think it also translates into being more resilient to
+information overload than the average person. Evidently, this resilience
+seems well suited to the oft dysfunctional&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:programming-sucks&#34;&gt;&lt;a href=&#34;#fn:programming-sucks&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; world of
+software development.&lt;/p&gt;
+
+&lt;p&gt;All of this has an implicit trade-off (of course). It means I often
+never gain a deep understanding of topics, usually because I never needed to in
+order to be productive.  There&amp;rsquo;s always the next thing that demands my
+attention and &amp;ldquo;perfect is the enemy of good&amp;rdquo;, after all. This isn&amp;rsquo;t inherently
+a bad thing.  In business, good enough is an immensely valuable principle to
+optimise for&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:pareto&#34;&gt;&lt;a href=&#34;#fn:pareto&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;. However, after spending most of my life wading through the
+marshlands of ambient knowledge, I think it&amp;rsquo;s time to strive for more rigour and
+deliberate grit. This dilettante must strive to be a polymath, but never a
+specialist &amp;ndash; specialisation is for insects (and doctors).&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“A human being should be able to change a diaper, plan an invasion, butcher a
+hog, conn a ship, design a building, write a sonnet, balance accounts, build
+a wall, set a bone, comfort the dying, take orders, give orders, cooperate,
+act alone, solve equations, analyze a new problem, pitch manure, program a
+computer, cook a tasty meal, fight efficiently, die gallantly. Specialization
+is for insects.” &amp;ndash; Robert A. Heinlein&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:roman&#34;&gt;If you&amp;rsquo;re really &lt;a href=&#34;https://www.youtube.com/watch?v=JTuD149AbVI&#34; target=&#34;_blank&#34;&gt;interested&lt;/a&gt;.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:roman&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:programming-sucks&#34;&gt;For the canonical explanation of this, see &lt;a href=&#34;http://www.stilldrinking.com/programming-sucks&#34; target=&#34;_blank&#34;&gt;stilldrinking.com/programming-sucks&lt;/a&gt;, which captures some of the worst parts of working collaboratively to build software. To be clear, it&amp;rsquo;s definitely not &lt;em&gt;the worst thing ever&lt;/em&gt; but does have its own challenges.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:programming-sucks&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:pareto&#34;&gt;Going by the &lt;a href=&#34;https://www.investopedia.com/terms/p/paretoprinciple.asp&#34; target=&#34;_blank&#34;&gt;Pareto Principle&lt;/a&gt;, this strategy is suitable 80% of the time. But that remaining 20% can be critical. I hope to expound on this more in a later post.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:pareto&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>Four years, infinite gratitude</title>
       <link>https://sett.sh/posts/2017/12/four-years-infinite-gratitude/</link>
       <pubDate>Sun, 17 Dec 2017 00:00:00 +0000</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2017/12/four-years-infinite-gratitude/</guid>
-      <description>This is a cross-post of my original Facebook note, announcing my decision to exit TW and tech to take a break.
-San Antonio, Kampala, Porto Alegre, San Francisco, Nairobi, Johannesburg. These are the cities I have worked in during my time at ThoughtWorks (TW), that quirky (yet “elite”) global IT consultancy that Martin Fowler works for, little known outside of tech circles. Needless to say, I am the most privileged person I know.</description>
+      <description></description>
+      
+      <content>&lt;p&gt;This is a cross-post of my original Facebook &lt;a href=&#34;https://www.facebook.com/notes/sett-wai/four-years-infinite-gratitude/10154927130940684&#34; target=&#34;_blank&#34;&gt;note&lt;/a&gt;,
+announcing my decision to exit TW and tech to take a break.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;San Antonio, Kampala, Porto Alegre, San Francisco, Nairobi, Johannesburg. These
+are the cities I have worked in during my time at ThoughtWorks (TW), that
+quirky (yet “elite”) global IT consultancy that Martin Fowler works for, little
+known outside of tech circles. Needless to say, I am the most privileged person
+I know.&lt;/p&gt;
+
+&lt;p&gt;But the most significant things are not the travel and silly/fancy
+consulting stuff. It’s the extraordinary, dedicated, passionate people I’ve
+worked with and the incredible diversity of projects (and accents) I got to
+encounter at home and abroad. The sort of experiences I will remember for a
+lifetime and helped me grow.&lt;/p&gt;
+
+&lt;p&gt;Thank you, everyone.&lt;/p&gt;
+
+&lt;p&gt;In all of this, I kept thinking how crazy that I had found a company that allowed me to be me
+(mostly). Not only that, at times I would garner that I was not the biggest
+oddball in the room!&lt;/p&gt;
+
+&lt;p&gt;By New Year’s day next year, TW South Africa will cease
+to be and I have chosen to exit the company. It’s been one heck of a ride. I
+know a lot of you are disappointed and I’m truly sorry. I will be taking a
+break (a sabbatical, as it’s often called). Those who know me will also know my
+hangups about software development&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:swdev&#34;&gt;&lt;a href=&#34;#fn:swdev&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, consulting and basically white-collar
+office&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:office&#34;&gt;&lt;a href=&#34;#fn:office&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; work in general.&lt;/p&gt;
+
+&lt;p&gt;It’s time for Sett to slow down, breathe and
+re-orientate. To be frank, I haven’t been able to flow&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:flow&#34;&gt;&lt;a href=&#34;#fn:flow&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; in a while and while I’m
+not even sure if I’ll decide to remain in tech, I think my goals will always
+remain the same:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Build cool shit&lt;/li&gt;
+&lt;li&gt;Make the world suck less&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:swdev&#34;&gt;&lt;a href=&#34;http://www.stilldrinking.org/programming-sucks&#34; target=&#34;_blank&#34;&gt;http://www.stilldrinking.org/programming-sucks&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:swdev&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:office&#34;&gt;&lt;a href=&#34;http://www.aaronsw.com/weblog/officespace&#34; target=&#34;_blank&#34;&gt;http://www.aaronsw.com/weblog/officespace&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:office&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:flow&#34;&gt;&lt;a href=&#34;http://wiki.c2.com/?MentalStateCalledFlow&#34; target=&#34;_blank&#34;&gt;http://wiki.c2.com/?MentalStateCalledFlow&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:flow&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>Docker for Windows Users</title>
       <link>https://sett.sh/posts/2015/04/docker-for-windows-users/</link>
       <pubDate>Tue, 21 Apr 2015 00:00:00 +0000</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2015/04/docker-for-windows-users/</guid>
-      <description>As with many people my age (27), I primarily started working and playing on computers when graphical user interfaces were already the norm and Windows 95 had just hit the peak of popularity. Unless your parents were engineers of some sort, personal computers were generally seen as just a new home appliance. If you had a computer in the 90s, it most likely was a Packard Bell that came with Windows 95 and Intel Pentium processor of some sort.</description>
+      <description></description>
+      
+      <content>
+
+&lt;p&gt;As with many people my age (27), I primarily started working and playing on computers when graphical user interfaces were already the norm and Windows 95 had just hit the peak of popularity. Unless your parents were engineers of some sort, personal computers were generally seen as just a new home appliance. If you had a computer in the 90s, it most likely was a Packard Bell that came with Windows 95 and Intel Pentium processor of some sort.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/7hVG709.jpg#c&#34; alt=&#34;Packard Bell Pentium 133&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Low-res nostalgia bomb!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s in this context that a lot of us grew up. However, this puts us at a disadvantage. Just as today&amp;rsquo;s &amp;ldquo;apps&amp;rdquo;, tablets and smart phones can be seen as relegating the general purpose computer to &amp;ldquo;Facebook&amp;rdquo; machines, ours was the first wave of this trend. The capacitive touch screen is just the evolution of the computer mouse. This is a great thing, but if you&amp;rsquo;re a technologist, it&amp;rsquo;s important to understand that the Windows ecosystem is only one alternate timeline in the history of computing.&lt;/p&gt;
+
+&lt;p&gt;Below, I&amp;rsquo;ll go through a brief history of computing that&amp;rsquo;s important to understanding why you&amp;rsquo;d want to be familiar with *nix. Especially if you&amp;rsquo;re from the Windows 95 generation, like me. Bear with me as I dig through the alternate history, I&amp;rsquo;m trying to give you the same &lt;em&gt;ah-ha!&lt;/em&gt; moments I got when I first discovered this stuff.&lt;/p&gt;
+
+&lt;h1 id=&#34;in-the-beginning&#34;&gt;In the beginning&lt;/h1&gt;
+
+&lt;p&gt;In the beginning there was UNIX. Before affordable multi-purpose, personal computers, organisations often kept a single mainframe computer that users could connect to via &lt;a href=&#34;https://en.wikipedia.org/wiki/Computer_terminal#Dumb_terminals&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;dumb&amp;rdquo; terminals&lt;/a&gt;. This was based on the idea of &lt;a href=&#34;https://en.wikipedia.org/wiki/Time-sharing&#34; target=&#34;_blank&#34;&gt;time-sharing&lt;/a&gt; which was a way to give access to computing to many different people at the same time&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:internet&#34;&gt;&lt;a href=&#34;#fn:internet&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/lYUYMUG.jpg#c&#34; alt=&#34;Tron Classic&#34; /&gt;
+&lt;br/&gt;&lt;small&gt;A lot the original computing ideas are realised in &lt;a href=&#34;http://www.imdb.com/title/tt0084827/&#34; target=&#34;_blank&#34;&gt;Tron (1982)&lt;/a&gt;, albeit with artistic liberties taken.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;UNIX as an underlying operating system provided small programs that the user could execute in order to specific tasks. These were tied together by a unified file system for communicating and a shell scripting language for doing more complex work. All of this work was mediated by a master control program, the &lt;a href=&#34;https://en.wikipedia.org/wiki/Kernel_(operating_system)&#34; target=&#34;_blank&#34;&gt;kernel&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Eventually in the 80s, the IEEE got together and specified a family of standards for operating systems based on common patterns they saw in UNIX and UNIX-like OSes. They called these standards collectively, &lt;a href=&#34;https://en.wikipedia.org/wiki/POSIX&#34; target=&#34;_blank&#34;&gt;POSIX&lt;/a&gt;. Parallel to this, a set of common software engineering practices were embodied into something called the &lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34; target=&#34;_blank&#34;&gt;Unix Philosophy&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A lot of operating systems would come to be developed adhering to POSIX standards and and the Unix philosophy. The most famous of them being Linux&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:linux&#34;&gt;&lt;a href=&#34;#fn:linux&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; and FreeBSD&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:OSX&#34;&gt;&lt;a href=&#34;#fn:OSX&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/c/cd/Unix_timeline.en.svg#c&#34; alt=&#34;Unix timeline&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;ms-dos-windows&#34;&gt;MS-DOS &amp;amp; Windows&lt;/h1&gt;
+
+&lt;p&gt;In 1981 IBM launched the IBM Personal Computer with a microprocessor based on its flagship 8088 chip&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:8088&#34;&gt;&lt;a href=&#34;#fn:8088&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;. It also came installled a with tiny, simple operating system by Microsoft, called MS-DOS. Unlike UNIX-like operating systems around at the time, MS-DOS was single-task, single-user and certainly not POSIX compliant.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/0Z1RcIAl.jpg#c&#34; alt=&#34;MS-DOS box&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Personal computers became insanely popular for some reason and Microsoft introduced Windows as an addon to MS-DOS to compete with Apple&amp;rsquo;s very expensive Macintosh computer. The Macintosh featured a Graphical User Interface, the hottest new thing in technology. The rest is history: Windows dominated the personal computing space through OEM deals with hardware manufacturers and eventually every computer you could buy was either a Windows or a Mac. Meanwhile, UNIX-like OSes like Linux took firm hold of the Web Server space. The numbers are very &lt;a href=&#34;https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Market_share_by_category&#34; target=&#34;_blank&#34;&gt;telling&lt;/a&gt;: 91.25% of all personal computers are Windows, but only a third of servers on the web.&lt;/p&gt;
+
+&lt;h1 id=&#34;implications&#34;&gt;Implications&lt;/h1&gt;
+
+&lt;p&gt;What does this mean for us developers? Well, unless you&amp;rsquo;re strictly into systems development&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:systems-development&#34;&gt;&lt;a href=&#34;#fn:systems-development&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; only, the chances are you&amp;rsquo;ll be developing applications that need to deployed to a server. This means that 2 of 3 production environments will UNIX-like.&lt;/p&gt;
+
+&lt;h1 id=&#34;virtualisation&#34;&gt;Virtualisation&lt;/h1&gt;
+
+&lt;p&gt;Because a server rack is a specialised, expensive piece of equipment, a common technique to have a more efficient distribution of resources is to use &lt;a href=&#34;https://en.wikipedia.org/wiki/Hardware_virtualization&#34; target=&#34;_blank&#34;&gt;virtualisation&lt;/a&gt;. Virtualisation in the context of the data centre allows sharing the same physical resources amongst multiple instances of virtual servers.&lt;/p&gt;
+
+&lt;p&gt;Apart from efficiency, virtualisation provides other benefits such as the ability to easily automatically configure them. New virtual machines can be &amp;ldquo;spun up&amp;rdquo; and provisioned without buying additional hardware up-front. You can clone/back up entire machines and move them around. These are all features that are the backbone for Infrastructure as a Service (IaaS) which simply means you can pay a provider like &lt;a href=&#34;http://rackspace.com/&#34; target=&#34;_blank&#34;&gt;Rackspace&lt;/a&gt;, &lt;a href=&#34;https://www.linode.com/&#34; target=&#34;_blank&#34;&gt;Linode&lt;/a&gt; or &lt;a href=&#34;https://www.digitalocean.com/&#34; target=&#34;_blank&#34;&gt;Digital Ocean&lt;/a&gt; for a Virtual Private Server and have it almost immediately.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.vmware.com/files/images/diagrams/vmw-virtualization-defined.jpg#c&#34; alt=&#34;Virtualisation diagram&#34; /&gt;
+&lt;small&gt;VMWare explains virtualisation.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The most common scenario for virtualisation is on a hardware level: the host machine&amp;rsquo;s physical resources would be virtualised and available to the guest machine as &amp;ldquo;fake&amp;rdquo; hardware. Physical things like RAM, CPU, GPU and HDD could be virtualised. A host machine with 32GB RAM, 1TB HDD and 8 CPUs could possible provide 4 virtual machines of 8GB, 250GB and 2 vCPU. The problem however, is that these resources are fixed for the duration that the VM is running - if 1 VM is idle, it can&amp;rsquo;t share its 2vCPUS and 8GB RAM with the others. Also, each VM would need to boot up and run its own OS. This is still a little inefficient.&lt;/p&gt;
+
+&lt;p&gt;With regards to software development, virtualisation allows us to easily have consistent environments amongst locally through the use of &lt;a href=&#34;http://vagrantup.com/&#34; target=&#34;_blank&#34;&gt;vagrant&lt;/a&gt; and virtual box.&lt;/p&gt;
+
+&lt;h1 id=&#34;containers&#34;&gt;Containers&lt;/h1&gt;
+
+&lt;p&gt;Containers are just another term for &lt;a href=&#34;https://en.wikipedia.org/wiki/Operating-system-level_virtualization&#34; target=&#34;_blank&#34;&gt;Operating System Level Virtualisation&lt;/a&gt;. In contrast to whole-system or hardware virtualisation, containers do not provide abstraction for physical resources. Instead, they provide a virtual userspace&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:userspace&#34;&gt;&lt;a href=&#34;#fn:userspace&#34;&gt;6&lt;/a&gt;&lt;/sup&gt; and directory structure for applications to be run. These applications all run on the same operating system and kernel but are isolated from each other. One application in a container would generally not be able to see or manipulate files/memory in another container.&lt;/p&gt;
+
+&lt;p&gt;Operating System Level Virtualisation ala containers has a massive advantage over hardware virtualisation in that you can easily run hundreds of containers on a host without any problems since they share all physical resources of the host system.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://zdnet4.cbsistatic.com/hub/i/r/2014/10/02/c5ebe949-49e6-11e4-b6a0-d4ae52e95e57/resize/770x578/54eff63621dfffda68806c80e2a411a5/azuredockervmcontainer.png#c&#34; alt=&#34;Containers vs VMs&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The reason why containers are not very prominent in Windows ecosystem is because of its single-user, single-process history (I stand to be corrected on this). Also containerisation was never a core operating system feature and traditionally provided by third party, proprietary software in Windows.&lt;/p&gt;
+
+&lt;p&gt;On Linux, &lt;a href=&#34;https://en.wikipedia.org/wiki/Chroot&#34; target=&#34;_blank&#34;&gt;chroot&lt;/a&gt; had always provided this functionality until &lt;a href=&#34;https://wiki.archlinux.org/index.php/Linux_Containers&#34; target=&#34;_blank&#34;&gt;Linux Containers&lt;/a&gt;(LxCs) were created in 2008. LxCs leveraged a kernel feature called &lt;strong&gt;cgroups&lt;/strong&gt; to achieve a higher level of isolation adn security than what the crude chroot provided&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:cgroups&#34;&gt;&lt;a href=&#34;#fn:cgroups&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;If the previous paragraph is kind of hard to take in, you&amp;rsquo;re not alone. Containerisation in Linux is a highly technical topic and it seems to require a lot of arcane knowledge of the Linux operating systems that most developers wouldn&amp;rsquo;t know of. Let alone devs who are used to Windows. This was always the case until &lt;strong&gt;Docker&lt;/strong&gt; exploded on to the scene.&lt;/p&gt;
+
+&lt;h1 id=&#34;docker&#34;&gt;Docker&lt;/h1&gt;
+
+&lt;p&gt;Docker was started by &lt;a href=&#34;https://twitter.com/solomonstre&#34; target=&#34;_blank&#34;&gt;Solomon Hykes&lt;/a&gt; in 2013 while he was at &lt;a href=&#34;https://www.dotcloud.com/&#34; target=&#34;_blank&#34;&gt;dotCloud&lt;/a&gt;, a Platform as a Service Provider&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:PaaS&#34;&gt;&lt;a href=&#34;#fn:PaaS&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;. It was initially just a convenient wrapper around LxCs that stretched the metaphor of &amp;ldquo;shipping containers&amp;rdquo; for apps. The entire idea was that a docker container should run and look exactly the same on any host while being incredibly easy to automate and manage.&lt;/p&gt;
+
+&lt;p&gt;One distinctive feature docker has is that it uses the AUFS filesystem which is a layered file system. This simply means that AUFS can take a base image of filesystem and apply changes to it and each change will have it&amp;rsquo;s own unique layer. In practice this is effectively source control built into the file system, with additional features of being able to mount other filesystems into paths in it.&lt;/p&gt;
+
+&lt;p&gt;Another benefit is that it allows you to run applications for any Linux distribution on the same host. Since it effectively allows you to define the userspace/userland filesystem, you can deploy an app or service in a CentOS container and it will run just fine on an Ubuntu host for example.&lt;/p&gt;
+
+&lt;p&gt;More recently, Microsoft has actually developed a docker container for &lt;a href=&#34;https://registry.hub.docker.com/u/microsoft/aspnet/&#34; target=&#34;_blank&#34;&gt;ASP.NET&lt;/a&gt; so you can now deploy your .NET applications on a Linux host, or &lt;a href=&#34;http://weblogs.asp.net/scottgu/docker-and-microsoft-integrating-docker-with-windows-server-and-microsoft-azure&#34; target=&#34;_blank&#34;&gt;vice-versa&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;what-s-in-it-for-devs&#34;&gt;What&amp;rsquo;s in it for Devs?&lt;/h1&gt;
+
+&lt;p&gt;Just like Vagrant changed the way we provision and develop applications, Docker is the next step to solving the problem of &amp;ldquo;well, it works on my machine&amp;rdquo;. Using Docker, you can now have an multi-service environment that is almost exactly like production running on your local machine.&lt;/p&gt;
+
+&lt;p&gt;With &lt;a href=&#34;http://www.thoughtworks.com/insights/blog/microservices-nutshell&#34; target=&#34;_blank&#34;&gt;micro-services&lt;/a&gt; gaining popularity, we&amp;rsquo;re going to see a lot of software complexity pushed from away from dev effort and into the ops realm. But in order to remain effective devs, we&amp;rsquo;re going to have care a lot more about how our code is deployed and lives in production. This partially what the &lt;strong&gt;DevOps&lt;/strong&gt; movement is all about. Being able to deploy and run our entire application locally, make changes and trust that it will behave the same way in all stages is a massive win for developers and operations folk alike.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used docker to provide a local development environment for an app that consumed 7 individual services. By packaging each one into separate containers and then bundling them into a single vagrant box that can be fired up through a &lt;a href=&#34;http://www.thoughtworks.com/insights/blog/praise-go-script-part-i&#34; target=&#34;_blank&#34;&gt;go script&lt;/a&gt;. Sadly, we never got around to using it production but it greatly aided the production support and feature development.&lt;/p&gt;
+
+&lt;p&gt;It turns out Docker is also an extremely useful tool when dealing with critical database migrations. I&amp;rsquo;ve used it to create a snapshot of a production database and test migrations locally. Fortunately, it was small enough. Because of its underling AUFS filesystem, rolling back meant I simply could kill the container and firing it up again would revert it to its initial state.&lt;/p&gt;
+
+&lt;h1 id=&#34;end&#34;&gt;End&lt;/h1&gt;
+
+&lt;p&gt;I hope that this post has been helpful and gives you an idea of where docker fits in and how it came about. In the next post I&amp;rsquo;ll explain how to get started with Docker and get our hands dirty. Cheers.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:internet&#34;&gt;these principles would lay the foundation of computer interaction that we now call The Internet.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:internet&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:linux&#34;&gt;Linux needs no introduction but it was an attempt at making an operating system that was free, unlike UNIX which only massive organisations could afford.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:linux&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:OSX&#34;&gt;OSX is actually based off of BSD!
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:OSX&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:8088&#34;&gt;the 8088&amp;rsquo;s predecessor is the 8086, which the term x86 architecture comes from.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:8088&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:systems-development&#34;&gt;You know, like C, C++, Golang and Rust where knowing about memory management is more important than REST/SOAP calls and HTTP.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:systems-development&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:userspace&#34;&gt;also known as userland, it&amp;rsquo;s the context in which non-kernel programs and drivers are run. I&amp;rsquo;m unaware if Windows has the equivalent architecture. &lt;a href=&#34;https://en.wikipedia.org/wiki/Operating-system-level_virtualization&#34; target=&#34;_blank&#34;&gt;Read more&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:userspace&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:cgroups&#34;&gt;I won&amp;rsquo;t go into more technical detail here, mostly because I don&amp;rsquo;t know much about cgroups other than you can use it to limit memory and CPU resources to users and groups. See &lt;a href=&#34;https://wiki.archlinux.org/index.php/Cgroups&#34; target=&#34;_blank&#34;&gt;https://wiki.archlinux.org/index.php/Cgroups&lt;/a&gt; for more info.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:cgroups&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:PaaS&#34;&gt;Remember IaaS? PaaS is the same thing but instead of spinning up VMs with specified RAM, vCPUs and HDD you work with spinning up services like Apache, MySQL, MongoDB, Logstache with ports, credentials and loadbalancing directly.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:PaaS&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>A day in Gramado</title>
       <link>https://sett.sh/posts/2015/04/day-in-gramado/</link>
       <pubDate>Sat, 18 Apr 2015 00:00:00 +0000</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2015/04/day-in-gramado/</guid>
-      <description>Last Saturday three of my colleagues and I embarked on a day trip to the odd, little town of Gramado, Rio Grande du Sol.
-2h 11min is a lie! Does not include time getting inexplicably lost.
-You only need to drive about an hour towards Nova Petrópolis to understand why that particular area of Brazil is so odd. From the moment you leave the industrial cities of São Leopoldo and Novo Hamburgo1 the landscape changes drastically, revealing lush green, forested hills and meandering roads.</description>
+      <description></description>
+      
+      <content>
+
+&lt;p&gt;Last Saturday three of my colleagues and I embarked on a day trip to the odd, little town of Gramado, Rio Grande du Sol.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/4mshU4Ml.png&#34; alt=&#34;Google map of trip&#34; /&gt;
+&lt;small&gt;2h 11min is a lie! Does not include time getting inexplicably lost.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;You only need to drive about an hour towards Nova Petrópolis to understand why that particular area of Brazil is so odd. From the moment you leave the industrial cities of São Leopoldo and Novo Hamburgo&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:cities&#34;&gt;&lt;a href=&#34;#fn:cities&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; the landscape changes drastically, revealing lush green, forested hills and meandering roads. It seems like a totally different country.&lt;/p&gt;
+
+&lt;p&gt;We took a pit stop in Nova Petrópolis at a cafè that could just as well have been in some secluded German village&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:europe&#34;&gt;&lt;a href=&#34;#fn:europe&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. There was even a village fare taking place across the road. Oh! The roads! The roads had roundabouts with well tendered flowers in them and pedestrian crossings that cars would dilligently obey. But these were only tiny omens of things to come.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/9HfNwIml.jpg&#34; alt=&#34;Nova Petropolis&#34; /&gt;
+&lt;small&gt;Am I in Nova Petrólpolis or &lt;a href=&#34;http://www.imdb.com/title/tt0780536/&#34; target=&#34;_blank&#34;&gt;in Bruges&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/5X9XbhEl.jpg&#34; alt=&#34;Nova Petropolis&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Some sort of monument to Monty Python, I think.&lt;/small&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;You&amp;rsquo;ll know when you enter Gramado because the air itself seems different (I sweat it&amp;rsquo;s freshly imported from the Alps or something). Also everything will look like something out of a fairytale and the restaurant prices will skyrocket&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:caro&#34;&gt;&lt;a href=&#34;#fn:caro&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; - expect fondue and eisbein instead of the usual &lt;a href=&#34;https://en.wikipedia.org/wiki/Churrasco&#34; target=&#34;_blank&#34;&gt;churrasco&lt;/a&gt; here. Finally, there&amp;rsquo;ll also be a massive gantry of stone with &amp;ldquo;Gramado&amp;rdquo; written on it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/JGNTSMBl.jpg&#34; alt=&#34;Gantry when entering Gramado&#34; /&gt;
+&lt;small&gt;Another tribute monument to &lt;a href=&#34;https://www.youtube.com/watch?v=A8yjNbcKkNY&#34; target=&#34;_blank&#34;&gt;Monty Python and the Holy Grail&lt;/a&gt;.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The town presents itself as an idyllic european village where the rich spend their weekends and retire to. We actually spent some time driving around, following a vintage red bus that was showing tourists all the wonderful private property that could be found in the village.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/qHqmrztl.jpg&#34; alt=&#34;Private Home in Gramado&#34; /&gt;
+&lt;small&gt;Someone&amp;rsquo;s humble abode.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;Gramado is also the home of Mini Mundo, a theme park featuring miniature replicas of monuments and a generic European village with a train track. It also has some stores full of overpriced ceramic curios, perfect gifts for retirees in an old age home. And just for the younglings, there are some terrifying figures of anthropomorphic rabbits and depications of medieval village life&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:holidays&#34;&gt;&lt;a href=&#34;#fn:holidays&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/s25KOWel.jpg&#34; alt=&#34;Peter Rabbit&#39;s family&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Peter Rabbit&amp;rsquo;s family&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/gL1LDMtl.jpg&#34; alt=&#34;Medieval matron potty training a kid&#34; /&gt;
+&lt;small&gt;Medieval matron potty training a kid. Also, sign for the banheiros(bathrooms).&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/ZNNdrcCl.jpg&#34; alt=&#34;Mini Mundo&#34; /&gt;
+&lt;small&gt;Small World&lt;/small&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;lagos-negro-the-black-lake&#34;&gt;Lagos Negro: The Black Lake&lt;/h3&gt;
+
+&lt;p&gt;The next attraction simply deserved it&amp;rsquo;s own spooky title. Lagos Negro. The Black Lake. I spotted it on a sign during our drive through the village and was compelled to see this&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:lagos-negro&#34;&gt;&lt;a href=&#34;#fn:lagos-negro&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;The lake itself was quite small and not as dark and foreboding as I&amp;rsquo;d hoped. What was interesting is that it is actually situated on a hill. Of course it would have some paddle boats shaped as swans &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:paddle-boats&#34;&gt;&lt;a href=&#34;#fn:paddle-boats&#34;&gt;6&lt;/a&gt;&lt;/sup&gt; and surrounded by pristine vegetation.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/tH5mA7El.jpg&#34; alt=&#34;Resorts by the lake&#34; /&gt;
+&lt;small&gt;Lakeside resorts&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/wEKJdM7l.jpg&#34; alt=&#34;Swan Paddle boats&#34; /&gt;
+&lt;small&gt;Paddle boats&lt;/small&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;canela-cathederal-and-parque-caracol&#34;&gt;Canela: Cathederal and Parque Caracol&lt;/h3&gt;
+
+&lt;p&gt;About 10 minutes further out of Gramado, you&amp;rsquo;ll encounter the town of Canela (it means cinnamon in Portuguese). Although it&amp;rsquo;s difficult to know when Gramado actually ends and Canela begins, the latter actually sports its own tourist attractions: a stone cathedral in the village center and Caracol Parque, a large park featuring a beautiful valley with a waterfall.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/DMXHPL4l.jpg&#34; alt=&#34;Cathedral of Our Lady of Lourdes&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Cathedral of Our Lady of Lourdes a.k.a. Cathedral of Stone - my first visit to a gothic Cathedral!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/hotRgh6l.jpg&#34; alt=&#34;Cathedral interior&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Needless to say, a distinctly English Gothic cathedral is quite an unusual sight to see in Brazil.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/HQo0dsOl.jpg&#34; alt=&#34;Caracol Parque&#34; /&gt;
+&lt;small&gt;Map of Caracol Parque&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;Parque Caracol (Snail Park) features a beautiful valley and is one the main attractions in Canela. There are several view points and even a cable cart. We were there to see the waterfall however, and (carefully) walked the thousand or so steps down to the bottom. It was a wonderful way to end the day (although the walk back up almost killed us).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/cPApFMcl.jpg&#34; alt=&#34;Steps down to the waterfall in Parque Caracol&#34; /&gt;
+&lt;small&gt;Over a thousand steps! A lot more treacherous and steep in real life.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/FJP1lkil.jpg&#34; alt=&#34;Waterfall&#34; /&gt;
+&lt;small&gt;Cascada!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/Hw1PM4El.jpg&#34; alt=&#34;A critter on the steps&#34; /&gt;
+&lt;small&gt;This little critter bumbled passed me obviously on an important critter mission.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;There was a lot other awesome attractions in Canela we never got to visit. I wish we had skipped Gramado completely for Canela, because we passed several awesome looking amusement parks there we never got to visit. Including one with &lt;a href=&#34;https://www.youtube.com/watch?v=2LX0jWKbTpc&#34; target=&#34;_blank&#34;&gt;mechanical life-size dinosaurs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Overall, it&amp;rsquo;s well worth visiting this oddball part of Rio Grande even if it&amp;rsquo;s a bit tourist-y. It&amp;rsquo;s got beautiful landscapes and a pleasant maritime climate. I imagine this is where Brazilians go to visit foreign place without actually leaving the country.&lt;/p&gt;
+
+&lt;p&gt;That evening we had dinner at this crazy place back in Canela that gives you an all you can eat smorgasbord of food for only 35 reais.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/bEBZHr2l.jpg&#34; alt=&#34;Lots of food&#34; /&gt;
+&lt;small&gt;Ridiculous amount of food.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/1TgqrbLl.jpg&#34; alt=&#34;Red house&#34; /&gt;
+&lt;small&gt;Random red house&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/aZDijFsl.jpg&#34; alt=&#34;Animals playing instruments&#34; /&gt;&lt;br/&gt;
+&lt;small&gt;Remember this fable? Stuff of nightmares&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/nNtMyyql.jpg&#34; alt=&#34;Rabbits&#34; /&gt;
+&lt;small&gt;No, no, there is no escape from Easter here.&lt;/small&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:cities&#34;&gt;Smaller industrial cities just outside of Porto Alegre - we passed through them en route to Gramado. The road is a straight 3 lane highway through them. You already start seeing the Euro influence in Novo Hamburg (New Hamburg!?)
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:cities&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:europe&#34;&gt;I have actually never been to Europe. But I assume this is exactly how I imagine it. And I reckon residents of Nova Petrópolis and Gramado imagine it to be the same as everything seems to be carefully constructed to reflect that vision.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:europe&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:caro&#34;&gt;We made the mistake of eating at the 2nd resaturant we found because we were starving (1st was unaffordable at 80 reais per person, 2nd was still expensive). I recommend you pack a lunch, or find a food stall near the Lagos Negro park.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:caro&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:holidays&#34;&gt;Gramado is a hotspot during Easter and Christmas, the cheery residents love it so much they celebrate them for the entire month. Incidentally, acommodation prices hike up during those times too.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:holidays&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:lagos-negro&#34;&gt;At first the name, understandibly, puzzled my two friends who are from Uganda and Nigeria.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:lagos-negro&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:paddle-boats&#34;&gt;Every body of water I&amp;rsquo;ve encountered so far that&amp;rsquo;s bigger than a puddle seems to have these things.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:paddle-boats&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>Contributing to Pixelated</title>
       <link>https://sett.sh/posts/2015/04/contributing-to-pixelated/</link>
       <pubDate>Wed, 15 Apr 2015 00:00:00 +0000</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2015/04/contributing-to-pixelated/</guid>
-      <description>Last week the pixelated team here in TW Porto Alegre hosted a hack night which allowed me to dive into the enigmatic Pixelated Project and even submit a pull request! Read on if you&amp;rsquo;d like to know more.
-The majority of the world&amp;rsquo;s emails are hosted at large, centralised providers. Let&amp;rsquo;s face it, there is practically no substitute for Gmail and in light of the Snowden Revelations we&amp;rsquo;ve willingly sacrificed our privacy for convenience.</description>
+      <description></description>
+      
+      <content>
+
+&lt;p&gt;Last week the pixelated team here in TW Porto Alegre hosted a hack night which allowed me to dive into the enigmatic &lt;a href=&#34;https://pixelated-project.org/&#34; target=&#34;_blank&#34;&gt;Pixelated Project&lt;/a&gt; and even submit a pull request! Read on if you&amp;rsquo;d like to know more.&lt;/p&gt;
+
+&lt;p&gt;The majority of the world&amp;rsquo;s emails are hosted at large, centralised providers. Let&amp;rsquo;s face it, there is practically no substitute for Gmail and in light of the Snowden Revelations we&amp;rsquo;ve willingly sacrificed our privacy for convenience. Pixelated aims to provide a secure alternative that everyone can use.&lt;/p&gt;
+
+&lt;p&gt;#Architecture&lt;/p&gt;
+
+&lt;p&gt;Pixelated consists of two major components, namely the Pixelated &lt;a href=&#34;https://github.com/pixelated-project/pixelated-user-agent&#34; target=&#34;_blank&#34;&gt;User Agent&lt;/a&gt; and the &lt;a href=&#34;https://github.com/pixelated-project/leap_platform&#34; target=&#34;_blank&#34;&gt;LEAP Platform&lt;/a&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;The User Agent is practically a conventional web application that acts as your mail client. It consists of a really lightweight UI built with Foundation CSS framework and &lt;a href=&#34;https://github.com/flightjs/flight&#34; target=&#34;_blank&#34;&gt;FlightJS&lt;/a&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. For the back-end it&amp;rsquo;s using &lt;a href=&#34;https://twistedmatrix.com/trac/&#34; target=&#34;_blank&#34;&gt;Twisted&lt;/a&gt;, the infamous asynchronous web framework for Python. This acts as the backbone for sending and receiving emails from providers (hosts), either over plain old SMTP or &lt;a href=&#34;https://leap.se/soledad&#34; target=&#34;_blank&#34;&gt;soledad&lt;/a&gt; if your provider is a LEAP Platform.&lt;/p&gt;
+
+&lt;h1 id=&#34;get-it-run-it&#34;&gt;Get it, run it&lt;/h1&gt;
+
+&lt;p&gt;The Pixelated team has made it as easy as possible for anyone who&amp;rsquo;d like to dive in and contribute. I&amp;rsquo;m also really impressed by the progress they&amp;rsquo;ve made in just 9 months.&lt;/p&gt;
+
+&lt;p&gt;You&amp;rsquo;re going to need:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Git&lt;/li&gt;
+&lt;li&gt;Vagrant &amp;amp; Virtualbox&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You&amp;rsquo;ll want to clone the user agent repository from github into a directory of your choice:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git clone https://github.com/pixelated-project/pixelated-user-agent.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;There is a &lt;code&gt;Vagrantfile&lt;/code&gt; that will provision a local development environment for you. Be warned however, it will first download the LEAP base box from &lt;a href=&#34;https://downloads.leap.se/platform/vagrant/virtualbox/leap-wheezy.box&#34; target=&#34;_blank&#34;&gt;https://downloads.leap.se/platform/vagrant/virtualbox/leap-wheezy.box&lt;/a&gt; if you don&amp;rsquo;t have it already. If you&amp;rsquo;re unconcerned, just run:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;vagrant up&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the box is up, it also will provision it with Puppet - I had to do this several times because Puppet will still run even if there are failures. If you&amp;rsquo;re curious as to what puppet is doing, have a look in the &lt;code&gt;provisioning/&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;Provisioning will take almost 20 minutes so while that&amp;rsquo;s happening, head on over to the Pixelated dev provider at &lt;a href=&#34;https://dev.pixelated-project.org/&#34; target=&#34;_blank&#34;&gt;https://dev.pixelated-project.org/&lt;/a&gt; and sign up for an account.&lt;/p&gt;
+
+&lt;p&gt;Once the box has been provisioned you&amp;rsquo;ll need to run the go script&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; which will setup the npm and (bower)[&lt;a href=&#34;http://bower.io/&#34; target=&#34;_blank&#34;&gt;http://bower.io/&lt;/a&gt;] side of things:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;vagrant ssh
+cd service
+./go setup
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, just one more step to get it running. The user agent needs to connect to a provider that you&amp;rsquo;ve registered with. In traditional terms, this is meant to be your ISP&amp;rsquo;s mail server, Gmail, company&amp;rsquo;s Exchange server&amp;hellip;except this is a Pixelated provider.&lt;/p&gt;
+
+&lt;p&gt;To fire up the user agent, just type the command below and follow the prompts. Be sure to enter &lt;code&gt;dev.pixelated-project.org&lt;/code&gt; as the host and ensure your path to the certificate is correct. I had trouble initially because I had typos in my path that I didn&amp;rsquo;t find.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pixelated-user-agent --host 0.0.0.0 -lc /vagrant/service/pixelated/certificates/dev.pixelated-project.org.ca.crt&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;contribute&#34;&gt;Contribute&lt;/h1&gt;
+
+&lt;p&gt;The team has &lt;a href=&#34;https://github.com/pixelated-project/pixelated-user-agent/issues?q=is%3Aopen+is%3Aissue+label%3ABeginners&#34; target=&#34;_blank&#34;&gt;a few dozen issues&lt;/a&gt; on github tagged with &lt;strong&gt;Beginner&lt;/strong&gt; label to encourage contributions from newbies. Simply pick one and dive right in, the problems range from changing icons to exposing some property via RESTful API. So great little pieces of work that can take less than 3 hours to complete (what&amp;rsquo;s more interesting is that it allows you get to know the codebase better)&lt;/p&gt;
+
+&lt;p&gt;I found the project really easy to get into and just getting your first pull request to be accepted feels awesome. I would highly recommend getting involved with Pixelated Project, not only does it have a great, fun tech stack with pieces for anyone, it&amp;rsquo;s also a high impact social project.&lt;/p&gt;
+
+&lt;p&gt;I can easily see this being used in by organisations internally instead of the poorly supported Gmail for Enterprise. Wouldn&amp;rsquo;t it be great to free yourself from Gmail but keep all the functionality and have an even better UI? Not to mention the security benefits.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;I think a lot of the focus will be on the User Agent, since the LEAP platform will be implementation specific and is well supported by the &lt;a href=&#34;LEAP Foundation&#34; target=&#34;_blank&#34;&gt;https://leap.se/&lt;/a&gt; already. Although I did hear something about developing ability for  infrastructure to fire up docker containers for each User Agent&amp;rsquo;s session (!! way too cool)
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;FlightJS is an extremely basic JS library that gives you the event emitter/subscriber pattern. This is great because it allows you build your app interaction any way you&amp;rsquo;d like without buying into a whole framework&amp;rsquo;s way of doing things.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;A go script is that script in every software project that is the central point to trigger tasks such as setting up the environment, database migrations, build and run tests. It just has a name now: the &lt;code&gt;./go&lt;/code&gt; script.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
     <item>
       <title>An Easter in POA</title>
       <link>https://sett.sh/posts/2015/04/easter-in-poa/</link>
       <pubDate>Mon, 06 Apr 2015 00:00:00 +0000</pubDate>
-      
+      <author>Sett Wai</author>
       <guid>https://sett.sh/posts/2015/04/easter-in-poa/</guid>
-      <description>I had finally arrived in Porto Alegre on Tuesday night after approximately a 16 hour trip(transit via GRU). A quick 15 minute taxi ride took me to neighbourhood of Bom Fim, where I&amp;rsquo;d be staying in a hotel until more permanent living arrangements were made. Marcelo, my cab driver was a helpful guy and offered a lot of advice and information about the city as we drove through it. I was too bewildered and tired to take note of any of it.</description>
+      <description></description>
+      
+      <content>&lt;p&gt;I had finally arrived in Porto Alegre on Tuesday night after approximately a 16 hour trip(transit via &lt;a href=&#34;https://en.wikipedia.org/wiki/S%C3%A3o_Paulo-Guarulhos_International_Airport&#34; target=&#34;_blank&#34;&gt;GRU&lt;/a&gt;). A quick 15 minute taxi ride took me to neighbourhood of Bom Fim, where I&amp;rsquo;d be staying in a hotel until more permanent living arrangements were made. Marcelo, my cab driver was a helpful guy and offered a lot of advice and information about the city as we drove through it. I was too bewildered and tired to take note of any of it. I noticed main roads used a two way system with a bus lane in the middle. He apologised as we passed through some district where there was &amp;ldquo;bad bars and prostitutes&amp;rdquo; (as he put it).&lt;/p&gt;
+
+&lt;p&gt;Looking out upon the city skyline and streets in the day quickly dispelled all notions of the Brazil I&amp;rsquo;d imagined from its portrayals in pop culture. I have worked with a few wonderful Brazilian colleagues in Johannesburg and  even though I knew that the colourful and gritty Brazil portrayed in the likes of &lt;a href=&#34;http://www.imdb.com/title/tt0317248/&#34; target=&#34;_blank&#34;&gt;City of God&lt;/a&gt; is at best a caricature of only one city, there is always some romanticised attachment to the clichès and perspectives of the imagination.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/IvB2rBBl.jpg&#34; alt=&#34;POA Skyline from hotel elevator&#34; /&gt;
+&lt;small&gt;Lots of little apartment buildings in Bom Fim.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The city of Porto Alegre is situated in the state of Rio Grande du Sol (Big River of the South) and is known for having a very European vibe to it. There are still lot of old buildings down town though most of them are left as facades for parking or some other modern use behind.&lt;/p&gt;
+
+&lt;p&gt;The streets look clean to me but for the abundance of graffiti ranging from small murals to more common &amp;ldquo;tags&amp;rdquo;. You will not find the grit and chaos of Bree street here&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. You will instead find giant, ancient &lt;a href=&#34;https://en.wikipedia.org/wiki/Jacaranda&#34; target=&#34;_blank&#34;&gt;Jacaranda&lt;/a&gt; trees covered in beautiful vines. Which totally messed with my perception of where I am since I grew up in the &lt;a href=&#34;http://showme.co.za/pretoria/tourism/the-jacaranda-city/&#34; target=&#34;_blank&#34;&gt;Jacaranda City&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/K1StkTil.jpg&#34; alt=&#34;Giant Jacarandas in POA&#34; /&gt;
+&lt;small&gt;Wait, am I back home?&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;To be quite honest I do not know much of the history of Brazil, let alone Porto Alegre (POA for short) but I hope to discover more in my year-long adventure here. It&amp;rsquo;s one of the lesser known cities despite having hosted a world cup match&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. I had in fact not heard of it before meeting coworkers who hailed from there.&lt;/p&gt;
+
+&lt;p&gt;What I did find out is that it&amp;rsquo;s right next a big river that makes it &lt;a href=&#34;https://www.google.com.br/maps/@-30.0503783,-51.1901651,11z?hl=en&#34; target=&#34;_blank&#34;&gt;look like a bay&lt;/a&gt; in Google Maps. And then I found out the the river I was looking at is actually a &lt;a href=&#34;https://www.google.com.br/maps/@-30.5023817,-51.1357736,9z?hl=en&#34; target=&#34;_blank&#34;&gt;small part of a HUGE river&lt;/a&gt;. POA is situated on the edge of fractal!! And &amp;ldquo;Big River of the South&amp;rdquo; needs a better name like &amp;ldquo;MASSIVE river of the South&amp;rdquo; or &amp;ldquo;Rio Godzilla du Sol&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/W9yTSP9l.png&#34; alt=&#34;Map of Porto Alegre&#34; /&gt;
+&lt;small&gt;Cool, it&amp;rsquo;s a bay!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/5CaqxVMl.png&#34; alt=&#34;Map of Porto Alegre zoomed out&#34; title=&#34;Rio Godzilla du Sol&#34; /&gt;
+&lt;small&gt;Oh. Hang on&amp;hellip;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;POA&amp;rsquo;s &lt;a href=&#34;http://wikitravel.org/en/Porto_Alegre&#34; target=&#34;_blank&#34;&gt;WikiTravel&lt;/a&gt; page is shorter than most destinations, its biggest feature being its parks. And boy, are the parks plentiful and beautiful. &lt;a href=&#34;https://en.wikipedia.org/wiki/Farroupilha_Park&#34; target=&#34;_blank&#34;&gt;Parque Farroupilha&lt;/a&gt; was a short walking distance away from our hotel so my colleague &lt;a href=&#34;https://twitter.com/amukizaa&#34; target=&#34;_blank&#34;&gt;Andrew&lt;/a&gt; and I decided to brave a walk and maybe get some lunch on the way. It turns out this is a difficult thing to do on Good Friday since all the usual restaurants are closed and we don&amp;rsquo;t speak Portuguese. We settled on some hot dog &amp;ldquo;especial&amp;rdquo; from a food truck next to the park and much awkard gesturing and sheepish &amp;ldquo;sim&amp;rdquo;s and &amp;ldquo;obrigados&amp;rdquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;. It was more than a hot dog, the man layered a dozen sauces and stuff on top of it such that it could pass as modern art. And it was delicious.&lt;/p&gt;
+
+&lt;p&gt;But enough of this deliberation, have some photos from that walk:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/UDk2BIil.jpg&#34; alt=&#34;Awesome mural painting on what&#39;s presumably a hot dog and chips joint when it&#39;s open.&#34; title=&#34;Fast food surrealism!&#34; /&gt;
+&lt;small&gt;When fast food attacks!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/HfeE8myl.jpg&#34; alt=&#34;Posters for an anti capitalism protest&#34; title=&#34;Anti Capitalismo Protest!&#34; /&gt;
+&lt;small&gt;Anti Capitalismo Proteste! I like this place already.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/1mCW6Swl.jpg&#34; alt=&#34;Abacaxi truck&#34; /&gt;
+&lt;small&gt;Abacaxi is the &amp;ldquo;cellar door&amp;rdquo; of the Portuguese language, except it actually makes sense.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/R1283WGl.jpg&#34; alt=&#34;Tortoise and Swan&#34; /&gt;
+&lt;small&gt;Tortoise and Swan.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The next day we enlisted the help our Bolivian colleague who had been living in POA for around 3 years now. She knew the area and Portuguese (although she says it&amp;rsquo;s difficult, being a native Spanish speaker herself&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;). We went back to the Parque Farroupilha for a longer walk without the edge of not being able to communicate and then we went down town to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Porto_Alegre_Public_Market&#34; target=&#34;_blank&#34;&gt;Mercado Público&lt;/a&gt;, a big old building in the city centre with dozens of stalls selling stuff from curios to meat and cheese. Unfortunately I didn&amp;rsquo;t snap any pictures from there.&lt;/p&gt;
+
+&lt;p&gt;After that we went to Praça da Alfândega nearby which had MARGS (Museum of Art) near it. Now MARGS is free to enter and has a permanent collection with some peripharel exhibitions sometimes. It had a lot contemporary pieces but the most amazing work I saw was the painting below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/5VYtrrQl.jpg&#34; alt=&#34;&amp;quot;Emigrante&amp;quot; painting&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is a portrait of an immigrant by a Napoleone Grady, an Italian artist, painted in 1887. Every now and then you see a painting that has some ineffable, metaphysical property - you can swear by it. This was one of those. Looking at it for a few moments, you could hear the waves in the background and the same impossible light that you find in Rembrandt&amp;rsquo;s paintings illuminating the lady. I would definitely like to go back and view it again.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;On Sunday, to contrast the previous day&amp;rsquo;s high cultural experiences I joined some of my new colleagues who were attending an Anime convention. I don&amp;rsquo;t think it needs much explanation than the photos below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/l3BhYHAl.jpg&#34; alt=&#34;Crowd inside Anime Convention&#34; /&gt;
+&lt;small&gt;More cosplayers than casuals.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/Y7QqR3ol.jpg&#34; alt=&#34;Excellent costume&#34; /&gt;
+&lt;small&gt;Award winning costume.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/sDJVrAKl.jpg&#34; alt=&#34;Girls with big guns&#34; /&gt;
+&lt;small&gt;Obligatory girls with big guns who later turned out to be the judges of the cosplay competition.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The anime enthusiasts, geeks, nerds etc&amp;hellip; in POA seem to take cosplay very seriously, as evidenced by the quality of costumes and props. What struck me is that despite being a relatively small convention (I estimate only about 500 people there), there were more people dressed in costume than not.&lt;/p&gt;
+
+&lt;p&gt;Overall, my first weekend in Brazil has been very surprising and a lot of fun. I&amp;rsquo;m currently trying to learn more Portuguese and enjoying my time here. Happy belated Easter!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/kdORFIvl.jpg&#34; alt=&#34;Street Art in the Park&#34; /&gt;
+&lt;small&gt;Murals at Parque Farroupilha.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/y3nT3k7l.jpg&#34; alt=&#34;Amazing sculpture from entrance of MARGS&#34; /&gt;
+&lt;small&gt;Amazing unmarked sculpture at the entrance of MARGS&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/qGsc2zFl.jpg&#34; alt=&#34;Doctor Who stall at Anime Convetion&#34; /&gt;
+&lt;small&gt;A stall for every fandom.&lt;/small&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;Bree street is in Johannesburgs&amp;rsquo; CBD (Central Building District, or Downtown) and has a very post-apocalyptic feeling to it because of it&amp;rsquo;s crumbling, abandoned buildings and trash everywhere. I drove through it at night a few times and navigating it is difficult, often having to avoid the odd piece of furniture on the road and disorganised side streets.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;Marcelo, my cab driver from the airport, pointed out some roadworks that had been underway since before the World Cup and still has not been completed. Some 	roads were still closed.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;Sim = yes, obrigado = thank you (male). Incidentally these will be the most spoken sounds you make when in your first week in Brazil.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;Brazil is the only Portuguese speaking country in South America. This is okay because it is also the biggest country on the continent.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:4&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</content>
+      
     </item>
     
   </channel>
