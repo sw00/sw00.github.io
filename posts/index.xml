@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© Sett Wai 2020</copyright>
-    <lastBuildDate>Sat, 22 Feb 2020 09:29:34 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://sett.sh/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fundamental leverage for fundamental improvements</title>
+      <link>https://sett.sh/posts/2020/04/fundamental-leverage-for-fundamental-improvements/</link>
+      <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://sett.sh/posts/2020/04/fundamental-leverage-for-fundamental-improvements/</guid>
+      <description>In my previous post, I ranted a bit about the state of programming tools based on my struggles working with infrastructure in large-scale systems. The general landscape of infrastructure tooling seem to address complexity in ways that don&amp;rsquo;t seem very effective to me. If the power of tools is to make the complicated tasks simpler, the improvements promised by these tools seems quite superficial: there is still a lot of tweaking incidental details, only in YAML now instead of XML or JSON1.</description>
+    </item>
     
     <item>
       <title>Sweating the Right Details</title>
